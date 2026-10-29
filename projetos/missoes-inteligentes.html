@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protótipo · Missões Inteligentes — Mercado Livre</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Proxima Nova", Arial, Helvetica, sans-serif;
+    background: #F2F2F2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px 60px;
+  }
+  .page-title { font-size: 14px; color: #888; margin-bottom: 4px; text-align:center; }
+  .page-subtitle { font-size: 20px; font-weight: 600; color: #2D2D2D; margin-bottom: 28px; text-align:center; }
+
+  .stage { display:flex; align-items:flex-start; gap: 36px; flex-wrap: wrap; justify-content:center; }
+
+  /* ---- phone frame ---- */
+  .phone-wrap { display:flex; flex-direction:column; align-items:center; }
+  .phone {
+    width: 320px; height: 660px;
+    background:#000;
+    border-radius: 38px;
+    padding: 10px;
+    position: relative;
+  }
+  .screen-area {
+    width: 100%; height: 100%;
+    background:#fff;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+  }
+  .notch {
+    position:absolute; top:10px; left:50%; transform:translateX(-50%);
+    width:120px; height:22px; background:#000; border-radius:14px; z-index:50;
+  }
+  .status-bar {
+    height: 40px; padding: 0 24px 0 22px;
+    display:flex; align-items:flex-end; justify-content:space-between;
+    font-size: 13px; font-weight: 600; color:#222; background:#fff;
+    padding-bottom: 6px;
+  }
+  .status-bar .icons { display:flex; gap:5px; align-items:center; }
+
+  .screen { display:none; flex-direction:column; height: calc(100% - 40px); animation: fade .25s ease; }
+  .screen.active { display:flex; }
+  @keyframes fade { from { opacity:0; transform: translateY(6px);} to {opacity:1; transform:none;} }
+
+  .ml-header { background:#FFE600; padding:12px 16px; display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .ml-header-title { font-size:15px; font-weight:600; color:#2D2D2D; }
+  .icon-btn { cursor:pointer; display:flex; align-items:center; color:#2D2D2D; }
+  .icon-btn:hover { opacity:0.7; }
+
+  .ml-body { background:#EEEEEE; flex:1; padding:14px; overflow-y:auto; }
+  .ml-card { background:#fff; border-radius:8px; border:0.5px solid #E0E0E0; padding:14px; }
+  .ml-btn-blue {
+    background:#3483FA; color:#fff; border:none; border-radius:6px;
+    font-size:14px; font-weight:600; padding:13px; width:100%; text-align:center;
+    cursor:pointer; font-family:inherit;
+  }
+  .ml-btn-blue:hover { background:#2968D6; }
+  .ml-btn-blue:active { transform: scale(0.99); }
+
+  .ml-navbar {
+    height: 54px; background:#fff; border-top:0.5px solid #E0E0E0;
+    display:flex; align-items:center; justify-content:space-around; flex-shrink:0;
+  }
+  .ml-navitem { display:flex; flex-direction:column; align-items:center; font-size:10px; color:#9B9B9B; gap:3px; cursor:pointer; }
+  .ml-navitem.active { color:#3483FA; }
+  .ml-navitem:hover { color:#3483FA; }
+
+  /* ---- pagination strip ---- */
+  .nav-strip { display:flex; gap:10px; margin-top:22px; flex-wrap:wrap; justify-content:center; max-width:320px; }
+  .nav-dot {
+    display:flex; align-items:center; gap:8px;
+    background:#fff; border:1px solid #E0E0E0; border-radius:20px;
+    padding:7px 14px 7px 8px; cursor:pointer; font-size:12px; color:#666;
+    transition: all .15s ease;
+  }
+  .nav-dot:hover { border-color:#3483FA; color:#3483FA; }
+  .nav-dot.active { background:#3483FA; border-color:#3483FA; color:#fff; }
+  .nav-dot .num {
+    width:18px; height:18px; border-radius:50%; background:#EEEEEE; color:#666;
+    display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; flex-shrink:0;
+  }
+  .nav-dot.active .num { background:rgba(255,255,255,0.25); color:#fff; }
+
+  .hint { margin-top:18px; font-size:12px; color:#999; text-align:center; max-width:340px; line-height:1.6; }
+</style>
+</head>
+<body>
+
+<div class="page-title">PROTÓTIPO NAVEGÁVEL</div>
+<div class="page-subtitle">Missões Inteligentes · Mercado Livre</div>
+
+<div class="stage">
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen-area">
+        <div class="status-bar">
+          <span>9:41</span>
+          <span class="icons"><i class="ti ti-wifi" style="font-size:14px"></i><i class="ti ti-battery-4" style="font-size:15px"></i></span>
+        </div>
+
+        <!-- TELA 1 — Pedido entregue -->
+        <div class="screen active" id="screen-1">
+          <div class="ml-header">
+            <span class="icon-btn" onclick="go(5)"><i class="ti ti-arrow-left" style="font-size:20px"></i></span>
+            <span class="ml-header-title">Meus pedidos</span>
+          </div>
+          <div class="ml-body">
+            <div class="ml-card" style="margin-bottom:12px">
+              <div style="display:flex;gap:10px;align-items:center">
+                <div style="width:50px;height:50px;border-radius:6px;background:#F5F5F5;border:0.5px solid #E0E0E0;display:flex;align-items:center;justify-content:center"><i class="ti ti-headphones" style="font-size:24px;color:#9B9B9B"></i></div>
+                <div style="flex:1">
+                  <div style="font-size:12.5px;color:#2D2D2D;line-height:1.3">Fone de ouvido Bluetooth sem fio</div>
+                  <div style="display:flex;align-items:center;gap:4px;margin-top:5px"><i class="ti ti-circle-check" style="font-size:13px;color:#00A650"></i><span style="font-size:11.5px;color:#00A650;font-weight:600">Entregue em 24 de junho</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="ml-card" style="border:1px solid #FFE600;position:relative;cursor:pointer" onclick="go(2)">
+              <div style="position:absolute;top:12px;right:14px;background:#FFF3B0;color:#7A5B00;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:10px;display:flex;align-items:center;gap:3px"><i class="ti ti-bolt" style="font-size:11px"></i>+40 XP</div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><i class="ti ti-gift" style="font-size:17px;color:#3483FA"></i><span style="font-size:13px;font-weight:600;color:#2D2D2D">Missão disponível</span></div>
+              <div style="font-size:12.5px;color:#666;line-height:1.5;margin-bottom:14px">Seu produto chegou! Avalie sua compra e ganhe 40 XP.</div>
+              <button class="ml-btn-blue" onclick="event.stopPropagation();go(2)">Avaliar agora</button>
+            </div>
+          </div>
+          <div class="ml-navbar">
+            <div class="ml-navitem"><i class="ti ti-home" style="font-size:19px"></i>Início</div>
+            <div class="ml-navitem"><i class="ti ti-category" style="font-size:19px"></i>Categorias</div>
+            <div class="ml-navitem"><i class="ti ti-plus" style="font-size:19px"></i>Vender</div>
+            <div class="ml-navitem active"><i class="ti ti-shopping-bag" style="font-size:19px"></i>Compras</div>
+            <div class="ml-navitem" onclick="go(5)"><i class="ti ti-user" style="font-size:19px"></i>Conta</div>
+          </div>
+        </div>
+
+        <!-- TELA 2 — Tela da missão -->
+        <div class="screen" id="screen-2">
+          <div class="ml-header">
+            <span class="icon-btn" onclick="go(1)"><i class="ti ti-arrow-left" style="font-size:20px"></i></span>
+            <span class="ml-header-title">Missão</span>
+          </div>
+          <div class="ml-body">
+            <div style="font-size:11.5px;color:#666;margin-bottom:8px">Missão 1 de 3 da semana</div>
+            <div style="display:flex;gap:5px;margin-bottom:18px">
+              <div style="flex:1;height:5px;border-radius:3px;background:#3483FA"></div>
+              <div style="flex:1;height:5px;border-radius:3px;background:#D9D9D9"></div>
+              <div style="flex:1;height:5px;border-radius:3px;background:#D9D9D9"></div>
+            </div>
+            <div class="ml-card" style="text-align:center;padding:22px 14px;margin-bottom:14px">
+              <div style="width:54px;height:54px;border-radius:50%;background:#FFF3B0;display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><i class="ti ti-star" style="font-size:25px;color:#B8860B"></i></div>
+              <div style="font-size:14.5px;font-weight:600;color:#2D2D2D">Primeira avaliação</div>
+            </div>
+            <div class="ml-card" style="margin-bottom:10px">
+              <div style="font-size:10.5px;color:#9B9B9B;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:5px">Objetivo</div>
+              <div style="font-size:13px;color:#2D2D2D">Conte como foi sua experiência.</div>
+            </div>
+            <div class="ml-card" style="margin-bottom:18px">
+              <div style="font-size:10.5px;color:#9B9B9B;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:7px">Recompensa</div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#2D2D2D;margin-bottom:5px"><i class="ti ti-bolt" style="font-size:14px;color:#B8860B"></i>40 XP</div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#666"><i class="ti ti-ticket" style="font-size:14px;color:#3483FA"></i>chance de desbloquear um cupom</div>
+            </div>
+            <button class="ml-btn-blue" onclick="go(3)">Começar avaliação</button>
+          </div>
+        </div>
+
+        <!-- TELA 3 — Avaliação -->
+        <div class="screen" id="screen-3">
+          <div class="ml-header" style="justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="icon-btn" onclick="go(2)"><i class="ti ti-x" style="font-size:20px"></i></span>
+              <span class="ml-header-title">Avaliar produto</span>
+            </div>
+            <span style="background:#fff;color:#7A5B00;font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px">+40 XP</span>
+          </div>
+          <div class="ml-body">
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px">
+              <div style="width:36px;height:36px;border-radius:6px;background:#F5F5F5;border:0.5px solid #E0E0E0;display:flex;align-items:center;justify-content:center"><i class="ti ti-headphones" style="font-size:17px;color:#9B9B9B"></i></div>
+              <div style="font-size:12px;color:#2D2D2D">Fone de ouvido Bluetooth sem fio</div>
+            </div>
+            <div class="ml-card" style="margin-bottom:10px;text-align:center">
+              <div style="font-size:11.5px;color:#666;margin-bottom:9px">Como você avalia este produto?</div>
+              <div style="display:flex;justify-content:center;gap:7px" id="stars">
+                <i class="ti ti-star star-pick" data-v="1" style="font-size:24px;color:#B8860B;cursor:pointer"></i>
+                <i class="ti ti-star star-pick" data-v="2" style="font-size:24px;color:#B8860B;cursor:pointer"></i>
+                <i class="ti ti-star star-pick" data-v="3" style="font-size:24px;color:#B8860B;cursor:pointer"></i>
+                <i class="ti ti-star star-pick" data-v="4" style="font-size:24px;color:#B8860B;cursor:pointer"></i>
+                <i class="ti ti-star star-pick" data-v="5" style="font-size:24px;color:#D9D9D9;cursor:pointer"></i>
+              </div>
+            </div>
+            <div class="ml-card" style="margin-bottom:10px">
+              <div style="font-size:10.5px;color:#9B9B9B;margin-bottom:7px">Comentário</div>
+              <div style="font-size:12px;color:#9B9B9B;border:0.5px solid #E0E0E0;border-radius:6px;padding:11px;min-height:48px">Conte como foi sua experiência...</div>
+            </div>
+            <div style="border:1.5px dashed #C9C9C9;border-radius:6px;padding:16px;text-align:center;margin-bottom:18px;cursor:pointer">
+              <i class="ti ti-camera-plus" style="font-size:21px;color:#9B9B9B"></i>
+              <div style="font-size:11.5px;color:#9B9B9B;margin-top:5px">Adicionar foto</div>
+            </div>
+            <button class="ml-btn-blue" onclick="go(4)">Enviar avaliação</button>
+          </div>
+        </div>
+
+        <!-- TELA 4 — Recompensa -->
+        <div class="screen" id="screen-4">
+          <div style="background:#fff;flex:1;padding:26px 18px;text-align:center;display:flex;flex-direction:column;overflow-y:auto">
+            <div style="position:relative;height:20px;margin-bottom:8px">
+              <i class="ti ti-sparkles" style="position:absolute;left:24px;top:0;font-size:14px;color:#FFE600"></i>
+              <i class="ti ti-sparkles" style="position:absolute;right:30px;top:7px;font-size:12px;color:#3483FA"></i>
+              <i class="ti ti-sparkles" style="position:absolute;left:90px;top:3px;font-size:11px;color:#00A650"></i>
+            </div>
+            <div style="width:64px;height:64px;border-radius:50%;background:#E1F5EB;display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><i class="ti ti-circle-check" style="font-size:32px;color:#00A650"></i></div>
+            <div style="font-size:16px;font-weight:600;color:#2D2D2D;margin-bottom:5px">Missão concluída</div>
+            <div style="font-size:24px;font-weight:700;color:#B8860B;margin-bottom:20px">+40 XP</div>
+            <div class="ml-card" style="text-align:left;margin-bottom:14px">
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:#2D2D2D;margin-bottom:7px"><span style="font-weight:600">Nível 3</span><span style="color:#666">320 / 400 XP</span></div>
+              <div style="height:7px;border-radius:4px;background:#EEEEEE;overflow:hidden"><div style="width:80%;height:100%;background:#3483FA"></div></div>
+            </div>
+            <div class="ml-card" style="text-align:left;border:1px dashed #3483FA;margin-bottom:22px">
+              <div style="display:flex;align-items:center;gap:9px">
+                <i class="ti ti-ticket" style="font-size:21px;color:#3483FA"></i>
+                <div>
+                  <div style="font-size:12.5px;font-weight:600;color:#2D2D2D">Cupom desbloqueado</div>
+                  <div style="font-size:11.5px;color:#666">R$ 15 de desconto acima de R$ 120</div>
+                </div>
+              </div>
+            </div>
+            <button class="ml-btn-blue" onclick="go(5)">Continuar</button>
+          </div>
+        </div>
+
+        <!-- TELA 5 — Central de Missões -->
+        <div class="screen" id="screen-5">
+          <div class="ml-header">
+            <span class="icon-btn" onclick="go(1)"><i class="ti ti-arrow-left" style="font-size:20px"></i></span>
+            <span class="ml-header-title">Missões</span>
+          </div>
+          <div class="ml-body">
+            <div style="display:flex;gap:9px;margin-bottom:12px">
+              <div class="ml-card" style="flex:1;text-align:center;padding:11px"><div style="font-size:10.5px;color:#9B9B9B;margin-bottom:3px">XP total</div><div style="font-size:16px;font-weight:700;color:#2D2D2D">2.340</div></div>
+              <div class="ml-card" style="flex:1;text-align:center;padding:11px"><div style="font-size:10.5px;color:#9B9B9B;margin-bottom:3px">Nível</div><div style="font-size:16px;font-weight:700;color:#2D2D2D">3</div></div>
+            </div>
+            <div class="ml-card" style="margin-bottom:12px">
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:#2D2D2D;margin-bottom:7px"><span style="font-weight:600">Progresso semanal</span><span style="color:#666">2 de 3</span></div>
+              <div style="height:7px;border-radius:4px;background:#EEEEEE;overflow:hidden"><div style="width:66%;height:100%;background:#00A650"></div></div>
+            </div>
+            <div class="ml-card">
+              <div style="font-size:10.5px;color:#9B9B9B;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:9px">Próximas missões</div>
+              <div style="display:flex;align-items:center;gap:9px;padding:7px 0"><i class="ti ti-circle-check" style="font-size:17px;color:#00A650"></i><span style="font-size:12.5px;color:#9B9B9B;text-decoration:line-through">Avaliou produto</span></div>
+              <div style="display:flex;align-items:center;gap:9px;padding:7px 0"><i class="ti ti-circle-check" style="font-size:17px;color:#00A650"></i><span style="font-size:12.5px;color:#9B9B9B;text-decoration:line-through">Compartilhou foto</span></div>
+              <div style="display:flex;align-items:center;gap:9px;padding:7px 0;cursor:pointer" onclick="go(2)"><i class="ti ti-circle" style="font-size:17px;color:#9B9B9B"></i><span style="font-size:12.5px;color:#2D2D2D">Responder uma pergunta</span></div>
+              <div style="display:flex;align-items:center;gap:9px;padding:7px 0;cursor:pointer"><i class="ti ti-circle" style="font-size:17px;color:#9B9B9B"></i><span style="font-size:12.5px;color:#2D2D2D">Explorar ofertas</span></div>
+            </div>
+          </div>
+          <div class="ml-navbar">
+            <div class="ml-navitem" onclick="go(1)"><i class="ti ti-home" style="font-size:19px"></i>Início</div>
+            <div class="ml-navitem"><i class="ti ti-category" style="font-size:19px"></i>Categorias</div>
+            <div class="ml-navitem"><i class="ti ti-plus" style="font-size:19px"></i>Vender</div>
+            <div class="ml-navitem"><i class="ti ti-shopping-bag" style="font-size:19px"></i>Compras</div>
+            <div class="ml-navitem active"><i class="ti ti-user" style="font-size:19px"></i>Conta</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="nav-strip" id="navStrip"></div>
+    <div class="hint">Clique nos botões dentro da tela para navegar pelo fluxo real, ou use os atalhos acima para pular direto para qualquer etapa.</div>
+  </div>
+</div>
+
+<script>
+  const labels = [
+    "Pedido entregue",
+    "Tela da missão",
+    "Avaliação",
+    "Recompensa",
+    "Central de Missões"
+  ];
+
+  const strip = document.getElementById('navStrip');
+  labels.forEach((label, i) => {
+    const n = i + 1;
+    const el = document.createElement('div');
+    el.className = 'nav-dot' + (n === 1 ? ' active' : '');
+    el.id = 'dot-' + n;
+    el.onclick = () => go(n);
+    el.innerHTML = '<span class="num">' + n + '</span>' + label;
+    strip.appendChild(el);
+  });
+
+  function go(n) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + n).classList.add('active');
+    document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+    document.getElementById('dot-' + n).classList.add('active');
+    document.querySelector('.screen-area').scrollTop = 0;
+  }
+
+  document.querySelectorAll('.star-pick').forEach(star => {
+    star.addEventListener('click', () => {
+      const v = parseInt(star.dataset.v);
+      document.querySelectorAll('.star-pick').forEach(s => {
+        s.style.color = parseInt(s.dataset.v) <= v ? '#B8860B' : '#D9D9D9';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
