@@ -133,6 +133,14 @@ section{padding:clamp(80px,11vw,150px) 0}
 .facts b{display:block;font-size:15px;font-weight:600;margin-top:6px}
 @media(max-width:860px){.about{grid-template-columns:1fr}.portrait{aspect-ratio:16/10}.facts{grid-template-columns:1fr}}
 
+
+/* skills */
+.skills{margin-top:clamp(56px,7vw,96px);padding-top:clamp(32px,4vw,44px);border-top:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{font-size:15px;font-weight:500;padding:10px 18px;background:#161616;color:var(--fg);border:1px solid #2c2c2c;border-radius:8px;box-shadow:0 3px 0 #2a2a2a, 0 4px 10px -4px #000;transition:transform .15s,box-shadow .15s,background .15s}
+@media(max-width:600px){.chips{gap:8px}.chip{font-size:13px;padding:8px 13px}}
+.chip:hover{transform:translateY(2px);box-shadow:0 1px 0 #2a2a2a;background:#1d1d1d}
+
 /* planos / entregáveis */
 .plans{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
 .plan{padding:36px 32px 40px 0;display:flex;flex-direction:column;border-right:1px solid var(--line)}
@@ -302,6 +310,10 @@ footer a:hover{opacity:.6}
         <a href="https://www.linkedin.com/in/yago-moreira-barbosa/" target="_blank" rel="noopener" class="link">LinkedIn <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
+  </div>
+  <div class="wrap skills rv">
+    <div class="label">Skills &amp; tecnologias</div>
+    <div class="chips"><span class="chip">Figma</span><span class="chip">UI/UX Design</span><span class="chip">Pesquisa com usuários</span><span class="chip">Prototipagem</span><span class="chip">Design System</span><span class="chip">Identidade Visual</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span><span class="chip">HTML & CSS</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Tailwind</span><span class="chip">Vite</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Google Ads</span><span class="chip">Meta Ads</span><span class="chip">SEO</span><span class="chip">IAs</span></div>
   </div>
 </section>
 
