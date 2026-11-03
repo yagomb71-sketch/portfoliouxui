@@ -192,6 +192,42 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
 .gal figcaption{position:absolute;left:16px;bottom:16px;background:rgba(251,247,243,.92);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:600}
 @media(max-width:760px){.gal{grid-template-columns:1fr 1fr}.gal figure:first-child{grid-column:span 2;aspect-ratio:16/10}}
 
+
+.stars-sm{color:#F2C3B0;letter-spacing:2px;font-size:13px;margin-right:4px}
+.why{padding-bottom:0}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.why-card{border-top:1px solid var(--cocoa);padding-top:22px}
+.why-card .wi{font-family:var(--serif);font-size:18px;color:var(--rose)}
+.why-card h3{font-size:28px;margin:12px 0 10px}
+.why-card p{color:var(--muted);font-size:15px}
+@media(max-width:960px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr}}
+.card .tag{align-self:flex-start;margin-top:12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-d);background:var(--sand);padding:4px 10px;border-radius:999px;vertical-align:middle;transition:background .35s,color .35s}
+.card:hover .tag,.card:focus-within .tag{background:#5a4540;color:#F0C8B8}
+.cred-list{list-style:none;margin-top:24px;display:grid;gap:10px}
+.cred-list li{padding-left:26px;position:relative;font-size:15px;color:var(--cocoa-2)}
+.cred-list li::before{content:'✦';position:absolute;left:0;color:var(--rose);font-size:13px;top:2px}
+.assess{background:var(--ivory)}
+.assess .qform{background:#fff;border:1px solid var(--line)}
+.assess-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,80px);align-items:center}
+.qform{background:var(--ivory);border-radius:28px;padding:clamp(26px,4vw,40px);box-shadow:0 30px 60px -40px rgba(58,41,37,.45)}
+.qprog{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:28px}
+.qprog span{display:block;height:100%;width:33%;background:var(--rose-d);transition:width .4s}
+.qstep{display:none}.qstep.active{display:block;animation:heroUp .45s both}
+.qlabel{display:block;font-family:var(--serif);font-size:28px;line-height:1.1;margin-bottom:14px}
+.qinput{width:100%;font:inherit;font-size:16px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--cocoa);outline:none}
+.qinput:focus{border-color:var(--rose)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14.5px;font-weight:500;padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--cocoa);cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--rose)}
+.chip.on{background:var(--cocoa);border-color:var(--cocoa);color:var(--ivory)}
+.qcheck{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:13.5px;color:var(--muted)}
+.qcheck input{margin-top:3px;accent-color:#A86D5B}
+.qerr{color:#B4483B;font-size:14px;min-height:20px;margin-top:14px}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.qback{font:inherit;background:none;border:0;color:var(--muted);font-weight:600;cursor:pointer;visibility:hidden}
+@media(max-width:860px){.assess-grid{grid-template-columns:1fr}}
+
 .rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ribbon .track{animation:none}html{scroll-behavior:auto}}
@@ -216,6 +252,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
       <a href="#tratamentos">Tratamentos</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#sobre">Sobre</a>
+      <a href="#avaliacao">Pré-avaliação</a>
       <a href="#duvidas">Dúvidas</a>
     </nav>
     <a href="#" class="btn btn-dark js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética.">Agendar avaliação</a>
@@ -239,9 +276,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
       </div>
     </div>
     <ul class="hero-bar">
-      <li><svg><use href="#ok"/></svg>Avaliação individual</li>
-      <li><svg><use href="#ok"/></svg>Produtos registrados na Anvisa</li>
-      <li><svg><use href="#ok"/></svg>Profissional habilitada</li>
+      <li><span class="stars-sm">★★★★★</span>5,0 no Google · 120+ avaliações</li>
+      <li><svg><use href="#ok"/></svg>Biomédica esteta · CRBM 00000</li>
+      <li><svg><use href="#ok"/></svg>Avaliação individual antes de tudo</li>
     </ul>
   </div>
 </section>
@@ -251,6 +288,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
   <span>Harmonização facial</span><span>Toxina botulínica</span><span>Bioestimulador de colágeno</span><span>Preenchimento labial</span><span>Skinbooster</span><span>Limpeza de pele</span>
 </div></div>
 
+
+<!-- POR QUE -->
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow rv">Por que a Aurora</span>
+    <h2 class="rv">Estética com <em>critério</em>, não com pressa</h2>
+    <div class="why-grid">
+      <div class="why-card rv"><span class="wi">01</span><h3>Avaliação de verdade</h3><p>Antes de qualquer agulha, entendemos sua queixa, sua rotina e o que faz sentido para o seu rosto.</p></div>
+      <div class="why-card rv"><span class="wi">02</span><h3>Responsável técnica</h3><p>Todos os procedimentos são feitos pela própria Dra. Marina, com registro ativo no conselho.</p></div>
+      <div class="why-card rv"><span class="wi">03</span><h3>Produtos rastreáveis</h3><p>Usamos apenas produtos registrados na Anvisa, com lote e validade informados a você.</p></div>
+      <div class="why-card rv"><span class="wi">04</span><h3>Sem pacotes empurrados</h3><p>Você recebe só o que foi indicado na avaliação. Sem promoções relâmpago, sem exageros.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- TRATAMENTOS -->
 <section id="tratamentos">
   <div class="wrap">
@@ -259,12 +311,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
       <p class="lead rv">Cada protocolo é indicado só depois da avaliação. Toque em um tratamento para tirar dúvidas direto com a profissional.</p>
     </div>
     <div class="treat">
-      <article class="card rv"><span class="num">01</span><h3>Harmonização facial</h3><p>Planejamento completo do rosto para equilibrar proporções e valorizar seus traços, sempre com naturalidade.</p><div class="meta"><span>Sob avaliação</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em harmonização facial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">02</span><h3>Toxina botulínica</h3><p>Suaviza linhas de expressão da testa, glabela e olhos, mantendo os movimentos naturais do rosto.</p><div class="meta"><span>~30 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em toxina botulínica. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">03</span><h3>Bioestimulador de colágeno</h3><p>Estimula a produção natural de colágeno para melhorar firmeza e qualidade da pele ao longo das semanas.</p><div class="meta"><span>~45 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em bioestimulador de colágeno. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">04</span><h3>Preenchimento labial</h3><p>Hidratação e contorno dos lábios com ácido hialurônico, respeitando o formato do seu sorriso.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em preenchimento labial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">05</span><h3>Skinbooster</h3><p>Hidratação profunda que devolve viço e luminosidade à pele do rosto, pescoço e colo.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em skinbooster. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">06</span><h3>Limpeza de pele profunda</h3><p>Remove impurezas, controla a oleosidade e prepara a pele para os outros tratamentos.</p><div class="meta"><span>~70 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em limpeza de pele. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">01</span><span class="tag">Rosto completo</span><h3>Harmonização facial</h3><p>Planejamento completo do rosto para equilibrar proporções e valorizar seus traços, sempre com naturalidade.</p><div class="meta"><span>Sob avaliação</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em harmonização facial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">02</span><span class="tag">Expressão</span><h3>Toxina botulínica</h3><p>Suaviza linhas de expressão da testa, glabela e olhos, mantendo os movimentos naturais do rosto.</p><div class="meta"><span>~30 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em toxina botulínica. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">03</span><span class="tag">Firmeza</span><h3>Bioestimulador de colágeno</h3><p>Estimula a produção natural de colágeno para melhorar firmeza e qualidade da pele ao longo das semanas.</p><div class="meta"><span>~45 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em bioestimulador de colágeno. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">04</span><span class="tag">Lábios</span><h3>Preenchimento labial</h3><p>Hidratação e contorno dos lábios com ácido hialurônico, respeitando o formato do seu sorriso.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em preenchimento labial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">05</span><span class="tag">Hidratação</span><h3>Skinbooster</h3><p>Hidratação profunda que devolve viço e luminosidade à pele do rosto, pescoço e colo.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em skinbooster. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">06</span><span class="tag">Pele</span><h3>Limpeza de pele profunda</h3><p>Remove impurezas, controla a oleosidade e prepara a pele para os outros tratamentos.</p><div class="meta"><span>~70 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em limpeza de pele. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
     </div>
   </div>
 </section>
@@ -305,9 +357,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
       <h2 class="rv">Dra. Marina <em>Alves</em></h2>
       <p class="lead rv">Biomédica esteta, especialista em harmonização facial. Acredita em resultados que respeitam a sua identidade: você continua parecendo você, só que mais descansada e confiante.</p>
       <p class="quote rv">“O melhor procedimento é aquele que ninguém percebe, só elogia.”</p>
+      <ul class="cred-list rv">
+        <li>Biomédica com habilitação em estética</li>
+        <li>Pós-graduação em harmonização orofacial</li>
+        <li>Formação em bioestimuladores e skinbooster</li>
+      </ul>
       <div class="creds rv">
         <div><b>8 anos</b><span>de experiência em estética</span></div>
-        <div><b>CRBM</b><span>registro profissional ativo</span></div>
+        <div><b>5,0 ★</b><span>média das avaliações no Google</span></div>
       </div>
     </div>
   </div>
@@ -335,8 +392,50 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
       <details><summary>Os procedimentos doem?</summary><p>Usamos anestésico tópico e técnicas que deixam o procedimento bem confortável. A sensação varia de pessoa para pessoa.</p></details>
       <details><summary>Em quanto tempo vejo o resultado?</summary><p>Depende do tratamento e de cada organismo. Na avaliação explicamos o tempo esperado e o número de sessões para o seu caso.</p></details>
       <details><summary>Vou ficar com aspecto artificial?</summary><p>Nosso foco é naturalidade. O planejamento respeita suas proporções e você aprova cada etapa antes do procedimento.</p></details>
+      <details><summary>Quanto tempo duram os resultados?</summary><p>Varia conforme o tratamento e o organismo. A toxina costuma ter efeito de alguns meses e os bioestimuladores agem de forma gradual. Na avaliação você recebe o calendário de manutenção indicado para você.</p></details>
+      <details><summary>Como sei qual tratamento é o certo para mim?</summary><p>Você não precisa chegar sabendo. A avaliação existe justamente para isso: analisamos seu rosto e sua pele e indicamos o caminho mais adequado.</p></details>
+      <details><summary>Atendem pacientes de outras regiões?</summary><p>Sim. Recebemos pacientes de toda a cidade e da Grande São Paulo, com horários combinados pelo WhatsApp.</p></details>
       <details><summary>Posso voltar à rotina no mesmo dia?</summary><p>Na maioria dos casos, sim. Você recebe as orientações de cuidados para as primeiras horas e dias.</p></details>
     </div>
+  </div>
+</section>
+
+
+<!-- AVALIAÇÃO ONLINE -->
+<section class="assess" id="avaliacao">
+  <div class="wrap assess-grid">
+    <div>
+      <span class="eyebrow rv">Pré-avaliação online</span>
+      <h2 class="rv">Conte o que te <em>incomoda</em></h2>
+      <p class="lead rv">Responda 3 perguntas rápidas e envie para a Dra. Marina pelo WhatsApp. Assim a conversa já começa com o seu caso em mãos.</p>
+    </div>
+    <form class="qform rv" id="qform" novalidate>
+      <div class="qprog"><span id="qbar"></span></div>
+      <div class="qstep active" data-step="1">
+        <label class="qlabel" for="qnome">Como podemos te chamar?</label>
+        <input id="qnome" class="qinput" type="text" placeholder="Seu primeiro nome" autocomplete="given-name">
+        <span class="qlabel" style="margin-top:22px">Já fez algum procedimento estético?</span>
+        <div class="chips" data-name="antes"><button type="button" class="chip">Sim</button><button type="button" class="chip">Não, seria o primeiro</button></div>
+      </div>
+      <div class="qstep" data-step="2">
+        <span class="qlabel">O que mais te incomoda hoje?</span>
+        <div class="chips" data-name="queixa" data-multi="1">
+          <button type="button" class="chip">Linhas de expressão</button><button type="button" class="chip">Perda de volume</button>
+          <button type="button" class="chip">Flacidez</button><button type="button" class="chip">Lábios</button>
+          <button type="button" class="chip">Manchas e textura</button><button type="button" class="chip">Ainda não sei</button>
+        </div>
+      </div>
+      <div class="qstep" data-step="3">
+        <label class="qlabel" for="qtel">Seu WhatsApp</label>
+        <input id="qtel" class="qinput" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" autocomplete="tel">
+        <label class="qcheck"><input type="checkbox" id="qok"> Autorizo o contato da Aurora pelo WhatsApp para agendar minha avaliação.</label>
+      </div>
+      <p class="qerr" id="qerr" role="alert"></p>
+      <div class="qnav">
+        <button type="button" class="qback" id="qback">Voltar</button>
+        <button type="submit" class="btn btn-dark" id="qnext">Continuar</button>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -375,6 +474,31 @@ document.querySelectorAll('.js-wa').forEach(a=>{a.href='https://wa.me/'+WHATSAPP
 const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+
+// pré-avaliação em 3 passos -> WhatsApp
+(function(){
+  const f=document.getElementById('qform'); if(!f) return;
+  let step=1; const steps=[...f.querySelectorAll('.qstep')], bar=document.getElementById('qbar'),
+    back=document.getElementById('qback'), next=document.getElementById('qnext'), err=document.getElementById('qerr');
+  f.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;
+    if(!g.dataset.multi) g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on')); c.classList.toggle('on');}));
+  const val=n=>[...f.querySelectorAll(`.chips[data-name="${n}"] .chip.on`)].map(c=>c.textContent);
+  const tel=document.getElementById('qtel');
+  tel.addEventListener('input',()=>{let d=tel.value.replace(/\D/g,'').slice(0,11);tel.value=d.length>6?`(${d.slice(0,2)}) ${d.slice(2,d.length-4)}-${d.slice(-4)}`:d.length>2?`(${d.slice(0,2)}) ${d.slice(2)}`:d;});
+  function show(){steps.forEach(s=>s.classList.toggle('active',+s.dataset.step===step));bar.style.width=(step/3*100)+'%';
+    back.style.visibility=step>1?'visible':'hidden';next.textContent=step<3?'Continuar':'Enviar pelo WhatsApp';err.textContent='';}
+  function check(){
+    if(step===1){if(!document.getElementById('qnome').value.trim())return'Digite seu nome.';if(!val('antes').length)return'Escolha uma opção.';}
+    if(step===2&&!val('queixa').length)return'Escolha pelo menos uma opção.';
+    if(step===3){if(tel.value.replace(/\D/g,'').length<10)return'Digite seu WhatsApp com DDD.';if(!document.getElementById('qok').checked)return'Marque a autorização para continuar.';}
+    return'';}
+  back.addEventListener('click',()=>{step=Math.max(1,step-1);show();});
+  f.addEventListener('submit',e=>{e.preventDefault();const m=check();if(m){err.textContent=m;return;}
+    if(step<3){step++;show();return;}
+    const msg=`Olá! Fiz a pré-avaliação no site da Aurora.\n\n*Nome:* ${document.getElementById('qnome').value.trim()}\n*Já fez procedimento:* ${val('antes')[0]}\n*O que me incomoda:* ${val('queixa').join(', ')}\n*WhatsApp:* ${tel.value}\n\nGostaria de agendar minha avaliação.`;
+    window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');});
+  show();
+})();
 </script>
 </body>
 </html>
