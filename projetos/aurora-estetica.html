@@ -165,6 +165,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
 .wa:hover{transform:scale(1.06)}
 .wa svg{width:28px;height:28px}
 
+
+.arch img,.portrait img,.gal figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.arch.a1::after{z-index:1}
+.portrait::after{display:none}
+.gallery{padding-top:0}
+.gal{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin-top:44px}
+.gal figure{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:linear-gradient(170deg,#E9D3C8,#C99A88)}
+.gal figure:first-child{aspect-ratio:auto}
+.gal figcaption{position:absolute;left:16px;bottom:16px;background:rgba(251,247,243,.92);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:600}
+@media(max-width:760px){.gal{grid-template-columns:1fr 1fr}.gal figure:first-child{grid-column:span 2;aspect-ratio:16/10}}
+
 .rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ribbon .track{animation:none}html{scroll-behavior:auto}}
@@ -214,8 +225,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
       </div>
     </div>
     <div class="hero-art" aria-hidden="true">
-      <div class="arch a1"></div>
-      <div class="arch a2"></div>
+      <div class="arch a1"><img src="https://images.unsplash.com/photo-1555820585-c5ae44394b79?auto=format&fit=crop&w=1100&q=70" alt="Mulher de olhos fechados com pele iluminada" loading="lazy" style="object-position:center" onerror="this.remove()"></div>
+      <div class="arch a2"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=500&q=70" alt="Tratamento facial com máscara" loading="lazy" style="object-position:center" onerror="this.remove()"></div>
       <div class="float f1"><div class="ic">✦</div><div><b>Resultados naturais</b>planejados para o seu rosto</div></div>
       <div class="float f2"><div class="ic">◷</div><div><b>Seg a Sáb</b>horários flexíveis</div></div>
     </div>
@@ -258,10 +269,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
   </div>
 </section>
 
+
+<!-- ESPAÇO -->
+<section class="gallery">
+  <div class="wrap">
+    <span class="eyebrow rv">O espaço</span>
+    <h2 class="rv">Um ambiente pensado para o seu <em>conforto</em></h2>
+    <div class="gal">
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1731514721772-329626f84c8b?auto=format&fit=crop&w=1200&q=70" alt="Recepção da clínica" loading="lazy" style="object-position:center" onerror="this.remove()"><figcaption>Recepção</figcaption></figure>
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=800&q=70" alt="Sala de tratamento facial" loading="lazy" style="object-position:center" onerror="this.remove()"><figcaption>Sala de procedimentos</figcaption></figure>
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1731514693674-a32211b63996?auto=format&fit=crop&w=800&q=70" alt="Sala de espera" loading="lazy" style="object-position:center" onerror="this.remove()"><figcaption>Sala de espera</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <!-- SOBRE -->
 <section id="sobre">
   <div class="wrap about">
-    <div class="portrait rv" aria-hidden="true"></div>
+    <div class="portrait rv"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=70" alt="Retrato da profissional responsável" loading="lazy" style="object-position:center 20%" onerror="this.remove()"></div>
     <div>
       <span class="eyebrow rv">Quem cuida de você</span>
       <h2 class="rv">Dra. Marina <em>Alves</em></h2>
