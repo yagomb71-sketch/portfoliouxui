@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurora Estética Avançada | Harmonização facial e skincare em São Paulo</title>
+<meta name="description" content="Harmonização facial, bioestimuladores, toxina botulínica e tratamentos de pele com avaliação individual. Agende sua avaliação pelo WhatsApp.">
+<meta name="theme-color" content="#F6EFEA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Projeto conceitual de Yago Moreira (yagoportfolio.com.br) -->
+<style>
+:root{
+  --ivory:#FBF7F3; --sand:#F3E9E2; --blush:#EBD5CC; --rose:#C48B78; --rose-d:#A86D5B;
+  --cocoa:#3A2925; --cocoa-2:#5B4540; --muted:#8B7670; --line:#E6D8D0;
+  --serif:'Instrument Serif', Georgia, serif; --sans:'Manrope', system-ui, sans-serif;
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--ivory);color:var(--cocoa);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:min(100% - 40px,1160px);margin-inline:auto}
+section{padding:clamp(80px,10vw,128px) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-d)}
+.eyebrow::before{content:'';width:22px;height:1px;background:currentColor}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(38px,5.4vw,64px);margin-top:16px}
+h2 em,h1 em{font-style:italic;color:var(--rose-d)}
+.lead{color:var(--muted);font-size:17px;max-width:540px;margin-top:18px}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:15px;padding:17px 28px;border-radius:999px;transition:all .25s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-dark{background:var(--cocoa);color:var(--ivory)}
+.btn-dark:hover{background:var(--rose-d)}
+.btn-line{border:1px solid var(--cocoa);color:var(--cocoa)}
+.btn-line:hover{background:var(--cocoa);color:var(--ivory)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+.nav.scrolled{background:rgba(251,247,243,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:.02em}
+.logo small{font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--rose-d);margin-top:4px}
+.menu{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--cocoa-2)}
+.menu a:hover{color:var(--rose-d)}
+.nav .btn{padding:12px 20px;font-size:14px}
+@media(max-width:900px){.menu{display:none}}
+@media(max-width:520px){.nav .btn{padding:10px 15px;font-size:13px}.logo b{font-size:26px}.logo small{letter-spacing:.3em}.trust{gap:12px 20px;font-size:13px}.hero{padding-top:118px}}
+
+/* hero */
+.hero{padding:140px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:780px;height:780px;right:-260px;top:-240px;border-radius:50%;background:radial-gradient(closest-side,#EED9CF,transparent);z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(50px,7.2vw,92px);margin-top:22px}
+.hero p.sub{font-size:18px;color:var(--cocoa-2);max-width:500px;margin:24px 0 34px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:40px;padding-top:28px;border-top:1px solid var(--line);font-size:13.5px;color:var(--cocoa-2)}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;color:var(--rose-d)}
+.hero-art{position:relative;height:620px}
+.arch{position:absolute;border-radius:999px 999px 26px 26px;overflow:hidden}
+.arch.a1{inset:0 70px 0 40px;background:
+  radial-gradient(120% 70% at 30% 20%,#F6E4DA 0%,transparent 55%),
+  radial-gradient(90% 80% at 75% 85%,#B97E6B 0%,transparent 60%),
+  linear-gradient(165deg,#E9CDBF,#C99583 55%,#9C6656)}
+.arch.a1::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+.face{position:absolute;inset:auto 0 0 0;height:88%;display:flex;align-items:flex-end;justify-content:center}
+.face svg{width:78%;height:auto}
+.arch.a2{width:150px;height:200px;right:0;top:44px;background:linear-gradient(170deg,#F4E6DE,#E2C2B4);border:6px solid var(--ivory)}
+.float{position:absolute;background:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 24px 50px -20px rgba(58,41,37,.35);font-size:13px;display:flex;gap:12px;align-items:center}
+.float b{display:block;font-size:14px}
+.float .ic{width:40px;height:40px;border-radius:12px;background:var(--sand);display:grid;place-items:center;color:var(--rose-d)}
+.float.f1{left:0;bottom:70px}
+.float.f2{right:10px;bottom:210px}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-art{height:460px;max-width:460px;margin:20px auto 0;width:100%}.arch.a2{display:none}.arch.a1{inset:0 20px}}
+
+/* marquee */
+.ribbon{background:var(--cocoa);color:var(--sand);padding:20px 0;overflow:hidden}
+.ribbon .track{display:flex;width:max-content;animation:mq 40s linear infinite;font-family:var(--serif);font-size:26px;font-style:italic}
+.ribbon span{padding:0 28px;display:flex;align-items:center;gap:56px}
+.ribbon span::after{content:'✦';font-style:normal;font-size:14px;color:var(--rose)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* tratamentos */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:52px}
+.treat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(58,41,37,.4);border-color:var(--blush)}
+.card .num{font-family:var(--serif);font-size:20px;color:var(--rose)}
+.card h3{font-size:31px;margin:14px 0 10px}
+.card p{color:var(--muted);font-size:15px;flex:1}
+.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--cocoa-2)}
+.card .meta a{font-weight:600;color:var(--rose-d);display:flex;align-items:center;gap:6px}
+.card.feature{background:var(--cocoa);color:var(--sand);border-color:var(--cocoa)}
+.card.feature p,.card.feature .meta{color:#CDB9B1;border-color:#5a4540}
+.card.feature .meta a{color:#F0C8B8}
+@media(max-width:960px){.treat{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.treat{grid-template-columns:1fr}}
+
+/* processo */
+.process{background:var(--sand)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.step{background:var(--ivory);border-radius:var(--r);padding:34px 30px}
+.step .n{width:46px;height:46px;border-radius:50%;border:1px solid var(--rose);display:grid;place-items:center;font-family:var(--serif);font-size:22px;color:var(--rose-d)}
+.step h3{font-size:30px;margin:22px 0 10px}
+.step p{color:var(--muted);font-size:15px}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* sobre */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,90px);align-items:center}
+.portrait{aspect-ratio:4/5;border-radius:999px 999px var(--r) var(--r);background:
+  radial-gradient(80% 60% at 50% 30%,#F3DDD2,transparent 70%),linear-gradient(170deg,#E5C6B8,#B98371);position:relative;overflow:hidden}
+.portrait::after{content:'Foto da profissional';position:absolute;inset:auto 0 26px;text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.portrait svg{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:76%}
+.creds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.creds div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.creds b{font-family:var(--serif);font-size:30px;font-weight:400;display:block;line-height:1}
+.creds span{font-size:13px;color:var(--muted)}
+.quote{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.3;color:var(--cocoa-2);margin-top:26px;padding-left:20px;border-left:2px solid var(--rose)}
+@media(max-width:860px){.about{grid-template-columns:1fr}.portrait{max-width:380px;width:100%;margin:0 auto}}
+
+/* depoimentos */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.review{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.stars{color:#C9A15B;letter-spacing:3px;font-size:14px}
+.review p{font-family:var(--serif);font-size:22px;line-height:1.35;margin:14px 0 22px}
+.who{display:flex;align-items:center;gap:12px;font-size:14px}
+.who i{width:40px;height:40px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-style:normal;font-weight:600;color:var(--rose-d);font-size:13px}
+.who small{display:block;color:var(--muted);font-size:12px}
+@media(max-width:860px){.reviews{grid-template-columns:1fr}}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,90px)}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;font-weight:600;font-size:17px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-family:var(--serif);font-size:30px;color:var(--rose-d);transition:transform .25s;line-height:1}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 0 24px;max-width:620px}
+@media(max-width:860px){.faq-grid{grid-template-columns:1fr}}
+
+/* cta + local */
+.cta{background:var(--cocoa);color:var(--sand);border-radius:32px;padding:clamp(40px,6vw,76px);display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.cta::after{content:'';position:absolute;width:420px;height:420px;border-radius:50%;right:-120px;top:-160px;background:radial-gradient(closest-side,rgba(196,139,120,.45),transparent)}
+.cta h2{color:var(--ivory)}
+.cta h2 em{color:#F0C8B8}
+.cta p{color:#CDB9B1;margin-top:16px;max-width:480px}
+.cta .btn-light{background:var(--ivory);color:var(--cocoa)}
+.cta .btn-light:hover{background:#F0C8B8}
+.info{position:relative;z-index:1;display:grid;gap:18px;font-size:15px}
+.info span{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#C9A397;margin-bottom:4px}
+@media(max-width:860px){.cta{grid-template-columns:1fr}}
+
+footer{padding:40px 0 50px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.legal{font-size:12px;max-width:620px}
+
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--cocoa);color:var(--ivory);display:grid;place-items:center;box-shadow:0 14px 34px -10px rgba(58,41,37,.6);transition:transform .2s}
+.wa:hover{transform:scale(1.06)}
+.wa svg{width:28px;height:28px}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ribbon .track{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.02c-.24.68-1.42 1.3-1.96 1.35-.5.05-.98.24-3.3-.69-2.79-1.1-4.56-3.95-4.7-4.13-.13-.18-1.12-1.49-1.12-2.85 0-1.35.71-2.02.96-2.3.25-.27.55-.34.73-.34h.52c.17 0 .4-.06.62.48.24.56.8 1.93.87 2.07.07.14.11.3.02.48-.1.18-.14.3-.28.46l-.41.48c-.14.14-.28.29-.12.57.16.27.72 1.18 1.54 1.92 1.06.94 1.95 1.24 2.23 1.38.28.14.44.11.6-.07.17-.18.7-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.88.9.27.13.46.2.52.32.07.12.07.68-.17 1.36Z"/></symbol>
+  <symbol id="ok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <!-- traço de rosto em perfil, linha única -->
+  <symbol id="face" viewBox="0 0 300 380"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+    d="M180 20c-62 2-104 46-108 106-2 30 6 52 2 70-4 18-22 34-24 50-2 12 10 16 22 18-6 8-8 16-2 22 6 6 4 12 0 18-4 8 2 16 14 18 18 4 30 4 42 14 12 10 14 30 14 44M188 20c40 6 70 34 80 78"/>
+    <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M96 190c10-6 22-6 30 0M100 262c10 4 20 4 28-2"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="Aurora Estética, início"><b>Aurora</b><small>Estética Avançada</small></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a href="#" class="btn btn-dark js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética.">Agendar avaliação</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Estética facial · São Paulo</span>
+      <h1>Sua beleza natural, <em>realçada</em> com técnica.</h1>
+      <p class="sub">Harmonização facial, bioestimuladores e tratamentos de pele planejados para você, depois de uma avaliação individual e sem exageros.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-dark js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética."><svg><use href="#wa"/></svg>Agendar minha avaliação</a>
+        <a href="#tratamentos" class="btn btn-line">Ver tratamentos</a>
+      </div>
+      <div class="trust">
+        <span><svg><use href="#ok"/></svg>Avaliação individual</span>
+        <span><svg><use href="#ok"/></svg>Produtos registrados na Anvisa</span>
+        <span><svg><use href="#ok"/></svg>Profissional habilitada</span>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="arch a1"></div>
+      <div class="arch a2"></div>
+      <div class="float f1"><div class="ic">✦</div><div><b>Resultados naturais</b>planejados para o seu rosto</div></div>
+      <div class="float f2"><div class="ic">◷</div><div><b>Seg a Sáb</b>horários flexíveis</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true"><div class="track">
+  <span>Harmonização facial</span><span>Toxina botulínica</span><span>Bioestimulador de colágeno</span><span>Preenchimento labial</span><span>Skinbooster</span><span>Limpeza de pele</span>
+  <span>Harmonização facial</span><span>Toxina botulínica</span><span>Bioestimulador de colágeno</span><span>Preenchimento labial</span><span>Skinbooster</span><span>Limpeza de pele</span>
+</div></div>
+
+<!-- TRATAMENTOS -->
+<section id="tratamentos">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow rv">Tratamentos</span><h2 class="rv">Cuidado para cada <em>fase</em> da sua pele</h2></div>
+      <p class="lead rv">Cada protocolo é indicado só depois da avaliação. Toque em um tratamento para tirar dúvidas direto com a profissional.</p>
+    </div>
+    <div class="treat">
+      <article class="card feature rv"><span class="num">01</span><h3>Harmonização facial</h3><p>Planejamento completo do rosto para equilibrar proporções e valorizar seus traços, sempre com naturalidade.</p><div class="meta"><span>Sob avaliação</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em harmonização facial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">02</span><h3>Toxina botulínica</h3><p>Suaviza linhas de expressão da testa, glabela e olhos, mantendo os movimentos naturais do rosto.</p><div class="meta"><span>~30 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em toxina botulínica. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">03</span><h3>Bioestimulador de colágeno</h3><p>Estimula a produção natural de colágeno para melhorar firmeza e qualidade da pele ao longo das semanas.</p><div class="meta"><span>~45 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em bioestimulador de colágeno. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">04</span><h3>Preenchimento labial</h3><p>Hidratação e contorno dos lábios com ácido hialurônico, respeitando o formato do seu sorriso.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em preenchimento labial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">05</span><h3>Skinbooster</h3><p>Hidratação profunda que devolve viço e luminosidade à pele do rosto, pescoço e colo.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em skinbooster. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">06</span><h3>Limpeza de pele profunda</h3><p>Remove impurezas, controla a oleosidade e prepara a pele para os outros tratamentos.</p><div class="meta"><span>~70 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em limpeza de pele. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="process" id="como-funciona">
+  <div class="wrap">
+    <span class="eyebrow rv">Como funciona</span>
+    <h2 class="rv">Do primeiro contato ao <em>resultado</em></h2>
+    <div class="steps">
+      <div class="step rv"><div class="n">1</div><h3>Avaliação</h3><p>Conversamos sobre o que você quer, analisamos sua pele e seu rosto e tiramos todas as dúvidas.</p></div>
+      <div class="step rv"><div class="n">2</div><h3>Plano sob medida</h3><p>Você recebe um plano com os tratamentos indicados, número de sessões e cuidados, sem pressão para fechar.</p></div>
+      <div class="step rv"><div class="n">3</div><h3>Acompanhamento</h3><p>Depois do procedimento, você tem retorno agendado e suporte pelo WhatsApp sempre que precisar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="wrap about">
+    <div class="portrait rv" aria-hidden="true"></div>
+    <div>
+      <span class="eyebrow rv">Quem cuida de você</span>
+      <h2 class="rv">Dra. Marina <em>Alves</em></h2>
+      <p class="lead rv">Biomédica esteta, especialista em harmonização facial. Acredita em resultados que respeitam a sua identidade: você continua parecendo você, só que mais descansada e confiante.</p>
+      <p class="quote rv">“O melhor procedimento é aquele que ninguém percebe, só elogia.”</p>
+      <div class="creds rv">
+        <div><b>8 anos</b><span>de experiência em estética</span></div>
+        <div><b>CRBM</b><span>registro profissional ativo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow rv">Depoimentos</span>
+    <h2 class="rv">Quem já passou <em>por aqui</em></h2>
+    <div class="reviews">
+      <figure class="review rv"><div class="stars">★★★★★</div><p>“Atendimento super acolhedor. Ela explicou tudo com calma e o resultado ficou muito natural.”</p><figcaption class="who"><i>CA</i><div>Camila A.<small>Paciente</small></div></figcaption></figure>
+      <figure class="review rv"><div class="stars">★★★★★</div><p>“Eu tinha medo de ficar artificial. Saí com a pele linda e ninguém percebeu que fiz algo.”</p><figcaption class="who"><i>JR</i><div>Juliana R.<small>Paciente</small></div></figcaption></figure>
+      <figure class="review rv"><div class="stars">★★★★★</div><p>“Espaço lindo, pontualidade e muito cuidado no pós. Já marquei meu retorno.”</p><figcaption class="who"><i>PM</i><div>Patrícia M.<small>Paciente</small></div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- DÚVIDAS -->
+<section class="process" id="duvidas">
+  <div class="wrap faq-grid">
+    <div><span class="eyebrow rv">Dúvidas</span><h2 class="rv">Perguntas <em>frequentes</em></h2><p class="lead rv">Não encontrou sua dúvida? Chame no WhatsApp, respondemos rapidinho.</p></div>
+    <div class="rv">
+      <details><summary>A avaliação tem custo?</summary><p>A primeira avaliação serve para entender o que você procura e indicar o melhor caminho. Consulte as condições pelo WhatsApp.</p></details>
+      <details><summary>Os procedimentos doem?</summary><p>Usamos anestésico tópico e técnicas que deixam o procedimento bem confortável. A sensação varia de pessoa para pessoa.</p></details>
+      <details><summary>Em quanto tempo vejo o resultado?</summary><p>Depende do tratamento e de cada organismo. Na avaliação explicamos o tempo esperado e o número de sessões para o seu caso.</p></details>
+      <details><summary>Vou ficar com aspecto artificial?</summary><p>Nosso foco é naturalidade. O planejamento respeita suas proporções e você aprova cada etapa antes do procedimento.</p></details>
+      <details><summary>Posso voltar à rotina no mesmo dia?</summary><p>Na maioria dos casos, sim. Você recebe as orientações de cuidados para as primeiras horas e dias.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + LOCAL -->
+<section>
+  <div class="wrap">
+    <div class="cta rv">
+      <div style="position:relative;z-index:1">
+        <span class="eyebrow" style="color:#E4B5A4">Agende agora</span>
+        <h2>Vamos cuidar de <em>você</em>?</h2>
+        <p>Agende sua avaliação pelo WhatsApp e receba um plano pensado para o seu rosto e a sua rotina.</p>
+        <a href="#" class="btn btn-light js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética." style="margin-top:28px"><svg><use href="#wa"/></svg>Agendar pelo WhatsApp</a>
+      </div>
+      <div class="info">
+        <div><span>Endereço</span>Rua Exemplo, 123 · Jardins<br>São Paulo · SP</div>
+        <div><span>Horário</span>Seg a Sex · 9h às 20h<br>Sáb · 9h às 15h</div>
+        <div><span>Instagram</span>@aurora.estetica</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#" class="logo"><b>Aurora</b><small>Estética Avançada</small></a>
+    <p class="legal">Os resultados podem variar de pessoa para pessoa. Procedimentos realizados somente após avaliação individual. Responsável técnica: Dra. Marina Alves · CRBM 00000.<br>Projeto conceitual por <a href="https://yagoportfolio.com.br" style="text-decoration:underline">Yago Moreira</a>.</p>
+  </div>
+</footer>
+
+<a href="#" class="wa js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética." aria-label="Agendar pelo WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+const WHATSAPP = '5511999999999';
+document.querySelectorAll('.js-wa').forEach(a=>{a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(a.dataset.msg);a.target='_blank';a.rel='noopener';});
+const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+</script>
+</body>
+</html>
