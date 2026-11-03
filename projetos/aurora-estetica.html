@@ -96,9 +96,10 @@ h2 em,h1 em{font-style:italic;color:var(--rose-d)}
 .card p{color:var(--muted);font-size:15px;flex:1}
 .card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--cocoa-2)}
 .card .meta a{font-weight:600;color:var(--rose-d);display:flex;align-items:center;gap:6px}
-.card.feature{background:var(--cocoa);color:var(--sand);border-color:var(--cocoa)}
-.card.feature p,.card.feature .meta{color:#CDB9B1;border-color:#5a4540}
-.card.feature .meta a{color:#F0C8B8}
+.card,.card p,.card .meta,.card .meta a,.card .num{transition:background .35s,color .35s,border-color .35s,transform .3s,box-shadow .3s}
+.card:hover,.card:focus-within{background:var(--cocoa);color:var(--sand);border-color:var(--cocoa)}
+.card:hover p,.card:hover .meta,.card:focus-within p,.card:focus-within .meta{color:#CDB9B1;border-color:#5a4540}
+.card:hover .meta a,.card:focus-within .meta a,.card:hover .num{color:#F0C8B8}
 @media(max-width:960px){.treat{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.treat{grid-template-columns:1fr}}
 
@@ -246,7 +247,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
       <p class="lead rv">Cada protocolo é indicado só depois da avaliação. Toque em um tratamento para tirar dúvidas direto com a profissional.</p>
     </div>
     <div class="treat">
-      <article class="card feature rv"><span class="num">01</span><h3>Harmonização facial</h3><p>Planejamento completo do rosto para equilibrar proporções e valorizar seus traços, sempre com naturalidade.</p><div class="meta"><span>Sob avaliação</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em harmonização facial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+      <article class="card rv"><span class="num">01</span><h3>Harmonização facial</h3><p>Planejamento completo do rosto para equilibrar proporções e valorizar seus traços, sempre com naturalidade.</p><div class="meta"><span>Sob avaliação</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em harmonização facial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
       <article class="card rv"><span class="num">02</span><h3>Toxina botulínica</h3><p>Suaviza linhas de expressão da testa, glabela e olhos, mantendo os movimentos naturais do rosto.</p><div class="meta"><span>~30 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em toxina botulínica. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
       <article class="card rv"><span class="num">03</span><h3>Bioestimulador de colágeno</h3><p>Estimula a produção natural de colágeno para melhorar firmeza e qualidade da pele ao longo das semanas.</p><div class="meta"><span>~45 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em bioestimulador de colágeno. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
       <article class="card rv"><span class="num">04</span><h3>Preenchimento labial</h3><p>Hidratação e contorno dos lábios com ácido hialurônico, respeitando o formato do seu sorriso.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em preenchimento labial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
