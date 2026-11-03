@@ -50,47 +50,47 @@ h2 em,h1 em{font-style:italic;color:var(--rose-d)}
 .menu a:hover{color:var(--rose-d)}
 .nav .btn{padding:12px 20px;font-size:14px}
 @media(max-width:900px){.menu{display:none}}
-@media(max-width:520px){.nav .btn{padding:10px 15px;font-size:13px}.logo b{font-size:26px}.logo small{letter-spacing:.3em}.trust{gap:12px 20px;font-size:13px}.hero{padding-top:118px}}
+@media(max-width:520px){.nav .btn{padding:10px 15px;font-size:13px}.logo b{font-size:26px}.logo small{letter-spacing:.3em}.trust{gap:12px 20px;font-size:13px}}
 
-/* hero */
-.hero{padding:140px 0 70px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;width:780px;height:780px;right:-260px;top:-240px;border-radius:50%;background:radial-gradient(closest-side,#EED9CF,transparent);z-index:-1}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(50px,7.2vw,92px);margin-top:22px}
-.hero p.sub{font-size:18px;color:var(--cocoa-2);max-width:500px;margin:24px 0 34px}
+/* hero — foto em tela cheia */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0;color:var(--ivory);overflow:hidden;
+  background:linear-gradient(160deg,#C99583,#8a5a4c 60%,#4a332d)}
+.hero-media{position:absolute;inset:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% 35%;transform:scale(1.06);animation:heroZoom 9s ease-out forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(43,28,24,.78) 0%,rgba(43,28,24,.45) 42%,rgba(43,28,24,0) 75%),
+             linear-gradient(0deg,rgba(43,28,24,.85) 0%,rgba(43,28,24,0) 45%)}
+.hero-inner{position:relative;z-index:1;padding:140px 0 36px;display:flex;flex-direction:column;gap:56px}
+.hero-copy{max-width:640px;animation:heroUp 1s .15s both cubic-bezier(.2,.7,.2,1)}
+@keyframes heroUp{from{opacity:0;transform:translateY(24px)}}
+.hero .eyebrow{color:#F0C8B8}
+.hero h1{font-size:clamp(52px,7.4vw,104px);margin-top:20px;color:#FFF8F3}
+.hero h1 em{color:#F2C3B0}
+.hero p.sub{font-size:18px;color:rgba(255,248,243,.82);max-width:500px;margin:22px 0 34px}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
-.trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:40px;padding-top:28px;border-top:1px solid var(--line);font-size:13.5px;color:var(--cocoa-2)}
-.trust span{display:flex;align-items:center;gap:8px}
-.trust svg{width:18px;height:18px;color:var(--rose-d)}
-.hero-art{position:relative;height:620px}
-.arch{position:absolute;border-radius:999px 999px 26px 26px;overflow:hidden}
-.arch.a1{inset:0 70px 0 40px;background:
-  radial-gradient(120% 70% at 30% 20%,#F6E4DA 0%,transparent 55%),
-  radial-gradient(90% 80% at 75% 85%,#B97E6B 0%,transparent 60%),
-  linear-gradient(165deg,#E9CDBF,#C99583 55%,#9C6656)}
-.arch.a1::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
-.face{position:absolute;inset:auto 0 0 0;height:88%;display:flex;align-items:flex-end;justify-content:center}
-.face svg{width:78%;height:auto}
-.arch.a2{width:150px;height:200px;right:0;top:44px;background:linear-gradient(170deg,#F4E6DE,#E2C2B4);border:6px solid var(--ivory)}
-.float{position:absolute;background:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 24px 50px -20px rgba(58,41,37,.35);font-size:13px;display:flex;gap:12px;align-items:center}
-.float b{display:block;font-size:14px}
-.float .ic{width:40px;height:40px;border-radius:12px;background:var(--sand);display:grid;place-items:center;color:var(--rose-d)}
-.float.f1{left:0;bottom:70px}
-.float.f2{right:10px;bottom:210px}
-@media(max-width:960px){
-  .hero{padding:96px 0 56px}
-  .hero-grid{display:flex;flex-direction:column;gap:30px}
-  .hero-art{order:-1;width:100%;height:auto;aspect-ratio:4/3.4;max-height:440px;margin:0}
-  .arch.a1{inset:0;border-radius:180px 180px 24px 24px}
-  .arch.a2,.float.f2{display:none}
-  .float.f1{left:14px;bottom:14px;padding:10px 14px 10px 10px;border-radius:999px;font-size:12px;gap:10px;box-shadow:0 10px 24px -10px rgba(58,41,37,.35)}
-  .float.f1 .ic{width:30px;height:30px;border-radius:50%;font-size:12px}
-  .float.f1 b{font-size:12.5px}
-  .hero h1{margin-top:14px}
-  .hero p.sub{margin:18px 0 26px;font-size:16.5px}
+.btn-light{background:#FFF8F3;color:var(--cocoa)}
+.btn-light:hover{background:#F2C3B0}
+.btn-glass{background:rgba(255,248,243,.12);border:1px solid rgba(255,248,243,.35);color:#FFF8F3;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn-glass:hover{background:rgba(255,248,243,.22)}
+.hero-bar{list-style:none;display:flex;flex-wrap:wrap;gap:10px 34px;padding-top:22px;border-top:1px solid rgba(255,248,243,.22);font-size:14px;color:rgba(255,248,243,.85)}
+.hero-bar li{display:flex;align-items:center;gap:9px}
+.hero-bar svg{width:18px;height:18px;color:#F2C3B0}
+/* nav sobre a foto */
+.nav:not(.scrolled) .logo b,.nav:not(.scrolled) .menu{color:#FFF8F3}
+.nav:not(.scrolled) .logo small{color:#F2C3B0}
+.nav:not(.scrolled) .btn-dark{background:#FFF8F3;color:var(--cocoa)}
+@media(max-width:760px){
+  .hero{min-height:92svh}
+  .hero-media img{object-position:58% 30%}
+  .hero::after{background:linear-gradient(0deg,rgba(43,28,24,.92) 0%,rgba(43,28,24,.6) 40%,rgba(43,28,24,.05) 75%)}
+  .hero-inner{padding:110px 0 24px;gap:32px}
+  .hero h1{font-size:clamp(46px,12.5vw,60px)}
+  .hero p.sub{font-size:16px;margin:16px 0 24px}
   .hero-ctas .btn{flex:1 1 100%}
-  .trust{display:grid;grid-template-columns:1fr;gap:10px;margin-top:28px;padding-top:22px}
+  .hero-bar{gap:8px 18px;font-size:12.5px;padding-top:16px}
 }
+@media(prefers-reduced-motion:reduce){.hero-media img,.hero-copy{animation:none;transform:none}}
 
 /* marquee */
 .ribbon{background:var(--cocoa);color:var(--sand);padding:20px 0;overflow:hidden}
@@ -223,27 +223,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
 <main>
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
+  <div class="hero-media" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1555820585-c5ae44394b79?auto=format&fit=crop&w=2000&q=75" alt="" fetchpriority="high" onerror="this.remove()">
+  </div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
       <span class="eyebrow">Estética facial · São Paulo</span>
       <h1>Sua beleza natural, <em>realçada</em> com técnica.</h1>
       <p class="sub">Harmonização facial, bioestimuladores e tratamentos de pele planejados para você, depois de uma avaliação individual e sem exageros.</p>
       <div class="hero-ctas">
-        <a href="#" class="btn btn-dark js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética."><svg><use href="#wa"/></svg>Agendar minha avaliação</a>
-        <a href="#tratamentos" class="btn btn-line">Ver tratamentos</a>
-      </div>
-      <div class="trust">
-        <span><svg><use href="#ok"/></svg>Avaliação individual</span>
-        <span><svg><use href="#ok"/></svg>Produtos registrados na Anvisa</span>
-        <span><svg><use href="#ok"/></svg>Profissional habilitada</span>
+        <a href="#" class="btn btn-light js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética."><svg><use href="#wa"/></svg>Agendar minha avaliação</a>
+        <a href="#tratamentos" class="btn btn-glass">Ver tratamentos</a>
       </div>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="arch a1"><img src="https://images.unsplash.com/photo-1555820585-c5ae44394b79?auto=format&fit=crop&w=1100&q=70" alt="Mulher de olhos fechados com pele iluminada" loading="lazy" style="object-position:center" onerror="this.remove()"></div>
-      <div class="arch a2"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=500&q=70" alt="Tratamento facial com máscara" loading="lazy" style="object-position:center" onerror="this.remove()"></div>
-      <div class="float f1"><div class="ic">✦</div><div><b>Resultados naturais</b>planejados para o seu rosto</div></div>
-      <div class="float f2"><div class="ic">◷</div><div><b>Seg a Sáb</b>horários flexíveis</div></div>
-    </div>
+    <ul class="hero-bar">
+      <li><svg><use href="#ok"/></svg>Avaliação individual</li>
+      <li><svg><use href="#ok"/></svg>Produtos registrados na Anvisa</li>
+      <li><svg><use href="#ok"/></svg>Profissional habilitada</li>
+    </ul>
   </div>
 </section>
 
