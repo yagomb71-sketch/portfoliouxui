@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alba Odontologia | Implantes, alinhadores e clareamento em São Paulo</title>
+<meta name="description" content="Clínica odontológica em São Paulo: implantes, aparelhos e alinhadores, clareamento, lentes de contato dental e prevenção. Agende sua avaliação pelo WhatsApp.">
+<meta name="theme-color" content="#0E2A33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Projeto conceitual de Yago Moreira (yagoportfolio.com.br) -->
+<style>
+:root{
+  --ink:#0E2A33; --ink-2:#28474F; --teal:#0F7C78; --teal-d:#0A5F5C; --mint:#E4F4F1; --mint-2:#CBEAE4;
+  --sky:#F3F8F8; --coral:#F08A6C; --muted:#56707A; --line:#DCE8E7; --white:#FFFFFF;
+  --head:'Outfit', system-ui, sans-serif; --sans:'Inter', system-ui, sans-serif; --r:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--white);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(100% - 40px,1160px);margin-inline:auto}
+section{padding:clamp(72px,10vw,120px) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--teal);background:var(--mint);padding:7px 14px;border-radius:999px}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.06;letter-spacing:-.025em}
+h2{font-size:clamp(34px,4.6vw,54px);margin-top:18px}
+h2 span,h1 span{color:var(--teal)}
+.lead{color:var(--muted);font-size:17px;max-width:540px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:15px;padding:16px 26px;border-radius:999px;transition:all .25s;white-space:nowrap;cursor:pointer;border:0;font-family:inherit}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:var(--teal-d)}
+.btn-line{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-white:hover{background:var(--mint)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+.nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:22px;letter-spacing:-.02em}
+.logo i{width:36px;height:36px;border-radius:11px;background:var(--teal);display:grid;place-items:center}
+.logo i svg{width:20px;height:20px;color:#fff}
+.logo small{font-family:var(--sans);font-weight:500;font-size:12px;color:var(--muted);letter-spacing:.02em;margin-left:2px}
+.menu{display:flex;gap:30px;font-size:14px;font-weight:500;color:var(--ink-2)}
+.menu a:hover{color:var(--teal)}
+.nav .btn{padding:11px 18px;font-size:14px}
+@media(max-width:900px){.menu{display:none}.logo small{display:none}}
+@media(max-width:520px){.nav .btn{padding:10px 14px;font-size:13px}}
+
+/* hero */
+.hero{padding:0;background:linear-gradient(180deg,var(--sky),#fff)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:140px 0 72px}
+.hero h1{font-size:clamp(44px,6.2vw,78px);margin-top:22px}
+.hero p.sub{font-size:18px;color:var(--muted);max-width:500px;margin:22px 0 32px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-trust{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;font-size:14px;color:var(--ink-2)}
+.hero-trust span{display:flex;align-items:center;gap:8px}
+.hero-trust svg{width:18px;height:18px;color:var(--teal)}
+.visual{position:relative;aspect-ratio:1/1.02;border-radius:36px;background:var(--mint);overflow:hidden}
+.visual svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.float{position:absolute;background:#fff;border-radius:18px;box-shadow:0 18px 40px -18px rgba(14,42,51,.35);padding:16px 18px;display:flex;align-items:center;gap:12px;font-size:14px}
+.float b{display:block;font-family:var(--head);font-size:16px;font-weight:600;color:var(--ink)}
+.float small{color:var(--muted);font-size:13px}
+.float .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+.float .ic svg{width:20px;height:20px}
+.f1{left:6%;top:7%}.f1 .ic{background:var(--mint);color:var(--teal)}
+.f2{right:5%;bottom:7%}.f2 .ic{background:#FDE9E2;color:#C4573A}
+.f3{left:10%;bottom:9%}.f3 .ic{background:var(--mint);color:var(--teal)}
+.stars{color:#E9A23B;letter-spacing:2px;font-size:14px}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;padding:120px 0 56px;gap:40px}.visual{aspect-ratio:1/.8}}
+@media(max-width:520px){.hero h1{font-size:clamp(40px,11.5vw,52px)}.hero p.sub{font-size:16px}.hero-ctas .btn{width:100%}.float{padding:12px 14px;font-size:13px}.float b{font-size:14px}.float .ic{width:34px;height:34px}.visual{aspect-ratio:1/1}}
+
+/* tratamentos */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:44px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:12px;background:#fff;transition:border-color .25s,transform .25s,box-shadow .25s}
+.card:hover{border-color:var(--mint-2);transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(14,42,51,.4)}
+.card .ic{width:48px;height:48px;border-radius:14px;background:var(--mint);color:var(--teal);display:grid;place-items:center}
+.card .ic svg{width:24px;height:24px}
+.card h3{font-size:22px;margin-top:6px}
+.card p{color:var(--muted);font-size:15px;flex:1}
+.card a{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:var(--teal);margin-top:6px;min-height:44px}
+.card a:hover{color:var(--teal-d)}
+@media(max-width:960px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+
+/* urgência */
+.urg{padding:0}
+.urg-box{background:var(--ink);color:#fff;border-radius:28px;padding:clamp(28px,4vw,44px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.urg-box h3{font-size:clamp(24px,3vw,32px)}
+.urg-box p{color:rgba(255,255,255,.75);margin-top:6px}
+.urg-box .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--coral);margin-right:10px;box-shadow:0 0 0 6px rgba(240,138,108,.2)}
+
+/* diferenciais */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.why div{border-top:2px solid var(--teal);padding-top:22px}
+.why h3{font-size:20px;margin-bottom:8px}
+.why p{color:var(--muted);font-size:15px}
+@media(max-width:900px){.why{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.why{grid-template-columns:1fr}}
+
+/* como funciona */
+.process{background:var(--sky)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:#fff;border-radius:var(--r);padding:30px;border:1px solid var(--line)}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-family:var(--head);font-weight:600;font-size:18px}
+.step h3{font-size:22px;margin:20px 0 8px}
+.step p{color:var(--muted);font-size:15px}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* sobre */
+.about{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+.photo{aspect-ratio:4/5;border-radius:32px;background:linear-gradient(160deg,var(--mint-2),var(--mint));display:grid;place-items:center;position:relative;overflow:hidden;color:var(--teal-d)}
+.photo .mono{font-family:var(--head);font-weight:600;font-size:clamp(80px,10vw,130px);letter-spacing:-.04em}
+.photo .cap{position:absolute;left:24px;right:24px;bottom:24px;background:rgba(255,255,255,.85);border-radius:14px;padding:12px 16px;font-size:13px;color:var(--ink-2);text-align:center}
+.creds{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.creds li{display:flex;gap:12px;font-size:15px}
+.creds svg{width:20px;height:20px;color:var(--teal);flex:none;margin-top:2px}
+.conv{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.conv span{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--ink-2)}
+@media(max-width:900px){.about{grid-template-columns:1fr;gap:40px}.photo{aspect-ratio:16/12}}
+
+/* agendamento */
+.book{background:var(--teal);color:#fff}
+.book .eyebrow{background:rgba(255,255,255,.14);color:#fff}
+.book h2 span{color:var(--mint-2)}
+.book .lead{color:rgba(255,255,255,.8)}
+.bk-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.qform{background:#fff;color:var(--ink);padding:clamp(24px,4vw,40px);border-radius:28px}
+.qtop{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:10px}
+.qprog{height:6px;background:var(--mint);border-radius:999px;margin-bottom:28px;overflow:hidden}
+.qprog i{display:block;height:100%;width:33%;background:var(--teal);border-radius:999px;transition:width .3s}
+.qstep{display:none;flex-direction:column;gap:18px;border:0}
+.qstep.active{display:flex}
+.qstep legend{font-family:var(--head);font-weight:600;font-size:24px;margin-bottom:6px}
+.qstep label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500}
+.qstep input[type=text],.qstep input[type=tel]{height:50px;border:1px solid var(--line);border-radius:14px;padding:0 16px;font:inherit;font-size:16px;color:var(--ink)}
+.qstep input:focus{outline:2px solid var(--teal);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:44px;padding:10px 16px;border:1px solid var(--line);background:#fff;border-radius:999px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.ok{display:flex;gap:10px;font-size:13px;color:var(--muted);align-items:flex-start}
+.ok input{width:18px;height:18px;margin-top:2px;accent-color:var(--teal)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:12px}
+.qback{background:none;border:0;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;padding:12px 4px}
+.qerr{color:#B3261E;font-size:14px;min-height:20px;margin-top:12px}
+.bk-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.bk-list li{display:flex;gap:12px;font-size:15px;color:rgba(255,255,255,.9)}
+.bk-list svg{width:20px;height:20px;flex:none;margin-top:2px;color:var(--mint-2)}
+@media(max-width:900px){.bk-grid{grid-template-columns:1fr;gap:40px}}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font-family:var(--head);font-weight:500;font-size:19px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';flex:none;width:30px;height:30px;border-radius:50%;background:var(--mint);color:var(--teal);display:grid;place-items:center;font-size:20px;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--muted);padding:0 44px 22px 0;font-size:15px}
+@media(max-width:860px){.faq-grid{grid-template-columns:1fr;gap:28px}}
+
+/* contato */
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.contact .c1{background:var(--ink);color:#fff;border-radius:28px;padding:clamp(32px,5vw,52px)}
+.contact .c1 h2 span{color:var(--mint-2)}
+.contact .c1 .lead{color:rgba(255,255,255,.75)}
+.contact .c2{background:var(--sky);border-radius:28px;padding:clamp(32px,5vw,52px);display:flex;flex-direction:column;gap:20px}
+.contact .c2 div span{display:block;font-size:13px;font-weight:600;color:var(--teal);margin-bottom:2px}
+@media(max-width:860px){.contact{grid-template-columns:1fr}}
+
+footer{padding:40px 0 36px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);margin-top:clamp(56px,8vw,96px)}
+footer .wrap{display:flex;flex-direction:column;gap:18px}
+footer .top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer a{text-decoration:underline}
+
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.35)}
+.wa svg{width:28px;height:28px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.2-.3z"/></symbol>
+  <symbol id="tooth" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 5.5c-1.6-1.3-3.4-2-5-1.5C4.6 4.7 4 7.2 4.6 9.6c.5 2 .9 3.4 1.2 6 .3 2.3.8 4.4 2 4.4 1.5 0 1.6-2.8 2.2-4.6.4-1 1.2-1 2 0 .6 1.8.7 4.6 2.2 4.6 1.2 0 1.7-2.1 2-4.4.3-2.6.7-4 1.2-6C20 7.2 19.4 4.7 17 4c-1.6-.5-3.4.2-5 1.5z"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></g></symbol>
+  <symbol id="bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
+  <symbol id="spark" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/></symbol>
+  <symbol id="align" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3.5 9c2.5 2.5 14.5 2.5 17 0"/><path d="M5 9.6v3.2M9 10.6v3M12 10.9v3M15 10.6v3M19 9.6v3.2"/><path d="M3.5 15c2.5 2.5 14.5 2.5 17 0"/></g></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 3l7.5 3v5.5c0 4.6-3.2 8-7.5 9.5-4.3-1.5-7.5-4.9-7.5-9.5V6z"/><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="implant" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.5h8c0 3-1.3 4.5-4 4.5S8 6.5 8 3.5z"/><path d="M9.5 10h5M10 13h4M10.5 16h3M11 19h2"/><path d="M12 8v13"/></g></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="Alba Odontologia, início"><i><svg><use href="#tooth"/></svg></i>Alba<small>Odontologia</small></a>
+    <nav class="menu" aria-label="Menu principal">
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#como-funciona">Primeira consulta</a>
+      <a href="#clinica">A clínica</a>
+      <a href="#agendar">Agendar</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a href="#" class="btn btn-teal js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Alba Odontologia.">Agendar avaliação</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Odontologia em Santana · São Paulo</span>
+      <h1>Cuidar do sorriso sem <span>medo</span> e sem pressa.</h1>
+      <p class="sub">Implantes, alinhadores, clareamento e prevenção com planejamento digital e um plano de tratamento explicado do começo ao fim.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-teal js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Alba Odontologia."><svg><use href="#wa"/></svg>Agendar pelo WhatsApp</a>
+        <a href="#tratamentos" class="btn btn-line">Ver tratamentos</a>
+      </div>
+      <div class="hero-trust">
+        <span><svg><use href="#star"/></svg>Avaliada pelos pacientes no Google</span>
+        <span><svg><use href="#shield"/></svg>Responsável técnica CRO-SP</span>
+      </div>
+    </div>
+    <div class="visual rv" aria-hidden="true">
+      <svg class="bg" viewBox="0 0 400 410" preserveAspectRatio="xMidYMid meet">
+        <circle cx="300" cy="90" r="150" fill="#CBEAE4"/>
+        <circle cx="70" cy="360" r="120" fill="#D7EFEA"/>
+        <path d="M70 215c60 70 200 70 260 0" fill="none" stroke="#0F7C78" stroke-width="10" stroke-linecap="round"/>
+        <path d="M110 226c50 40 130 40 180 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+        <g fill="#fff" stroke="#0F7C78" stroke-width="3" stroke-linejoin="round">
+          <path d="M200 120c-9-7-19-11-28-8-13 4-17 18-13 31 3 11 5 19 7 33 2 13 4 25 11 25 8 0 9-16 12-26 2-6 7-6 11 0 3 10 4 26 12 26 7 0 9-12 11-25 2-14 4-22 7-33 4-13 0-27-13-31-9-3-19 1-28 8z"/>
+        </g>
+        <g fill="#F08A6C"><circle cx="252" cy="118" r="5"/><circle cx="268" cy="140" r="3"/><circle cx="140" cy="112" r="3.5"/></g>
+      </svg>
+      <div class="float f1"><span class="ic"><svg><use href="#cal"/></svg></span><span><b>Horários esta semana</b><small>Manhã, tarde e sábado</small></span></div>
+      <div class="float f2"><span class="ic"><svg><use href="#bolt"/></svg></span><span><b>Dor de dente?</b><small>Encaixe no mesmo dia</small></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="tratamentos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow rv">Tratamentos</span>
+        <h2 class="rv">Tudo para o seu sorriso, <span>em um só lugar</span></h2>
+      </div>
+      <p class="lead rv">Toque em um tratamento para tirar dúvidas direto com a equipe pelo WhatsApp.</p>
+    </div>
+    <div class="grid">
+      <article class="card rv"><span class="ic"><svg><use href="#implant"/></svg></span><h3>Implantes dentários</h3><p>Reposição de um ou mais dentes com planejamento por tomografia e prótese feita sob medida.</p><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em implante dentário. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></article>
+      <article class="card rv"><span class="ic"><svg><use href="#align"/></svg></span><h3>Aparelho e alinhadores</h3><p>Ortodontia com aparelho fixo ou alinhadores transparentes, com simulação digital do resultado.</p><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em aparelho ou alinhadores. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></article>
+      <article class="card rv"><span class="ic"><svg><use href="#spark"/></svg></span><h3>Clareamento dental</h3><p>Clareamento em consultório ou caseiro supervisionado, com avaliação da sensibilidade antes de começar.</p><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em clareamento dental. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></article>
+      <article class="card rv"><span class="ic"><svg><use href="#tooth"/></svg></span><h3>Lentes de contato dental</h3><p>Facetas finas para corrigir cor, formato e pequenos espaços, planejadas junto com você.</p><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em lentes de contato dental. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></article>
+      <article class="card rv"><span class="ic"><svg><use href="#shield"/></svg></span><h3>Limpeza e prevenção</h3><p>Check-up, limpeza profissional e orientação para manter a saúde da boca entre as consultas.</p><a href="#" class="js-wa" data-msg="Olá! Gostaria de agendar uma limpeza e check-up.">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></article>
+      <article class="card rv"><span class="ic"><svg><use href="#bolt"/></svg></span><h3>Canal e urgências</h3><p>Tratamento de canal e atendimento de dor, fratura ou inchaço com encaixe rápido na agenda.</p><a href="#" class="js-wa" data-msg="Olá! Estou com dor de dente e gostaria de um atendimento de urgência.">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></article>
+    </div>
+  </div>
+</section>
+
+<section class="urg">
+  <div class="wrap">
+    <div class="urg-box rv">
+      <div>
+        <h3><span class="dot" aria-hidden="true"></span>Está com dor agora?</h3>
+        <p>Chame no WhatsApp e encaixamos você na agenda o quanto antes.</p>
+      </div>
+      <a href="#" class="btn btn-white js-wa" data-msg="Olá! Estou com dor de dente e gostaria de um atendimento de urgência."><svg><use href="#wa"/></svg>Pedir atendimento de urgência</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow rv">Por que a Alba</span>
+        <h2 class="rv">Um consultório pensado para <span>quem tem receio</span></h2>
+      </div>
+    </div>
+    <div class="why">
+      <div class="rv"><h3>Plano explicado</h3><p>Você sai da avaliação sabendo cada etapa, o prazo e o valor do tratamento.</p></div>
+      <div class="rv"><h3>Planejamento digital</h3><p>Escaneamento e simulação para você ver o caminho antes de começar.</p></div>
+      <div class="rv"><h3>Atendimento calmo</h3><p>Consultas com tempo de sobra, sem pressa e com pausas quando você precisar.</p></div>
+      <div class="rv"><h3>Pagamento facilitado</h3><p>Parcelamento no cartão e condições combinadas antes do tratamento.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow rv">Primeira consulta</span>
+        <h2 class="rv">Como funciona a <span>sua avaliação</span></h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="n">1</span><h3>Você agenda</h3><p>Pelo WhatsApp ou pelo formulário do site, escolhendo o melhor período.</p></div>
+      <div class="step rv"><span class="n">2</span><h3>Avaliação completa</h3><p>Conversa, exame clínico e, quando necessário, fotos e escaneamento digital.</p></div>
+      <div class="step rv"><span class="n">3</span><h3>Seu plano de tratamento</h3><p>Você recebe as opções, as etapas e os valores por escrito para decidir com calma.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="clinica">
+  <div class="wrap about">
+    <div class="photo rv" role="img" aria-label="Espaço para foto da dentista responsável">
+      <span class="mono">Alba</span>
+      <span class="cap">Troque por uma foto da dentista ou do consultório</span>
+    </div>
+    <div>
+      <span class="eyebrow rv">A clínica</span>
+      <h2 class="rv">Dra. [Nome Sobrenome]</h2>
+      <p class="lead rv">Cirurgiã-dentista com foco em reabilitação oral e estética. Atende pacientes de todas as idades com a ideia de que ir ao dentista pode, sim, ser tranquilo.</p>
+      <ul class="creds rv">
+        <li><svg><use href="#check"/></svg>CRO-SP nº 00000</li>
+        <li><svg><use href="#check"/></svg>Especialização em [área]</li>
+        <li><svg><use href="#check"/></svg>[00] anos de experiência clínica</li>
+      </ul>
+      <div class="conv rv" aria-label="Convênios aceitos">
+        <span>Convênio [A]</span><span>Convênio [B]</span><span>Convênio [C]</span><span>Particular</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="agendar">
+  <div class="wrap bk-grid">
+    <div>
+      <span class="eyebrow">Agendamento online</span>
+      <h2>Agende sua avaliação em <span>3 passos</span></h2>
+      <p class="lead">Suas respostas chegam direto no WhatsApp da clínica, e a equipe confirma o horário com você.</p>
+      <ul class="bk-list">
+        <li><svg><use href="#check"/></svg>Leva menos de 1 minuto</li>
+        <li><svg><use href="#check"/></svg>Horários de manhã, à tarde e aos sábados</li>
+        <li><svg><use href="#check"/></svg>Confirmação no mesmo dia útil</li>
+      </ul>
+    </div>
+    <form class="qform" id="qform" novalidate>
+      <div class="qtop"><span>Agendamento</span><span id="qcount">Passo 1 de 3</span></div>
+      <div class="qprog"><i id="qbar"></i></div>
+      <fieldset class="qstep active" data-step="1">
+        <legend>O que você procura?</legend>
+        <div class="chips" data-name="trat" data-multi="1" role="group" aria-label="Tratamento">
+          <button type="button" class="chip">Avaliação geral</button>
+          <button type="button" class="chip">Implante</button>
+          <button type="button" class="chip">Aparelho ou alinhadores</button>
+          <button type="button" class="chip">Clareamento</button>
+          <button type="button" class="chip">Lentes de contato</button>
+          <button type="button" class="chip">Limpeza</button>
+          <button type="button" class="chip">Estou com dor</button>
+        </div>
+      </fieldset>
+      <fieldset class="qstep" data-step="2">
+        <legend>Qual período é melhor?</legend>
+        <div class="chips" data-name="periodo" role="group" aria-label="Período">
+          <button type="button" class="chip">Manhã</button>
+          <button type="button" class="chip">Tarde</button>
+          <button type="button" class="chip">Fim da tarde</button>
+          <button type="button" class="chip">Sábado</button>
+        </div>
+      </fieldset>
+      <fieldset class="qstep" data-step="3">
+        <legend>Seus dados para confirmar</legend>
+        <label class="f">Seu nome<input type="text" id="qnome" autocomplete="name"></label>
+        <label class="f">WhatsApp com DDD<input type="tel" id="qtel" inputmode="numeric" autocomplete="tel" placeholder="(11) 90000-0000"></label>
+        <label class="ok"><input type="checkbox" id="qok">Autorizo a clínica a entrar em contato pelo WhatsApp para confirmar o horário.</label>
+      </fieldset>
+      <p class="qerr" id="qerr" role="alert"></p>
+      <div class="qnav">
+        <button type="button" class="qback" id="qback">Voltar</button>
+        <button type="submit" class="btn btn-teal" id="qnext">Continuar</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="duvidas">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow rv">Dúvidas</span>
+      <h2 class="rv">Perguntas <span>frequentes</span></h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Quanto custa a avaliação?</summary><p>Informamos o valor da avaliação no momento do agendamento. Nela você já recebe o plano de tratamento com todos os valores, sem surpresas.</p></details>
+      <details><summary>Vocês atendem convênio?</summary><p>Atendemos alguns convênios e também particular. Na hora de agendar, informe o seu plano para confirmarmos a cobertura.</p></details>
+      <details><summary>Tenho medo de dentista. Como vocês lidam com isso?</summary><p>É muito comum. Explicamos cada etapa antes de fazer, combinamos sinais para pausar e reservamos mais tempo para a sua consulta.</p></details>
+      <details><summary>Dá para parcelar o tratamento?</summary><p>Sim. Os tratamentos podem ser parcelados no cartão, e as condições são combinadas antes de começar.</p></details>
+      <details><summary>Atendem crianças?</summary><p>Sim. Atendemos crianças a partir de [idade] anos, com consultas mais curtas e uma abordagem adaptada.</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;padding-bottom:0">
+  <div class="wrap contact rv">
+    <div class="c1">
+      <span class="eyebrow" style="background:rgba(255,255,255,.12);color:#fff">Fale com a clínica</span>
+      <h2>Seu próximo sorriso <span>começa aqui</span></h2>
+      <p class="lead">Mande uma mensagem e a equipe responde com os horários disponíveis.</p>
+      <a href="#" class="btn btn-white js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Alba Odontologia." style="margin-top:28px"><svg><use href="#wa"/></svg>Agendar pelo WhatsApp</a>
+    </div>
+    <div class="c2">
+      <div><span>Endereço</span>Rua Exemplo, 123 · Santana<br>São Paulo · SP · Perto do metrô</div>
+      <div><span>Horário</span>Seg a sex · 8h às 20h<br>Sábado · 8h às 13h</div>
+      <div><span>Instagram</span>@alba.odonto</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <a href="#" class="logo"><i><svg><use href="#tooth"/></svg></i>Alba<small>Odontologia</small></a>
+      <span>Responsável técnica: Dra. [Nome Sobrenome] · CRO-SP 00000</span>
+    </div>
+    <p>Os tratamentos dependem de avaliação clínica individual e os resultados podem variar de pessoa para pessoa. Projeto conceitual por <a href="https://yagoportfolio.com.br">Yago Moreira</a>.</p>
+  </div>
+</footer>
+
+<a href="#" class="wa js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Alba Odontologia." aria-label="Agendar pelo WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+const WHATSAPP = '5511999999999';
+document.querySelectorAll('.js-wa').forEach(a=>{a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(a.dataset.msg);a.target='_blank';a.rel='noopener';});
+const nav=document.getElementById('nav');
+const onScroll=()=>nav.classList.toggle('scrolled',scrollY>40);onScroll();addEventListener('scroll',onScroll,{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+
+(function(){
+  const f=document.getElementById('qform'); if(!f) return;
+  let step=1; const steps=[...f.querySelectorAll('.qstep')], bar=document.getElementById('qbar'), count=document.getElementById('qcount'),
+    back=document.getElementById('qback'), next=document.getElementById('qnext'), err=document.getElementById('qerr');
+  f.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;
+    if(!g.dataset.multi) g.querySelectorAll('.chip').forEach(x=>{if(x!==c)x.classList.remove('on')}); c.classList.toggle('on');
+    g.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.classList.contains('on')));}));
+  const val=n=>[...f.querySelectorAll(`.chips[data-name="${n}"] .chip.on`)].map(c=>c.textContent);
+  const tel=document.getElementById('qtel');
+  tel.addEventListener('input',()=>{let d=tel.value.replace(/\D/g,'').slice(0,11);tel.value=d.length>6?`(${d.slice(0,2)}) ${d.slice(2,d.length-4)}-${d.slice(-4)}`:d.length>2?`(${d.slice(0,2)}) ${d.slice(2)}`:d;});
+  function show(){steps.forEach(s=>s.classList.toggle('active',+s.dataset.step===step));bar.style.width=(step/3*100)+'%';count.textContent=`Passo ${step} de 3`;
+    back.style.visibility=step>1?'visible':'hidden';next.textContent=step<3?'Continuar':'Enviar pelo WhatsApp';err.textContent='';}
+  function check(){
+    if(step===1&&!val('trat').length)return'Escolha pelo menos uma opção.';
+    if(step===2&&!val('periodo').length)return'Escolha um período.';
+    if(step===3){if(!document.getElementById('qnome').value.trim())return'Digite seu nome.';if(tel.value.replace(/\D/g,'').length<10)return'Digite seu WhatsApp com DDD.';if(!document.getElementById('qok').checked)return'Marque a autorização para continuar.';}
+    return'';}
+  back.addEventListener('click',()=>{step=Math.max(1,step-1);show();});
+  f.addEventListener('submit',e=>{e.preventDefault();const m=check();if(m){err.textContent=m;return;}
+    if(step<3){step++;show();return;}
+    const msg=`Olá! Fiz o agendamento pelo site da Alba Odontologia.\n\n*Nome:* ${document.getElementById('qnome').value.trim()}\n*Procuro:* ${val('trat').join(', ')}\n*Melhor período:* ${val('periodo')[0]}\n*WhatsApp:* ${tel.value}\n\nPodem confirmar um horário?`;
+    window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');});
+  show();
+})();
+</script>
+</body>
+</html>
