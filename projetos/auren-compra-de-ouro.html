@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auren | Compra de ouro, joias e relógios em São Paulo</title>
+<meta name="description" content="Venda seu ouro, joias, diamantes e relógios com análise feita na sua frente e pagamento na hora. Simule o valor e agende pelo WhatsApp.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<!-- Projeto conceitual de Yago Moreira (yagoportfolio.com.br) -->
+<style>
+:root{
+  --bg:#0A0A0B; --bg-2:#111113; --card:#141416; --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --text:#F2EFE8; --muted:#8E8A82; --gold:#D9B26A; --gold-2:#F3DDA6; --gold-3:#A57A34;
+  --grad:linear-gradient(100deg,#F6E3B0 0%,#D9B26A 40%,#A57A34 70%,#F3DDA6 100%);
+  --sans:'Inter Tight',system-ui,sans-serif; --mono:'Space Grotesk',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.wrap{width:min(100% - 40px,1240px);margin-inline:auto}
+section{padding:clamp(88px,11vw,150px) 0;position:relative}
+h1,h2,h3{font-weight:500;letter-spacing:-.035em;line-height:1.02}
+.gold{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+@keyframes sheen{to{background-position:-200% 0}}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+h2{font-size:clamp(36px,5vw,64px);margin-top:20px}
+.lead{color:var(--muted);font-size:17px;max-width:480px}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:500;font-size:15px;height:54px;padding:0 26px;border-radius:999px;transition:transform .4s var(--ease),background .3s,color .3s,border-color .3s;white-space:nowrap;cursor:pointer;border:0;font-family:inherit;overflow:hidden}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-gold{background:var(--grad);background-size:200% 100%;color:#1A1408;animation:sheen 6s linear infinite}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-line{border:1px solid var(--line-2);color:var(--text);background:rgba(255,255,255,.02)}
+.btn-line:hover{border-color:var(--gold);color:var(--gold-2)}
+
+/* fundo */
+.grid-bg{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);opacity:.5}
+.glow{position:fixed;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(217,178,106,.16),transparent 65%);left:0;top:0;transform:translate(-50%,-50%);pointer-events:none;z-index:-1;transition:opacity .5s}
+
+/* ticker */
+.ticker{position:fixed;top:0;inset-inline:0;z-index:60;height:34px;background:#070708;border-bottom:1px solid var(--line);display:flex;align-items:center;overflow:hidden;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.tk-track{display:flex;gap:44px;white-space:nowrap;animation:tk 40s linear infinite;padding-left:20px}
+.tk-track span b{color:var(--text);font-weight:500;margin-left:6px}
+.tk-track .up{color:#7BD49A}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* nav */
+.nav{position:fixed;top:34px;inset-inline:0;z-index:50;transition:background .4s,backdrop-filter .4s}
+.nav.scrolled{background:rgba(10,10,11,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:19px;letter-spacing:.18em}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--grad);display:grid;place-items:center;color:#1A1408;font-style:normal;font-size:13px;letter-spacing:0;font-weight:700}
+.menu{display:flex;gap:30px;font-size:14px;color:var(--muted)}
+.menu a{transition:color .3s}.menu a:hover{color:var(--text)}
+.nav .btn{height:42px;padding:0 18px;font-size:14px}
+@media(max-width:900px){.menu{display:none}}
+
+/* hero */
+.hero{padding:clamp(150px,18vw,200px) 0 clamp(64px,8vw,100px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,90px);align-items:center}
+.hero h1{font-size:clamp(46px,6.6vw,96px);margin:22px 0 26px}
+.line{display:block;overflow:hidden;padding-bottom:.08em}
+.line>span{display:block;transform:translateY(110%);transition:transform 1.2s var(--ease)}
+.ready .line>span{transform:none}
+.line:nth-child(2)>span{transition-delay:.08s}.line:nth-child(3)>span{transition-delay:.16s}
+.hero p.sub{color:var(--muted);font-size:18px;max-width:470px;margin-bottom:34px}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.chips-row{display:flex;gap:22px;flex-wrap:wrap;margin-top:38px;font-size:14px;color:var(--muted)}
+.chips-row span{display:flex;align-items:center;gap:8px}
+.chips-row svg{width:16px;height:16px;color:var(--gold)}
+.fade{opacity:0;transform:translateY(18px);transition:opacity 1s var(--ease) .45s,transform 1s var(--ease) .45s}
+.ready .fade{opacity:1;transform:none}
+
+/* scanner */
+.scan{position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#2A2216,#0E0D0B);border:1px solid var(--line-2);opacity:0;transform:scale(.94);transition:opacity 1.2s var(--ease) .2s,transform 1.4s var(--ease) .2s}
+.ready .scan{opacity:1;transform:none}
+.scan img{transform:scale(1.08);will-change:transform}
+.scan::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,11,.1) 40%,rgba(10,10,11,.85))}
+.beam{position:absolute;left:0;right:0;height:2px;top:0;background:linear-gradient(90deg,transparent,var(--gold-2),transparent);box-shadow:0 0 24px 4px rgba(243,221,166,.45);z-index:2;animation:beam 3.6s var(--ease) infinite}
+@keyframes beam{0%{top:6%;opacity:0}10%{opacity:1}50%{top:70%}90%{opacity:1}100%{top:6%;opacity:0}}
+.corner{position:absolute;width:26px;height:26px;border:1.5px solid var(--gold);z-index:2}
+.c1{top:18px;left:18px;border-right:0;border-bottom:0}.c2{top:18px;right:18px;border-left:0;border-bottom:0}
+.readout{position:absolute;left:18px;right:18px;bottom:18px;z-index:3;background:rgba(14,14,16,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:16px;padding:18px 20px;font-family:var(--mono)}
+.ro-top{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.ro-top .live{color:#7BD49A;display:flex;align-items:center;gap:6px}
+.ro-top .live::before{content:'';width:6px;height:6px;border-radius:50%;background:#7BD49A;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.2}}
+.ro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ro-grid small{display:block;font-size:11px;color:var(--muted);letter-spacing:.06em}
+.ro-grid b{font-weight:500;font-size:22px;color:var(--text)}
+.ro-bar{height:3px;background:var(--line);border-radius:3px;margin-top:16px;overflow:hidden}
+.ro-bar i{display:block;height:100%;width:0;background:var(--grad);animation:fill 3.6s var(--ease) infinite}
+@keyframes fill{0%{width:0}60%,100%{width:100%}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.scan{aspect-ratio:4/3.6}}
+@media(max-width:520px){.hero-ctas .btn{flex:1}.scan{aspect-ratio:4/4.6}.ro-grid b{font-size:18px}}
+
+/* marquee */
+.mq{border-block:1px solid var(--line);padding:26px 0;overflow:hidden}
+.mq-track{display:flex;gap:48px;width:max-content;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.02em;color:var(--muted);will-change:transform}
+.mq-track span{display:flex;align-items:center;gap:48px;white-space:nowrap}
+.mq-track span::after{content:'✦';font-size:.5em;color:var(--gold)}
+
+/* compramos: bento */
+.sec-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+@media(max-width:800px){.sec-head{grid-template-columns:1fr}}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:260px;gap:14px}
+.tile{position:relative;border-radius:20px;overflow:hidden;background:var(--card);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;transition:border-color .4s}
+.tile:hover{border-color:rgba(217,178,106,.45)}
+.tile img{position:absolute;inset:0;z-index:-2;transition:transform 1.2s var(--ease)}
+.tile:hover img{transform:scale(1.06)}
+.tile.ph::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,11,0) 30%,rgba(10,10,11,.92))}
+.tile .k{position:absolute;top:22px;left:24px;font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.1em}
+.tile h3{font-size:24px}
+.tile p{color:var(--muted);font-size:14px;margin-top:6px;max-width:320px}
+.tile .go{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;transition:all .4s var(--ease);background:rgba(10,10,11,.4)}
+.tile .go svg{width:15px;height:15px}
+.tile:hover .go{background:var(--gold);color:#1A1408;border-color:var(--gold);transform:rotate(-45deg)}
+.t-a{grid-column:span 2;grid-row:span 2}.t-b{grid-column:span 2}.t-c{grid-column:span 1}.t-d{grid-column:span 1}.t-e{grid-column:span 2}.t-f{grid-column:span 2}
+.tile .spot{position:absolute;inset:0;z-index:-1;background:radial-gradient(400px circle at var(--x,50%) var(--y,50%),rgba(217,178,106,.14),transparent 50%);opacity:0;transition:opacity .4s}
+.tile:hover .spot{opacity:1}
+@media(max-width:900px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:220px}.t-a{grid-column:span 2;grid-row:span 1}.t-b,.t-e,.t-f{grid-column:span 2}}
+@media(max-width:520px){.bento{grid-template-columns:1fr}.t-a,.t-b,.t-c,.t-d,.t-e,.t-f{grid-column:auto}}
+
+/* simulador */
+.sim{background:var(--bg-2);border-block:1px solid var(--line)}
+.sim-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.panel{background:var(--card);border:1px solid var(--line-2);border-radius:24px;padding:clamp(24px,3.4vw,40px);position:relative;overflow:hidden}
+.panel::before{content:'';position:absolute;inset:-1px;border-radius:24px;padding:1px;background:linear-gradient(140deg,rgba(243,221,166,.5),transparent 40%,transparent 60%,rgba(165,122,52,.4));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.pl{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;justify-content:space-between}
+.kar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:30px}
+.kar button{height:56px;border-radius:14px;border:1px solid var(--line-2);background:transparent;color:var(--text);font:500 16px var(--mono);cursor:pointer;transition:all .3s}
+.kar button small{display:block;font-size:10px;color:var(--muted);font-weight:400}
+.kar button.on{background:rgba(217,178,106,.12);border-color:var(--gold);color:var(--gold-2)}
+.wrow{display:flex;align-items:center;gap:16px;margin-bottom:30px}
+.wrow input[type=range]{flex:1;accent-color:var(--gold);height:4px}
+.wnum{display:flex;align-items:center;border:1px solid var(--line-2);border-radius:12px;padding:0 12px;height:48px;font-family:var(--mono)}
+.wnum input{width:64px;background:transparent;border:0;color:var(--text);font:500 18px var(--mono);text-align:right}
+.wnum input:focus{outline:none}
+.wnum span{color:var(--muted);margin-left:6px}
+.result{border-top:1px dashed var(--line-2);padding-top:26px}
+.result .big{font-family:var(--mono);font-size:clamp(34px,4.6vw,54px);letter-spacing:-.03em;line-height:1.1}
+.result p{color:var(--muted);font-size:13px;margin-top:10px}
+.result .btn{margin-top:22px;width:100%}
+.sim-list{list-style:none;margin-top:34px;border-top:1px solid var(--line)}
+.sim-list li{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px}
+.sim-list b{font-family:var(--mono);color:var(--gold);font-weight:500}
+@media(max-width:900px){.sim-grid{grid-template-columns:1fr}}
+
+/* processo */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;padding-top:46px}
+.rail{position:absolute;left:0;right:0;top:12px;height:1px;background:var(--line-2)}
+.rail i{position:absolute;inset:0;background:var(--grad);transform-origin:left;transform:scaleX(0);box-shadow:0 0 12px rgba(217,178,106,.6)}
+.step{position:relative}
+.step .dot{position:absolute;top:-41px;left:0;width:14px;height:14px;border-radius:50%;background:var(--bg);border:1px solid var(--line-2);transition:all .5s}
+.step.on .dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 6px rgba(217,178,106,.15),0 0 18px var(--gold)}
+.step small{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.1em}
+.step h3{font-size:24px;margin:12px 0 10px}
+.step p{color:var(--muted);font-size:15px}
+@media(max-width:900px){.steps{grid-template-columns:1fr;padding:0 0 0 34px;gap:40px}.rail{left:6px;right:auto;top:6px;bottom:6px;width:1px;height:auto}.rail i{transform-origin:top;transform:scaleY(0)}.step .dot{top:4px;left:-34px}}
+
+/* diferenciais */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;position:relative;overflow:hidden;transition:border-color .4s,transform .5s var(--ease)}
+.fcard:hover{border-color:rgba(217,178,106,.4);transform:translateY(-4px)}
+.fcard .spot{position:absolute;inset:0;background:radial-gradient(360px circle at var(--x,50%) var(--y,50%),rgba(217,178,106,.12),transparent 50%);opacity:0;transition:opacity .4s;pointer-events:none}
+.fcard:hover .spot{opacity:1}
+.fcard .num{font-family:var(--mono);font-size:44px;line-height:1;letter-spacing:-.04em}
+.fcard h3{font-size:22px;margin:22px 0 10px}
+.fcard p{color:var(--muted);font-size:15px}
+@media(max-width:900px){.feat{grid-template-columns:1fr}}
+
+/* relógios */
+.brands{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.brands span{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 20px;text-align:center;font-size:clamp(16px,1.6vw,20px);letter-spacing:.06em;color:var(--muted);transition:color .3s,background .3s}
+.brands span:hover{color:var(--gold-2);background:rgba(217,178,106,.04)}
+@media(max-width:700px){.brands{grid-template-columns:1fr 1fr}}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,7vw,100px)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:24px 0;font-size:19px;letter-spacing:-.015em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-family:var(--mono);color:var(--gold);font-size:22px;line-height:1;transition:transform .4s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--muted);padding:0 40px 24px 0}
+@media(max-width:860px){.faq-grid{grid-template-columns:1fr}}
+
+/* cta */
+.cta{text-align:center;overflow:hidden}
+.cta h2{font-size:clamp(44px,8vw,120px);line-height:.98;margin:26px auto 40px;max-width:1000px}
+.cta .ring{position:absolute;left:50%;top:50%;width:900px;height:900px;border-radius:50%;border:1px solid rgba(217,178,106,.12);transform:translate(-50%,-50%);z-index:-1}
+.cta .ring:nth-child(2){width:620px;height:620px}.cta .ring:nth-child(3){width:340px;height:340px;background:radial-gradient(circle,rgba(217,178,106,.12),transparent 70%)}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid var(--line);padding-top:32px;margin-top:clamp(64px,8vw,110px);text-align:left;font-size:15px;color:var(--muted)}
+.info span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+@media(max-width:700px){.info{grid-template-columns:1fr}}
+
+footer{padding:28px 0 36px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px 40px;flex-wrap:wrap}
+footer p{max-width:640px}
+footer a{text-decoration:underline}
+
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(37,211,102,.5);transform:scale(0);transition:transform .5s var(--ease)}
+.wa.show{transform:scale(1)}
+.wa svg{width:28px;height:28px}
+
+.rv{opacity:0;transform:translateY(36px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.rv.in{opacity:1;transform:none;filter:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.line>span,.fade,.scan{opacity:1!important;transform:none!important;filter:none!important}
+  .beam{display:none}.ro-bar i{width:100%}.glow{display:none}html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.2-.3z"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="ok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+</svg>
+
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+
+<div class="ticker" aria-label="Cotação de referência">
+  <div class="tk-track" id="tk"></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="Auren, início"><i>Au</i>AUREN</a>
+    <nav class="menu" aria-label="Menu principal">
+      <a href="#compramos">O que compramos</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#relogios">Relógios</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a href="#" class="btn btn-gold js-wa" data-msg="Olá! Gostaria de agendar uma avaliação de ouro/joias.">Agendar</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag fade">Compra de ouro · São Paulo</span>
+      <h1><span class="line"><span>Venda seu ouro</span></span><span class="line"><span>pelo valor <span class="gold">justo,</span></span></span><span class="line"><span>receba na hora.</span></span></h1>
+      <p class="sub fade">Joias, barras, moedas, diamantes e relógios. A análise é feita na sua frente, com equipamento de precisão, e o pagamento sai no mesmo atendimento.</p>
+      <div class="hero-ctas fade">
+        <a href="#" class="btn btn-gold js-wa" data-msg="Olá! Gostaria de agendar uma avaliação de ouro/joias."><svg><use href="#wa"/></svg>Agendar avaliação</a>
+        <a href="#simulador" class="btn btn-line">Simular valor<svg><use href="#arrow"/></svg></a>
+      </div>
+      <div class="chips-row fade">
+        <span><svg><use href="#ok"/></svg>Análise na sua frente</span>
+        <span><svg><use href="#ok"/></svg>Pagamento via PIX</span>
+        <span><svg><use href="#ok"/></svg>Sala privativa</span>
+      </div>
+    </div>
+    <div class="scan" id="scan">
+      <img id="scanimg" src="https://images.unsplash.com/photo-1758995116383-f51775896add?auto=format&fit=crop&w=1200&q=80" alt="Pulseiras de ouro sobre superfície escura" onerror="this.remove()">
+      <span class="beam" aria-hidden="true"></span><span class="corner c1"></span><span class="corner c2"></span>
+      <div class="readout" aria-hidden="true">
+        <div class="ro-top"><span>Análise da peça</span><span class="live">Ao vivo</span></div>
+        <div class="ro-grid">
+          <div><small>Peso</small><b id="roP">12,40 g</b></div>
+          <div><small>Teor</small><b id="roT">750 ‰</b></div>
+          <div><small>Quilate</small><b class="gold" id="roK">18k</b></div>
+        </div>
+        <div class="ro-bar"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mq" aria-hidden="true">
+  <div class="mq-track" id="mq">
+    <span>Ouro 18k</span><span>Ouro 24k</span><span>Barras</span><span>Moedas</span><span>Diamantes</span><span>Relógios</span><span>Prataria</span><span>Joias quebradas</span>
+    <span>Ouro 18k</span><span>Ouro 24k</span><span>Barras</span><span>Moedas</span><span>Diamantes</span><span>Relógios</span><span>Prataria</span><span>Joias quebradas</span>
+  </div>
+</div>
+
+<section id="compramos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="tag rv">O que compramos</span>
+        <h2 class="rv">Do anel quebrado <span class="gold">à barra de 1 kg</span></h2>
+      </div>
+      <p class="lead rv">Toque em uma categoria para mandar fotos da peça e receber uma primeira orientação pelo WhatsApp.</p>
+    </div>
+    <div class="bento">
+      <a href="#" class="tile t-a ph rv js-wa" data-msg="Olá! Quero vender joias de ouro. Posso mandar fotos?"><img src="https://images.unsplash.com/photo-1611107683227-e9060eccd846?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy" onerror="this.remove()"><span class="spot"></span><span class="k">01 · 18K / 24K</span><span class="go"><svg><use href="#arrow"/></svg></span><h3>Joias de ouro</h3><p>Correntes, anéis, alianças, brincos e pulseiras, inteiros ou quebrados.</p></a>
+      <a href="#" class="tile t-b ph rv js-wa" data-msg="Olá! Quero vender barras ou moedas de ouro."><img src="https://images.unsplash.com/photo-1624365168056-daf44387e2ae?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy" onerror="this.remove()"><span class="spot"></span><span class="k">02 · INVESTIMENTO</span><span class="go"><svg><use href="#arrow"/></svg></span><h3>Barras e moedas</h3><p>Barras de qualquer peso e moedas de ouro nacionais e estrangeiras.</p></a>
+      <a href="#" class="tile t-c ph rv js-wa" data-msg="Olá! Quero avaliar uma joia com diamante/brilhante."><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy" onerror="this.remove()"><span class="spot"></span><span class="k">03</span><span class="go"><svg><use href="#arrow"/></svg></span><h3>Diamantes</h3></a>
+      <a href="#relogios" class="tile t-d rv"><span class="spot"></span><span class="k">04</span><span class="go"><svg><use href="#arrow"/></svg></span><h3>Relógios de luxo</h3><p>Novos e usados.</p></a>
+      <a href="#" class="tile t-e rv js-wa" data-msg="Olá! Quero vender prataria/talheres de prata."><span class="spot"></span><span class="k">05 · PRATA 925 / 950</span><span class="go"><svg><use href="#arrow"/></svg></span><h3>Prataria</h3><p>Faqueiros, bandejas, talheres e peças de prata maciça.</p></a>
+      <a href="#" class="tile t-f ph rv js-wa" data-msg="Olá! Gostaria de agendar uma avaliação em domicílio."><img src="https://images.unsplash.com/photo-1650455221359-3aebf920bcc5?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy" onerror="this.remove()"><span class="spot"></span><span class="k">06 · SOB AGENDAMENTO</span><span class="go"><svg><use href="#arrow"/></svg></span><h3>Avaliação em domicílio</h3><p>Para coleções maiores, vamos até você com a balança e os equipamentos.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="sim" id="simulador">
+  <div class="wrap sim-grid">
+    <div>
+      <span class="tag rv">Simulador</span>
+      <h2 class="rv">Quanto vale <span class="gold">o seu ouro?</span></h2>
+      <p class="lead rv" style="margin-top:20px">Escolha o quilate, informe o peso e veja uma faixa estimada antes de sair de casa.</p>
+      <ul class="sim-list rv">
+        <li><b>01</b>A maioria das joias no Brasil é 18k, marcada como "750" na peça.</li>
+        <li><b>02</b>Não sabe o peso? Uma corrente fina pesa em média de 3 a 8 g.</li>
+        <li><b>03</b>Pedras e partes que não são ouro saem do peso na análise.</li>
+      </ul>
+    </div>
+    <div class="panel rv">
+      <div class="pl"><span>Quilate</span><span id="cot"></span></div>
+      <div class="kar" id="kar" role="group" aria-label="Quilate">
+        <button type="button" data-p=".417">10k<small>417</small></button>
+        <button type="button" data-p=".585">14k<small>585</small></button>
+        <button type="button" data-p=".75" class="on">18k<small>750</small></button>
+        <button type="button" data-p=".999">24k<small>999</small></button>
+      </div>
+      <div class="pl"><span>Peso</span><span>gramas</span></div>
+      <div class="wrow">
+        <input type="range" id="wr" min="1" max="200" step="0.5" value="10" aria-label="Peso em gramas">
+        <label class="wnum"><input type="number" id="wn" min="0.5" max="5000" step="0.5" value="10" inputmode="decimal" aria-label="Peso em gramas"><span>g</span></label>
+      </div>
+      <div class="result">
+        <div class="pl"><span>Faixa estimada</span><span id="pur">Teor 750</span></div>
+        <div class="big"><span class="gold" id="res">R$ 0</span></div>
+        <p>Valor ilustrativo, calculado sobre a cotação de referência do dia. A proposta final é feita após a análise de peso e pureza da peça.</p>
+        <a href="#" class="btn btn-gold" id="simwa"><svg><use href="#wa"/></svg>Quero uma proposta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="tag rv">Como funciona</span>
+        <h2 class="rv">Do primeiro contato <span class="gold">ao PIX</span></h2>
+      </div>
+    </div>
+    <div class="steps" id="steps">
+      <div class="rail"><i id="railf"></i></div>
+      <div class="step rv"><span class="dot"></span><small>01</small><h3>Mande fotos</h3><p>Pelo WhatsApp, com uma foto da peça e da marcação (750, 18k, 925).</p></div>
+      <div class="step rv"><span class="dot"></span><small>02</small><h3>Agende</h3><p>Na nossa sala privativa ou em domicílio, no horário que for melhor.</p></div>
+      <div class="step rv"><span class="dot"></span><small>03</small><h3>Análise na sua frente</h3><p>Pesagem em balança de precisão e teste de pureza, com o resultado na tela.</p></div>
+      <div class="step rv"><span class="dot"></span><small>04</small><h3>Receba na hora</h3><p>Aceitou a proposta? O pagamento sai por PIX ou TED no mesmo atendimento.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="feat">
+      <div class="fcard rv"><span class="spot"></span><div class="num gold">0,01 g</div><h3>Precisão na pesagem</h3><p>Balança de precisão e análise de teor, sem estimativa no olho.</p></div>
+      <div class="fcard rv"><span class="spot"></span><div class="num gold">100%</div><h3>Transparência</h3><p>Você acompanha cada etapa e vê o cálculo da proposta antes de decidir.</p></div>
+      <div class="fcard rv"><span class="spot"></span><div class="num gold">1 visita</div><h3>Pagamento imediato</h3><p>Sem esperar dias: o valor cai na sua conta antes de você ir embora.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="relogios" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="tag rv">Relógios de luxo</span>
+        <h2 class="rv">Compramos as <span class="gold">principais marcas</span></h2>
+      </div>
+      <p class="lead rv">Novos ou usados, com ou sem caixa. Mande fotos do mostrador, do fundo e dos documentos.</p>
+    </div>
+    <div class="brands rv">
+      <span>Rolex</span><span>Patek Philippe</span><span>Cartier</span><span>Omega</span>
+      <span>Audemars Piguet</span><span>IWC</span><span>Breitling</span><span>TAG Heuer</span>
+    </div>
+  </div>
+</section>
+
+<section id="duvidas" style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="tag rv">Dúvidas</span>
+      <h2 class="rv">Perguntas <span class="gold">frequentes</span></h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Vocês compram joia quebrada ou só um brinco?</summary><p>Sim. O valor do ouro é calculado pelo peso e pela pureza, então peças quebradas, sem par ou amassadas também são compradas.</p></details>
+      <details><summary>Como sei se a minha peça é de ouro?</summary><p>Procure uma marcação como 750, 18k, 585 ou 999. Se não houver, a análise na hora confirma o material sem danificar a peça.</p></details>
+      <details><summary>Preciso agendar?</summary><p>Sim. O atendimento é com hora marcada, em sala privativa, para garantir segurança e discrição.</p></details>
+      <details><summary>Como é feito o pagamento?</summary><p>Por PIX ou TED, no mesmo atendimento, assim que você aceita a proposta.</p></details>
+      <details><summary>Preciso levar documento?</summary><p>Sim, um documento com foto e CPF. Para relógios, se tiver, leve também a caixa e o certificado.</p></details>
+      <details><summary>Fazem avaliação em domicílio?</summary><p>Sim, com agendamento prévio, para coleções maiores ou para quem prefere não se deslocar.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <span class="ring" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span>
+  <div class="wrap">
+    <span class="tag rv">Avaliação sem compromisso</span>
+    <h2 class="rv">Descubra quanto vale <span class="gold">o que está na gaveta</span></h2>
+    <div class="cta-btns rv">
+      <a href="#" class="btn btn-gold js-wa" data-msg="Olá! Gostaria de agendar uma avaliação de ouro/joias."><svg><use href="#wa"/></svg>Agendar pelo WhatsApp</a>
+      <a href="tel:+5511999999999" class="btn btn-line">Ligar agora</a>
+    </div>
+    <div class="info rv">
+      <div><span>Endereço</span>Av. Exemplo, 1000 · Jardins<br>São Paulo · SP · Estacionamento no local</div>
+      <div><span>Horário</span>Seg a sex · 9h às 18h<br>Sábado · 9h às 13h · Com hora marcada</div>
+      <div><span>Contato</span>(11) 99999-9999<br>@auren.ouro</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Auren Compra de Ouro · CNPJ 00.000.000/0001-00</span>
+    <p>Valores do simulador são ilustrativos e não constituem proposta. A compra depende de análise da peça e apresentação de documento. Projeto conceitual por <a href="https://yagoportfolio.com.br">Yago Moreira</a>.</p>
+  </div>
+</footer>
+
+<a href="#" class="wa js-wa" id="wafab" data-msg="Olá! Gostaria de agendar uma avaliação de ouro/joias." aria-label="Falar no WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+/* ===== Configuração (a loja edita aqui) ===== */
+const WHATSAPP = '5511999999999';
+const COTACAO_24K = 620;            // R$ por grama do ouro 24k (referência do dia)
+const FAIXA = [0.82, 0.92];         // faixa paga sobre o valor do metal
+const COTACAO_DATA = 'hoje';
+/* ============================================ */
+
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const waLink=m=>'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(m);
+document.querySelectorAll('.js-wa').forEach(a=>{a.href=waLink(a.dataset.msg);a.target='_blank';a.rel='noopener';});
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+requestAnimationFrame(()=>document.body.classList.add('ready'));
+
+/* ticker */
+const tkItems=[['Ouro 24k',COTACAO_24K],['Ouro 18k',COTACAO_24K*.75],['Ouro 14k',COTACAO_24K*.585],['Prata 950',COTACAO_24K*.0118]];
+const tkHtml=tkItems.map(([n,v])=>`<span>${n} /g<b>${v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</b></span>`).join('')+`<span>Cotação de referência · ${COTACAO_DATA}</span><span class="up">● Pagamento na hora via PIX</span>`;
+document.getElementById('tk').innerHTML=tkHtml+tkHtml;
+document.getElementById('cot').textContent='24k · '+brl(COTACAO_24K)+'/g';
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.rv').forEach(el=>{const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));el.style.transitionDelay=Math.min(Math.max(0,sib.indexOf(el)),6)*70+'ms';io.observe(el);});
+
+/* brilho que segue o mouse + spotlight nos cards */
+const glow=document.getElementById('glow');
+if(matchMedia('(hover:hover)').matches&&!reduce){
+  let gx=innerWidth/2,gy=300,tx=gx,ty=gy;
+  addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY});
+  (function g(){gx+=(tx-gx)*.08;gy+=(ty-gy)*.08;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(g)})();
+  document.querySelectorAll('.tile,.fcard').forEach(c=>c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--x',e.clientX-r.left+'px');c.style.setProperty('--y',e.clientY-r.top+'px');}));
+}else glow.style.display='none';
+
+/* leitura "ao vivo" do scanner */
+const scans=[['12,40 g','750 ‰','18k'],['3,85 g','999 ‰','24k'],['7,10 g','585 ‰','14k'],['21,30 g','750 ‰','18k']];
+let si=0;const roP=document.getElementById('roP'),roT=document.getElementById('roT'),roK=document.getElementById('roK');
+if(!reduce)setInterval(()=>{si=(si+1)%scans.length;[roP.textContent,roT.textContent,roK.textContent]=scans[si];},3600);
+
+/* simulador */
+(function(){
+  const kar=document.getElementById('kar'),wr=document.getElementById('wr'),wn=document.getElementById('wn'),res=document.getElementById('res'),pur=document.getElementById('pur'),btn=document.getElementById('simwa');
+  let p=.75,shown=[0,0],raf;
+  const sel=()=>kar.querySelector('.on');
+  kar.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;kar.querySelectorAll('button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});p=+b.dataset.p;calc();});
+  wr.addEventListener('input',()=>{wn.value=wr.value;calc()});
+  wn.addEventListener('input',()=>{const v=parseFloat(wn.value.replace(',','.'))||0;wr.value=Math.min(200,v);calc()});
+  function calc(){
+    const g=Math.max(0,parseFloat(String(wn.value).replace(',','.'))||0), metal=g*p*COTACAO_24K, t=[metal*FAIXA[0],metal*FAIXA[1]];
+    pur.textContent='Teor '+sel().querySelector('small').textContent;
+    const k=sel().firstChild.textContent.trim();
+    btn.href=waLink(`Olá! Usei o simulador do site.\n\n*Peça:* ouro ${k}\n*Peso aproximado:* ${String(g).replace('.',',')} g\n\nGostaria de agendar uma avaliação.`);btn.target='_blank';btn.rel='noopener';
+    cancelAnimationFrame(raf);const from=[...shown],t0=performance.now(),d=reduce?0:600;
+    (function step(now){const k2=d?Math.min(1,(now-t0)/d):1,e=1-Math.pow(1-k2,3);shown=[from[0]+(t[0]-from[0])*e,from[1]+(t[1]-from[1])*e];
+      res.textContent=g?`${brl(shown[0])} – ${brl(shown[1])}`:'R$ 0';if(k2<1)raf=requestAnimationFrame(step);})(performance.now());
+  }
+  calc();
+})();
+
+/* scroll: nav, parallax, marquee, linha do processo */
+const nav=document.getElementById('nav'),fab=document.getElementById('wafab'),mq=document.getElementById('mq'),scanimg=document.getElementById('scanimg'),
+  stepsEl=document.getElementById('steps'),railf=document.getElementById('railf'),stepList=[...stepsEl.querySelectorAll('.step')];
+let lastY=scrollY,vel=0,mqX=0,tick=false;
+function frame(){
+  const y=scrollY,h=innerHeight;vel=Math.min(Math.abs(y-lastY),60);lastY=y;
+  nav.classList.toggle('scrolled',y>20);fab.classList.toggle('show',y>h*.7);
+  if(!reduce&&scanimg&&scanimg.isConnected)scanimg.style.transform=`scale(1.08) translate3d(0,${y*.06}px,0)`;
+  const r=stepsEl.getBoundingClientRect(),mobile=innerWidth<=900;
+  const p=Math.min(1,Math.max(0,mobile?(h*.6-r.top)/r.height:(h*.75-r.top)/(h*.5)));
+  railf.style.transform=mobile?`scaleY(${p})`:`scaleX(${p})`;
+  stepList.forEach((s,i)=>s.classList.toggle('on',p>=(mobile?(i/stepList.length):(i/(stepList.length-1)))-.001&&p>0));
+  tick=false;
+}
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(frame)}},{passive:true});
+addEventListener('resize',frame);frame();
+if(!reduce){(function m(){const w=mq.scrollWidth/2;mqX-=.6+vel*.3;vel*=.92;if(-mqX>=w)mqX+=w;mq.style.transform=`translate3d(${mqX}px,0,0)`;requestAnimationFrame(m)})();}
+</script>
+</body>
+</html>
