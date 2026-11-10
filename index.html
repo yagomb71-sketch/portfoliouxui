@@ -159,6 +159,12 @@ section{padding:clamp(80px,11vw,150px) 0}
 .plan li{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
 .plan .btn{width:100%}
 .note{margin-top:28px}
+.maint{display:grid;grid-template-columns:1fr 1.4fr auto;gap:clamp(20px,4vw,48px);align-items:center;margin-top:clamp(36px,5vw,56px);padding:clamp(24px,3vw,36px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.maint h3{font-size:clamp(24px,2.4vw,34px);font-weight:800;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;margin-top:10px}
+.maint .price b{font-size:clamp(32px,3vw,44px)}
+.maint ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;font-size:15px}
+.maint li::before{content:"— ";color:var(--muted)}
+@media(max-width:960px){.maint{grid-template-columns:1fr}.maint ul{grid-template-columns:1fr}.maint .btn{width:100%}}
 @media(max-width:960px){.plans{grid-template-columns:1fr}.plan,.plan+.plan{padding:36px 0;border-right:0;border-bottom:1px solid var(--line)}}
 
 /* faq */
@@ -372,7 +378,23 @@ footer a:hover{opacity:.6}
         <a href="#" class="btn btn-line js-wa" data-msg="Olá Yago! Tenho interesse no plano Site Completo.">Quero esse</a>
       </div>
     </div>
-    <p class="label note rv">Domínio e hospedagem à parte · eu te ajudo a contratar e configurar</p>
+    <div class="maint rv">
+      <div>
+        <span class="label">Opcional · mensal</span>
+        <h3>Manutenção</h3>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="price">A partir de<b>R$ 150/mês</b></div>
+        <ul>
+          <li>Hospedagem e certificado SSL</li>
+          <li>Alterações de texto e imagem</li>
+          <li>Backup e site sempre no ar</li>
+          <li>Suporte pelo WhatsApp</li>
+        </ul>
+      </div>
+      <a href="#" class="btn btn-line js-wa" data-msg="Olá Yago! Quero saber mais sobre a manutenção mensal do site.">Quero saber mais</a>
+    </div>
+    <p class="label note rv">Domínio à parte · eu te ajudo a contratar e configurar · sem manutenção, a hospedagem também fica à parte</p>
   </div>
 </section>
 
@@ -385,6 +407,7 @@ footer a:hover{opacity:.6}
       <details><summary>Você também cuida dos anúncios no Google?</summary><p>A página já sai preparada para Google Ads, com rastreamento de conversão. Posso te orientar na configuração da primeira campanha.</p></details>
       <details><summary>Quantas alterações posso pedir?</summary><p>Duas rodadas de ajuste estão inclusas em cada etapa (layout e página final), e ajustes pequenos de texto nos primeiros 30 dias depois da entrega.</p></details>
       <details><summary>Funciona para o meu tipo de negócio?</summary><p>Sim. Já criei páginas para saúde, contabilidade, academia, e-commerce e marcas de produto. O processo é o mesmo: entender quem é o seu cliente e o que faz ele entrar em contato. Se o seu ramo tiver regras de publicidade (como saúde ou advocacia), os textos seguem essas normas.</p></details>
+      <details><summary>Como funciona a manutenção mensal?</summary><p>É opcional. A partir de R$ 150 por mês, eu cuido da hospedagem, mantenho o site no ar e seguro, e faço as alterações que você precisar, como trocar textos, fotos, preços ou horários. Você pede pelo WhatsApp e não precisa se preocupar com nada técnico.</p></details>
       <details><summary>Atende só São Paulo?</summary><p>Não. Todo o processo é online, então atendo negócios de qualquer cidade do Brasil.</p></details>
       <details><summary>Faz outras coisas além de sites?</summary><p>Sim: identidade visual, posts para redes sociais e design de interfaces (UX/UI) para apps e sistemas.</p></details>
     </div>
