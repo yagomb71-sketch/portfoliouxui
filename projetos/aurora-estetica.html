@@ -3,393 +3,455 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aurora Estética Avançada | Harmonização facial e skincare em São Paulo</title>
-<meta name="description" content="Harmonização facial, bioestimuladores, toxina botulínica e tratamentos de pele com avaliação individual. Agende sua avaliação pelo WhatsApp.">
-<meta name="theme-color" content="#F6EFEA">
+<title>Aurora Estética | Harmonização facial e tratamentos de pele em São Paulo</title>
+<meta name="description" content="Harmonização facial, toxina botulínica, bioestimuladores e tratamentos de pele com avaliação individual e foco em naturalidade. Agende pelo WhatsApp.">
+<meta name="theme-color" content="#F5F0EA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <!-- Projeto conceitual de Yago Moreira (yagoportfolio.com.br) -->
 <style>
 :root{
-  --ivory:#FBF7F3; --sand:#F3E9E2; --blush:#EBD5CC; --rose:#C48B78; --rose-d:#A86D5B;
-  --cocoa:#3A2925; --cocoa-2:#5B4540; --muted:#8B7670; --line:#E6D8D0;
-  --serif:'Instrument Serif', Georgia, serif; --sans:'Manrope', system-ui, sans-serif;
-  --r:22px;
+  --bg:#F5F0EA; --paper:#FFFFFF; --ink:#231B18; --ink-2:#4A3F3A; --muted:#8C7F78; --line:#E6DDD4;
+  --teal:#9C5B4A; --teal-l:#EEDDD5; --sans:'Manrope',system-ui,sans-serif; --serif:'Instrument Serif',Georgia,serif;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{background:var(--ivory);color:var(--cocoa);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.wrap{width:min(100% - 40px,1160px);margin-inline:auto}
-section{padding:clamp(80px,10vw,128px) 0}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-d)}
-.eyebrow::before{content:'';width:22px;height:1px;background:currentColor}
-h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em}
-h2{font-size:clamp(38px,5.4vw,64px);margin-top:16px}
-h2 em,h1 em{font-style:italic;color:var(--rose-d)}
-.lead{color:var(--muted);font-size:17px;max-width:540px;margin-top:18px}
-
-/* botões */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:15px;padding:17px 28px;border-radius:999px;transition:all .25s;white-space:nowrap}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.wrap{width:min(100% - 40px,1240px);margin-inline:auto}
+section{padding:clamp(88px,12vw,160px) 0}
+h1,h2,h3{font-weight:400;letter-spacing:-.035em;line-height:1.02}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--teal)}
+.label{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.label::before{content:'';width:28px;height:1px;background:currentColor}
+h2{font-size:clamp(38px,5.4vw,72px);margin-top:22px}
+.lead{color:var(--ink-2);font-size:17px;max-width:460px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:500;font-size:15px;height:54px;padding:0 26px;border-radius:999px;transition:background .3s,color .3s,transform .3s var(--ease);white-space:nowrap;cursor:pointer;border:0;font-family:inherit}
 .btn svg{width:18px;height:18px;flex:none}
-.btn-dark{background:var(--cocoa);color:var(--ivory)}
-.btn-dark:hover{background:var(--rose-d)}
-.btn-line{border:1px solid var(--cocoa);color:var(--cocoa)}
-.btn-line:hover{background:var(--cocoa);color:var(--ivory)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--teal)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* progresso */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--teal);transform-origin:0 50%;transform:scaleX(0);z-index:70}
 
 /* nav */
-.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
-.nav.scrolled{background:rgba(251,247,243,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
-.logo{display:flex;flex-direction:column;line-height:1}
-.logo b{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:.02em}
-.logo small{font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--rose-d);margin-top:4px}
-.menu{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--cocoa-2)}
-.menu a:hover{color:var(--rose-d)}
-.nav .btn{padding:12px 20px;font-size:14px}
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,transform .5s var(--ease)}
+.nav.scrolled{background:rgba(246,245,241,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav.hide{transform:translateY(-100%)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-size:20px;font-weight:500;letter-spacing:-.03em;display:flex;align-items:baseline;gap:8px}
+.logo span{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--teal)}
+.menu{display:flex;gap:34px;font-size:14px;color:var(--ink-2)}
+.menu a{position:relative}
+.menu a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.menu a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .btn{height:44px;padding:0 20px;font-size:14px}
 @media(max-width:900px){.menu{display:none}}
-@media(max-width:520px){.nav .btn{padding:10px 15px;font-size:13px}.logo b{font-size:26px}.logo small{letter-spacing:.3em}.trust{gap:12px 20px;font-size:13px}}
 
-/* hero — foto em tela cheia */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0;color:var(--ivory);overflow:hidden;
-  background:linear-gradient(160deg,#C99583,#8a5a4c 60%,#4a332d)}
-.hero-media{position:absolute;inset:0}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% 35%;transform:scale(1.06);animation:heroZoom 9s ease-out forwards}
-@keyframes heroZoom{to{transform:scale(1)}}
-.hero-fx{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;opacity:.6;pointer-events:none}
-.hero::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(90deg,rgba(38,24,20,.88) 0%,rgba(38,24,20,.66) 40%,rgba(38,24,20,.18) 75%),
-             linear-gradient(0deg,rgba(38,24,20,.9) 0%,rgba(38,24,20,0) 50%),
-             rgba(38,24,20,.15)}
-.hero h1,.hero p.sub,.hero .eyebrow,.hero-bar{text-shadow:0 2px 18px rgba(30,18,15,.45)}
-.hero-inner{position:relative;z-index:1;padding:140px 0 36px;display:flex;flex-direction:column;gap:56px}
-.hero-copy{max-width:640px;animation:heroUp 1s .15s both cubic-bezier(.2,.7,.2,1)}
-@keyframes heroUp{from{opacity:0;transform:translateY(24px)}}
-.hero .eyebrow{color:#F0C8B8}
-.hero h1{font-size:clamp(52px,7.4vw,104px);margin-top:20px;color:#FFF8F3}
-.hero h1 em{color:#F2C3B0}
-.hero p.sub{font-size:18px;color:rgba(255,248,243,.82);max-width:500px;margin:22px 0 34px}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
-.btn-light{background:#FFF8F3;color:var(--cocoa)}
-.btn-light:hover{background:#F2C3B0}
-.btn-glass{background:rgba(255,248,243,.12);border:1px solid rgba(255,248,243,.35);color:#FFF8F3;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.btn-glass:hover{background:rgba(255,248,243,.22)}
-.hero-bar{list-style:none;display:flex;flex-wrap:wrap;gap:10px 34px;padding-top:22px;border-top:1px solid rgba(255,248,243,.22);font-size:14px;color:rgba(255,248,243,.85)}
-.hero-bar li{display:flex;align-items:center;gap:9px}
-.hero-bar svg{width:18px;height:18px;color:#F2C3B0}
-/* nav sobre a foto */
-.nav:not(.scrolled) .logo b,.nav:not(.scrolled) .menu{color:#FFF8F3}
-.nav:not(.scrolled) .logo small{color:#F2C3B0}
-.nav:not(.scrolled) .btn-dark{background:#FFF8F3;color:var(--cocoa)}
-@media(max-width:760px){
-  .hero{min-height:92svh}
-  .hero-media img{object-position:58% 30%}
-  .hero::after{background:linear-gradient(0deg,rgba(38,24,20,.95) 0%,rgba(38,24,20,.82) 45%,rgba(38,24,20,.55) 75%,rgba(38,24,20,.35) 100%)}
-  .hero-inner{padding:110px 0 24px;gap:32px}
-  .hero h1{font-size:clamp(46px,12.5vw,60px)}
-  .hero p.sub{font-size:16px;margin:16px 0 24px}
-  .hero-ctas .btn{flex:1 1 100%}
-  .hero-bar{gap:8px 18px;font-size:12.5px;padding-top:16px}
-}
-@media(prefers-reduced-motion:reduce){.hero-media img,.hero-copy{animation:none;transform:none}.hero-fx{display:none}}
+/* hero */
+.hero{padding:132px 0 0}
+.hero-top{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;padding-bottom:56px}
+.hero h1{font-size:clamp(48px,6.6vw,104px);line-height:.98}
+@media(min-width:901px){.line{white-space:nowrap}}
+.line{display:block;overflow:hidden;padding-bottom:.06em}
+.line>span{display:block;transform:translateY(105%);transition:transform 1.2s var(--ease)}
+.ready .line>span{transform:none}
+.line:nth-child(2)>span{transition-delay:.1s}.line:nth-child(3)>span{transition-delay:.2s}
+.hero-side{max-width:340px;padding-bottom:12px}
+.hero-side p{color:var(--ink-2);font-size:16px;margin-bottom:26px}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.fade{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease) .5s,transform 1s var(--ease) .5s}
+.ready .fade{opacity:1;transform:none}
+.hero-media{position:relative;height:clamp(380px,72vh,760px);overflow:hidden;border-radius:6px;background:#E9E0D7;clip-path:inset(18% 8% 0 8% round 6px);transition:clip-path 1.6s var(--ease) .25s}
+.ready .hero-media{clip-path:inset(0 0 0 0 round 6px)}
+.hero-media img{height:120%;margin-top:-10%;will-change:transform}
+.hero-meta{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px 0 0;font-size:13px;color:var(--muted)}
+.hero-meta b{color:var(--ink);font-weight:500}
+@media(max-width:900px){.hero{padding-top:112px}.hero-top{grid-template-columns:1fr;gap:28px;padding-bottom:40px}.hero-media{height:58vh}}
+@media(max-width:520px){.hero h1{font-size:clamp(44px,13vw,60px)}.hero-ctas .btn{flex:1}.hero-media{height:52vh}}
 
 /* marquee */
-.ribbon{background:var(--cocoa);color:var(--sand);padding:20px 0;overflow:hidden}
-.ribbon .track{display:flex;width:max-content;animation:mq 40s linear infinite;font-family:var(--serif);font-size:26px;font-style:italic}
-.ribbon span{padding:0 28px;display:flex;align-items:center;gap:56px}
-.ribbon span::after{content:'✦';font-style:normal;font-size:14px;color:var(--rose)}
-@keyframes mq{to{transform:translateX(-50%)}}
+.marquee{padding:clamp(56px,8vw,96px) 0;overflow:hidden;border-bottom:1px solid var(--line)}
+.mq-track{display:flex;gap:56px;width:max-content;font-size:clamp(34px,5vw,64px);letter-spacing:-.035em;white-space:nowrap;will-change:transform}
+.mq-track span{display:flex;align-items:center;gap:56px}
+.mq-track span::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--teal)}
+.mq-track i{font-family:var(--serif);color:var(--teal)}
+
+/* manifesto */
+.manifesto p{font-size:clamp(28px,3.9vw,54px);line-height:1.18;letter-spacing:-.03em;max-width:1100px}
+.manifesto .w{color:#D3C8C0;transition:color .4s}
+.manifesto .w.on{color:var(--ink)}
+.manifesto .w.on.ac{color:var(--teal)}
 
 /* tratamentos */
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:52px}
-.treat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(58,41,37,.4);border-color:var(--blush)}
-.card .num{font-family:var(--serif);font-size:20px;color:var(--rose)}
-.card h3{font-size:31px;margin:14px 0 10px}
-.card p{color:var(--muted);font-size:15px;flex:1}
-.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--cocoa-2)}
-.card .meta a{font-weight:600;color:var(--rose-d);display:flex;align-items:center;gap:6px}
-.card,.card p,.card .meta,.card .meta a,.card .num{transition:background .35s,color .35s,border-color .35s,transform .3s,box-shadow .3s}
-.card:hover,.card:focus-within{background:var(--cocoa);color:var(--sand);border-color:var(--cocoa)}
-.card:hover p,.card:hover .meta,.card:focus-within p,.card:focus-within .meta{color:#CDB9B1;border-color:#5a4540}
-.card:hover .meta a,.card:focus-within .meta a,.card:hover .num{color:#F0C8B8}
-@media(max-width:960px){.treat{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.treat{grid-template-columns:1fr}}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(48px,6vw,80px)}
+.sec-head .lead{justify-self:end}
+@media(max-width:860px){.sec-head{grid-template-columns:1fr}.sec-head .lead{justify-self:start}}
+.list{border-top:1px solid var(--line);position:relative}
+.row{position:relative;display:grid;grid-template-columns:80px 1.1fr 1fr 150px 40px;gap:24px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.row::before{content:'';position:absolute;inset:0;background:var(--paper);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease);z-index:-1}
+.row:hover::before{transform:scaleY(1)}
+.row .n{font-size:13px;color:var(--muted);padding-left:12px}
+.row h3{font-size:clamp(24px,2.6vw,34px);transition:transform .5s var(--ease)}
+.row:hover h3{transform:translateX(10px)}
+.row p{color:var(--ink-2);font-size:15px;max-width:400px}
+.row .cat{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.row .go{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .3s,border-color .3s,transform .5s var(--ease)}
+.row .go svg{width:16px;height:16px}
+.row:hover .go{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(-45deg)}
+.preview{position:fixed;left:0;top:0;width:260px;height:320px;border-radius:6px;overflow:hidden;pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.85);transition:opacity .3s,transform .4s var(--ease);background:var(--teal-l)}
+.preview.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media(max-width:900px){.row{grid-template-columns:44px 1fr 40px;gap:8px 16px;padding:26px 0}.row .n{padding-left:0}.row p{grid-column:2/3}.row .cat{grid-column:2/3;grid-row:1;order:-1}.row h3{grid-column:2;grid-row:2}.row .n{grid-row:1/3}.row .go{grid-column:3;grid-row:1/3}.preview{display:none}}
 
-/* processo */
-.process{background:var(--sand)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
-.step{background:var(--ivory);border-radius:var(--r);padding:34px 30px}
-.step .n{width:46px;height:46px;border-radius:50%;border:1px solid var(--rose);display:grid;place-items:center;font-family:var(--serif);font-size:22px;color:var(--rose-d)}
-.step h3{font-size:30px;margin:22px 0 10px}
-.step p{color:var(--muted);font-size:15px}
-@media(max-width:860px){.steps{grid-template-columns:1fr}}
+/* faixa urgência */
+.urg{padding:0}
+.urg-box{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:36px 0;border-bottom:1px solid var(--line)}
+.urg-box h3{font-size:clamp(24px,2.8vw,34px);display:flex;align-items:center;gap:16px}
+.pulse{width:10px;height:10px;border-radius:50%;background:#D9694A;position:relative;flex:none}
+.pulse::after{content:'';position:absolute;inset:0;border-radius:50%;background:#D9694A;animation:pl 2s infinite}
+@keyframes pl{to{transform:scale(3.4);opacity:0}}
+.urg-box p{color:var(--muted);margin-top:4px;font-size:15px}
 
-/* sobre */
-.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,90px);align-items:center}
-.portrait{aspect-ratio:4/5;border-radius:999px 999px var(--r) var(--r);background:
-  radial-gradient(80% 60% at 50% 30%,#F3DDD2,transparent 70%),linear-gradient(170deg,#E5C6B8,#B98371);position:relative;overflow:hidden}
-.portrait::after{content:'Foto da profissional';position:absolute;inset:auto 0 26px;text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.portrait svg{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:76%}
-.creds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
-.creds div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
-.creds b{font-family:var(--serif);font-size:30px;font-weight:400;display:block;line-height:1}
-.creds span{font-size:13px;color:var(--muted)}
-.quote{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.3;color:var(--cocoa-2);margin-top:26px;padding-left:20px;border-left:2px solid var(--rose)}
-@media(max-width:860px){.about{grid-template-columns:1fr}.portrait{max-width:380px;width:100%;margin:0 auto}}
+/* galeria parallax */
+.gallery{padding:0}
+.gal{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:end}
+.gal figure{overflow:hidden;border-radius:6px;background:#E9E0D7}
+.gal figure:first-child{height:clamp(320px,52vw,680px)}
+.gal figure:last-child{height:clamp(260px,38vw,500px);margin-bottom:12%}
+.gal img{height:124%;margin-top:-12%;will-change:transform}
+.gal figcaption{font-size:13px;color:var(--muted);margin-top:12px}
+@media(max-width:700px){.gal{grid-template-columns:1fr}.gal figure:last-child{margin:0;width:78%;justify-self:end}}
 
-/* depoimentos */
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
-.review{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px}
-.stars{color:#C9A15B;letter-spacing:3px;font-size:14px}
-.review p{font-family:var(--serif);font-size:22px;line-height:1.35;margin:14px 0 22px}
-.who{display:flex;align-items:center;gap:12px;font-size:14px}
-.who i{width:40px;height:40px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-style:normal;font-weight:600;color:var(--rose-d);font-size:13px}
-.who small{display:block;color:var(--muted);font-size:12px}
-@media(max-width:860px){.reviews{grid-template-columns:1fr}}
+/* por que */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.why div{padding:34px 28px 0 0;position:relative}
+.why div::before{content:'';position:absolute;left:0;right:20px;top:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease)}
+.why div.in::before{transform:scaleX(1)}
+.why small{font-size:13px;color:var(--muted)}
+.why h3{font-size:24px;margin:18px 0 10px}
+.why p{color:var(--ink-2);font-size:15px}
+@media(max-width:900px){.why{grid-template-columns:1fr 1fr;row-gap:48px}}
+@media(max-width:520px){.why{grid-template-columns:1fr;row-gap:40px}}
+
+/* processo sticky */
+.process{background:var(--paper)}
+.pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,120px)}
+.pr-left{position:sticky;top:120px;align-self:start}
+.pr-big{font-size:clamp(120px,16vw,240px);line-height:1;letter-spacing:-.06em;color:var(--teal);margin-top:32px;font-weight:300;display:flex;overflow:hidden;height:1.02em}
+.pr-big span{display:block;line-height:1.02;transition:transform .9s var(--ease)}
+.pr-steps{position:relative;padding-left:34px}
+.pr-rail{position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--line)}
+.pr-rail i{position:absolute;inset:0;background:var(--teal);transform-origin:top;transform:scaleY(0)}
+.pr-step{min-height:58vh;display:flex;flex-direction:column;justify-content:center;opacity:.25;transition:opacity .6s}
+.pr-step.on{opacity:1}
+.pr-step small{font-size:13px;color:var(--muted)}
+.pr-step h3{font-size:clamp(30px,3.4vw,46px);margin:14px 0 14px}
+.pr-step p{color:var(--ink-2);font-size:17px;max-width:420px}
+@media(max-width:860px){.pr-grid{grid-template-columns:1fr}.pr-left{position:static}.pr-big{display:none}.pr-step{min-height:auto;padding:28px 0;opacity:1}}
+
+/* clínica */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
+.photo{height:clamp(420px,52vw,720px);overflow:hidden;border-radius:6px;background:#E9E0D7;clip-path:inset(0 0 100% 0);transition:clip-path 1.4s var(--ease)}
+.photo.in{clip-path:inset(0 0 0 0)}
+.photo img{height:118%;margin-top:-9%;transform:scale(1.15);transition:transform 1.8s var(--ease)}
+.photo.in img{transform:scale(1)}
+.facts{list-style:none;margin-top:36px;border-top:1px solid var(--line)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts li span{color:var(--muted)}
+.conv{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.conv span{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--ink-2)}
+@media(max-width:900px){.about{grid-template-columns:1fr}.photo{height:70vw}}
+
+/* agendar */
+.bk-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:start}
+.qform{background:var(--paper);padding:clamp(26px,4vw,48px);border-radius:6px}
+.qtop{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:12px}
+.qprog{height:2px;background:var(--line);margin-bottom:34px;overflow:hidden}
+.qprog i{display:block;height:100%;width:33%;background:var(--teal);transition:width .6s var(--ease)}
+.qstep{display:none;flex-direction:column;gap:18px;border:0}
+.qstep.active{display:flex;animation:st .6s var(--ease)}
+@keyframes st{from{opacity:0;transform:translateX(20px)}}
+.qstep legend{font-size:28px;letter-spacing:-.03em;margin-bottom:8px}
+.qstep label.f{display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--ink-2)}
+.qstep input[type=text],.qstep input[type=tel]{height:52px;border:0;border-bottom:1px solid var(--line);padding:0 2px;font:inherit;font-size:18px;color:var(--ink);background:transparent;border-radius:0;transition:border-color .3s}
+.qstep input:focus{outline:none;border-color:var(--teal)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:46px;padding:10px 18px;border:1px solid var(--line);background:transparent;border-radius:999px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;transition:all .25s}
+.chip:hover{border-color:var(--ink)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.ok{display:flex;gap:10px;font-size:13px;color:var(--muted);align-items:flex-start}
+.ok input{width:18px;height:18px;margin-top:2px;accent-color:var(--teal)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:30px;gap:12px}
+.qback{background:none;border:0;font:inherit;font-weight:500;color:var(--muted);cursor:pointer;padding:12px 4px}
+.qerr{color:#B3261E;font-size:14px;min-height:20px;margin-top:12px}
+.bk-list{list-style:none;margin-top:36px;border-top:1px solid var(--line)}
+.bk-list li{padding:15px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink-2)}
+@media(max-width:900px){.bk-grid{grid-template-columns:1fr}}
 
 /* faq */
-.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,90px)}
-details{border-bottom:1px solid var(--line)}
-details:first-of-type{border-top:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;font-weight:600;font-size:17px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:'+';font-family:var(--serif);font-size:30px;color:var(--rose-d);transition:transform .25s;line-height:1}
-details[open] summary::after{transform:rotate(45deg)}
-details p{color:var(--muted);padding:0 0 24px;max-width:620px}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,7vw,110px)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:26px 0;font-size:20px;letter-spacing:-.02em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'';flex:none;width:14px;height:14px;margin-top:6px;background:linear-gradient(var(--ink),var(--ink)) center/100% 1px no-repeat,linear-gradient(var(--ink),var(--ink)) center/1px 100% no-repeat;transition:transform .4s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--ink-2);padding:0 44px 26px 0;font-size:16px}
 @media(max-width:860px){.faq-grid{grid-template-columns:1fr}}
 
-/* cta + local */
-.cta{background:var(--cocoa);color:var(--sand);border-radius:32px;padding:clamp(40px,6vw,76px);display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;position:relative;overflow:hidden}
-.cta::after{content:'';position:absolute;width:420px;height:420px;border-radius:50%;right:-120px;top:-160px;background:radial-gradient(closest-side,rgba(196,139,120,.45),transparent)}
-.cta h2{color:var(--ivory)}
-.cta h2 em{color:#F0C8B8}
-.cta p{color:#CDB9B1;margin-top:16px;max-width:480px}
-.cta .btn-light{background:var(--ivory);color:var(--cocoa)}
-.cta .btn-light:hover{background:#F0C8B8}
-.info{position:relative;z-index:1;display:grid;gap:18px;font-size:15px}
-.info span{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#C9A397;margin-bottom:4px}
-@media(max-width:860px){.cta{grid-template-columns:1fr}}
+/* contato */
+.cta{text-align:center;padding-bottom:clamp(64px,8vw,110px)}
+.cta h2{font-size:clamp(48px,9vw,140px);line-height:.95;margin:28px auto 40px}
+.cta .label{justify-content:center}
+.cta .label::after{content:'';width:28px;height:1px;background:currentColor}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid var(--line);padding-top:32px;margin-top:clamp(64px,8vw,110px);text-align:left;font-size:15px;color:var(--ink-2)}
+.info span{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+@media(max-width:700px){.info{grid-template-columns:1fr}}
 
-footer{padding:40px 0 50px;font-size:13px;color:var(--muted)}
-footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
-.legal{font-size:12px;max-width:620px}
+footer{padding:28px 0 36px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px 40px;flex-wrap:wrap}
+footer p{max-width:620px}
+footer a{text-decoration:underline}
 
-.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--cocoa);color:var(--ivory);display:grid;place-items:center;box-shadow:0 14px 34px -10px rgba(58,41,37,.6);transition:transform .2s}
-.wa:hover{transform:scale(1.06)}
-.wa svg{width:28px;height:28px}
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -10px rgba(0,0,0,.4);transform:scale(0);transition:transform .5s var(--ease),background .3s}
+.wa.show{transform:scale(1)}
+.wa:hover{background:#25D366}
+.wa svg{width:26px;height:26px}
 
-
-.arch img,.portrait img,.gal figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.arch.a1::after{z-index:1}
-.portrait::after{display:none}
-.gallery{padding-top:0}
-.gal{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin-top:44px}
-.gal figure{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:linear-gradient(170deg,#E9D3C8,#C99A88)}
-.gal figure:first-child{aspect-ratio:auto}
-.gal figcaption{position:absolute;left:16px;bottom:16px;background:rgba(251,247,243,.92);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:600}
-@media(max-width:760px){.gal{grid-template-columns:1fr 1fr}.gal figure:first-child{grid-column:span 2;aspect-ratio:16/10}}
-
-
-.stars-sm{color:#F2C3B0;letter-spacing:2px;font-size:13px;margin-right:4px}
-.why{padding-bottom:0}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
-.why-card{border-top:1px solid var(--cocoa);padding-top:22px}
-.why-card .wi{font-family:var(--serif);font-size:18px;color:var(--rose)}
-.why-card h3{font-size:28px;margin:12px 0 10px}
-.why-card p{color:var(--muted);font-size:15px}
-@media(max-width:960px){.why-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.why-grid{grid-template-columns:1fr}}
-.card .tag{align-self:flex-start;margin-top:12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-d);background:var(--sand);padding:4px 10px;border-radius:999px;vertical-align:middle;transition:background .35s,color .35s}
-.card:hover .tag,.card:focus-within .tag{background:#5a4540;color:#F0C8B8}
-.cred-list{list-style:none;margin-top:24px;display:grid;gap:10px}
-.cred-list li{padding-left:26px;position:relative;font-size:15px;color:var(--cocoa-2)}
-.cred-list li::before{content:'✦';position:absolute;left:0;color:var(--rose);font-size:13px;top:2px}
-.assess{background:var(--ivory)}
-.assess .qform{background:#fff;border:1px solid var(--line)}
-.assess-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,80px);align-items:center}
-.qform{background:var(--ivory);border-radius:28px;padding:clamp(26px,4vw,40px);box-shadow:0 30px 60px -40px rgba(58,41,37,.45)}
-.qprog{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:28px}
-.qprog span{display:block;height:100%;width:33%;background:var(--rose-d);transition:width .4s}
-.qstep{display:none}.qstep.active{display:block;animation:heroUp .45s both}
-.qlabel{display:block;font-family:var(--serif);font-size:28px;line-height:1.1;margin-bottom:14px}
-.qinput{width:100%;font:inherit;font-size:16px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--cocoa);outline:none}
-.qinput:focus{border-color:var(--rose)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:inherit;font-size:14.5px;font-weight:500;padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--cocoa);cursor:pointer;transition:all .2s}
-.chip:hover{border-color:var(--rose)}
-.chip.on{background:var(--cocoa);border-color:var(--cocoa);color:var(--ivory)}
-.qcheck{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:13.5px;color:var(--muted)}
-.qcheck input{margin-top:3px;accent-color:#A86D5B}
-.qerr{color:#B4483B;font-size:14px;min-height:20px;margin-top:14px}
-.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-.qback{font:inherit;background:none;border:0;color:var(--muted);font-weight:600;cursor:pointer;visibility:hidden}
-@media(max-width:860px){.assess-grid{grid-template-columns:1fr}}
-
-.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+/* reveals */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ribbon .track{animation:none}html{scroll-behavior:auto}}
+.rv-line{display:block;overflow:hidden}
+.rv-line>span{display:block;transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.in .rv-line>span,.rv-line.in>span{transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .rv,.line>span,.rv-line>span,.fade{opacity:1!important;transform:none!important}
+  .hero-media,.photo{clip-path:none!important}.photo img{transform:none!important}
+  .manifesto .w{color:var(--ink)}html{scroll-behavior:auto}
+}
+
+/* depoimentos */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.review{padding:36px 32px 0 0;margin-right:24px}
+.review .st{color:var(--teal);letter-spacing:3px;font-size:13px}
+.review p{font-size:clamp(20px,1.8vw,24px);letter-spacing:-.02em;line-height:1.35;margin:18px 0 22px}
+.review figcaption{font-size:14px;color:var(--muted)}
+.review figcaption b{color:var(--ink);font-weight:500}
+@media(max-width:860px){.reviews{grid-template-columns:1fr}.review{margin:0;padding:30px 0;border-bottom:1px solid var(--line)}}
+.quote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.4vw,32px);line-height:1.25;color:var(--teal);margin-top:28px;letter-spacing:-.01em}
+.qlabel{font-size:14px;color:var(--ink-2)}
+.qcheck{display:flex;gap:10px;font-size:13px;color:var(--muted);align-items:flex-start}
+.qcheck input{width:18px;height:18px;margin-top:2px;accent-color:var(--teal)}
 </style>
 </head>
 <body>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.02c-.24.68-1.42 1.3-1.96 1.35-.5.05-.98.24-3.3-.69-2.79-1.1-4.56-3.95-4.7-4.13-.13-.18-1.12-1.49-1.12-2.85 0-1.35.71-2.02.96-2.3.25-.27.55-.34.73-.34h.52c.17 0 .4-.06.62.48.24.56.8 1.93.87 2.07.07.14.11.3.02.48-.1.18-.14.3-.28.46l-.41.48c-.14.14-.28.29-.12.57.16.27.72 1.18 1.54 1.92 1.06.94 1.95 1.24 2.23 1.38.28.14.44.11.6-.07.17-.18.7-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.88.9.27.13.46.2.52.32.07.12.07.68-.17 1.36Z"/></symbol>
-  <symbol id="ok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <!-- traço de rosto em perfil, linha única -->
-  <symbol id="face" viewBox="0 0 300 380"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
-    d="M180 20c-62 2-104 46-108 106-2 30 6 52 2 70-4 18-22 34-24 50-2 12 10 16 22 18-6 8-8 16-2 22 6 6 4 12 0 18-4 8 2 16 14 18 18 4 30 4 42 14 12 10 14 30 14 44M188 20c40 6 70 34 80 78"/>
-    <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M96 190c10-6 22-6 30 0M100 262c10 4 20 4 28-2"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.2-.3z"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
 </svg>
+
+<div class="progress" id="progress"></div>
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="#" class="logo" aria-label="Aurora Estética, início"><b>Aurora</b><small>Estética Avançada</small></a>
-    <nav class="menu" aria-label="Principal">
+    <a href="#" class="logo" aria-label="Aurora Estética, início">Aurora <span>estética</span></a>
+    <nav class="menu" aria-label="Menu principal">
       <a href="#tratamentos">Tratamentos</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#sobre">Sobre</a>
-      <a href="#avaliacao">Pré-avaliação</a>
       <a href="#duvidas">Dúvidas</a>
     </nav>
-    <a href="#" class="btn btn-dark js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética.">Agendar avaliação</a>
+    <a href="#avaliacao" class="btn btn-dark">Pré-avaliação</a>
   </div>
 </header>
 
 <main>
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-media" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1555820585-c5ae44394b79?auto=format&fit=crop&w=2000&q=75" alt="" fetchpriority="high" onerror="this.remove()">
-    <video class="hero-fx" src="../assets/video/aurora-luzes.mp4" autoplay muted loop playsinline preload="auto"></video>
-  </div>
-  <div class="wrap hero-inner">
-    <div class="hero-copy">
-      <span class="eyebrow">Estética facial · São Paulo</span>
-      <h1>Sua beleza natural, <em>realçada</em> com técnica.</h1>
-      <p class="sub">Harmonização facial, bioestimuladores e tratamentos de pele planejados para você, depois de uma avaliação individual e sem exageros.</p>
-      <div class="hero-ctas">
-        <a href="#" class="btn btn-light js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética."><svg><use href="#wa"/></svg>Agendar minha avaliação</a>
-        <a href="#tratamentos" class="btn btn-glass">Ver tratamentos</a>
+  <div class="wrap">
+    <div class="hero-top">
+      <h1><span class="line"><span>Sua beleza natural,</span></span><span class="line"><span><em>realçada</em> com</span></span><span class="line"><span>técnica.</span></span></h1>
+      <div class="hero-side fade">
+        <p>Harmonização facial, bioestimuladores e tratamentos de pele planejados para você, depois de uma avaliação individual e sem exageros.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-dark js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética."><svg><use href="#wa"/></svg>Agendar avaliação</a>
+          <a href="#tratamentos" class="btn btn-ghost">Tratamentos</a>
+        </div>
       </div>
     </div>
-    <ul class="hero-bar">
-      <li><span class="stars-sm">★★★★★</span>5,0 no Google · 120+ avaliações</li>
-      <li><svg><use href="#ok"/></svg>Biomédica esteta · CRBM 00000</li>
-      <li><svg><use href="#ok"/></svg>Avaliação individual antes de tudo</li>
-    </ul>
-  </div>
-</section>
-
-<div class="ribbon" aria-hidden="true"><div class="track">
-  <span>Harmonização facial</span><span>Toxina botulínica</span><span>Bioestimulador de colágeno</span><span>Preenchimento labial</span><span>Skinbooster</span><span>Limpeza de pele</span>
-  <span>Harmonização facial</span><span>Toxina botulínica</span><span>Bioestimulador de colágeno</span><span>Preenchimento labial</span><span>Skinbooster</span><span>Limpeza de pele</span>
-</div></div>
-
-
-<!-- POR QUE -->
-<section class="why">
-  <div class="wrap">
-    <span class="eyebrow rv">Por que a Aurora</span>
-    <h2 class="rv">Estética com <em>critério</em>, não com pressa</h2>
-    <div class="why-grid">
-      <div class="why-card rv"><span class="wi">01</span><h3>Avaliação de verdade</h3><p>Antes de qualquer agulha, entendemos sua queixa, sua rotina e o que faz sentido para o seu rosto.</p></div>
-      <div class="why-card rv"><span class="wi">02</span><h3>Responsável técnica</h3><p>Todos os procedimentos são feitos pela própria Dra. Marina, com registro ativo no conselho.</p></div>
-      <div class="why-card rv"><span class="wi">03</span><h3>Produtos rastreáveis</h3><p>Usamos apenas produtos registrados na Anvisa, com lote e validade informados a você.</p></div>
-      <div class="why-card rv"><span class="wi">04</span><h3>Sem pacotes empurrados</h3><p>Você recebe só o que foi indicado na avaliação. Sem promoções relâmpago, sem exageros.</p></div>
+    <div class="hero-media">
+      <img data-speed=".12" src="https://images.unsplash.com/photo-1555820585-c5ae44394b79?auto=format&fit=crop&w=2000&q=80" alt="Sala de estética clara e acolhedora" onerror="this.remove()">
     </div>
+    <div class="hero-meta fade"><span><b>5,0 no Google</b> · 120+ avaliações</span><span>Biomédica esteta · CRBM 00000</span><span>Jardins · São Paulo</span></div>
   </div>
 </section>
 
-<!-- TRATAMENTOS -->
-<section id="tratamentos">
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track" id="mq">
+    <span>Harmonização</span><span><i>Toxina botulínica</i></span><span>Bioestimulador</span><span><i>Lábios</i></span><span>Skinbooster</span><span><i>Limpeza de pele</i></span>
+    <span>Harmonização</span><span><i>Toxina botulínica</i></span><span>Bioestimulador</span><span><i>Lábios</i></span><span>Skinbooster</span><span><i>Limpeza de pele</i></span>
+  </div>
+</div>
+
+<section class="manifesto">
   <div class="wrap">
-    <div class="head">
-      <div><span class="eyebrow rv">Tratamentos</span><h2 class="rv">Cuidado para cada <em>fase</em> da sua pele</h2></div>
+    <span class="label rv">Nossa ideia</span>
+    <p id="mf" style="margin-top:32px">O melhor procedimento é aquele que ninguém percebe, só elogia. Por isso cada plano começa com uma avaliação de verdade e termina em naturalidade. Você continua parecendo você, só que mais descansada e confiante.</p>
+  </div>
+</section>
+
+<section id="tratamentos" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="label rv">Tratamentos</span>
+        <h2 class="rv">Cuidado para cada <em>fase</em> da sua pele</h2>
+      </div>
       <p class="lead rv">Cada protocolo é indicado só depois da avaliação. Toque em um tratamento para tirar dúvidas direto com a profissional.</p>
     </div>
-    <div class="treat">
-      <article class="card rv"><span class="num">01</span><span class="tag">Rosto completo</span><h3>Harmonização facial</h3><p>Planejamento completo do rosto para equilibrar proporções e valorizar seus traços, sempre com naturalidade.</p><div class="meta"><span>Sob avaliação</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em harmonização facial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">02</span><span class="tag">Expressão</span><h3>Toxina botulínica</h3><p>Suaviza linhas de expressão da testa, glabela e olhos, mantendo os movimentos naturais do rosto.</p><div class="meta"><span>~30 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em toxina botulínica. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">03</span><span class="tag">Firmeza</span><h3>Bioestimulador de colágeno</h3><p>Estimula a produção natural de colágeno para melhorar firmeza e qualidade da pele ao longo das semanas.</p><div class="meta"><span>~45 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em bioestimulador de colágeno. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">04</span><span class="tag">Lábios</span><h3>Preenchimento labial</h3><p>Hidratação e contorno dos lábios com ácido hialurônico, respeitando o formato do seu sorriso.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em preenchimento labial. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">05</span><span class="tag">Hidratação</span><h3>Skinbooster</h3><p>Hidratação profunda que devolve viço e luminosidade à pele do rosto, pescoço e colo.</p><div class="meta"><span>~40 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em skinbooster. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
-      <article class="card rv"><span class="num">06</span><span class="tag">Pele</span><h3>Limpeza de pele profunda</h3><p>Remove impurezas, controla a oleosidade e prepara a pele para os outros tratamentos.</p><div class="meta"><span>~70 min</span><a href="#" class="js-wa" data-msg="Olá! Tenho interesse em limpeza de pele. Pode me explicar como funciona?">Saber mais<svg width="16" height="16"><use href="#arrow"/></svg></a></div></article>
+    <div class="list">
+      <a href="#" class="row rv js-wa" data-img="photo-1555820585-c5ae44394b79" data-msg="Olá! Tenho interesse em harmonização facial. Pode me explicar como funciona?"><span class="n">01</span><h3>Harmonização facial</h3><p>Planejamento completo do rosto para equilibrar proporções e valorizar seus traços, sempre com naturalidade.</p><span class="cat">Rosto completo</span><span class="go"><svg><use href="#arrow"/></svg></span></a>
+      <a href="#" class="row rv js-wa" data-img="photo-1787651343620-8d5303006ecb" data-msg="Olá! Tenho interesse em toxina botulínica. Pode me explicar como funciona?"><span class="n">02</span><h3>Toxina botulínica</h3><p>Suaviza linhas de expressão da testa, glabela e olhos, mantendo os movimentos naturais do rosto.</p><span class="cat">Expressão</span><span class="go"><svg><use href="#arrow"/></svg></span></a>
+      <a href="#" class="row rv js-wa" data-img="photo-1786937680099-779e1da6f7f7" data-msg="Olá! Tenho interesse em bioestimulador de colágeno. Pode me explicar como funciona?"><span class="n">03</span><h3>Bioestimulador de colágeno</h3><p>Estimula a produção natural de colágeno para melhorar firmeza e qualidade da pele ao longo das semanas.</p><span class="cat">Firmeza</span><span class="go"><svg><use href="#arrow"/></svg></span></a>
+      <a href="#" class="row rv js-wa" data-img="photo-1787496994323-59ac5cff09f9" data-msg="Olá! Tenho interesse em preenchimento labial. Pode me explicar como funciona?"><span class="n">04</span><h3>Preenchimento labial</h3><p>Hidratação e contorno dos lábios com ácido hialurônico, respeitando o formato do seu sorriso.</p><span class="cat">Lábios</span><span class="go"><svg><use href="#arrow"/></svg></span></a>
+      <a href="#" class="row rv js-wa" data-img="photo-1786937680099-779e1da6f7f7" data-msg="Olá! Tenho interesse em skinbooster. Pode me explicar como funciona?"><span class="n">05</span><h3>Skinbooster</h3><p>Hidratação profunda que devolve viço e luminosidade à pele do rosto, pescoço e colo.</p><span class="cat">Hidratação</span><span class="go"><svg><use href="#arrow"/></svg></span></a>
+      <a href="#" class="row rv js-wa" data-img="photo-1787651343620-8d5303006ecb" data-msg="Olá! Tenho interesse em limpeza de pele. Pode me explicar como funciona?"><span class="n">06</span><h3>Limpeza de pele profunda</h3><p>Remove impurezas, controla a oleosidade e prepara a pele para os outros tratamentos.</p><span class="cat">Pele</span><span class="go"><svg><use href="#arrow"/></svg></span></a>
     </div>
   </div>
 </section>
+<div class="preview" id="preview" aria-hidden="true"></div>
 
-<!-- COMO FUNCIONA -->
-<section class="process" id="como-funciona">
+<section class="gallery" style="padding-top:clamp(88px,12vw,160px)">
+  <div class="wrap gal">
+    <div class="rv"><figure><img data-speed=".1" src="https://images.unsplash.com/photo-1787496994323-59ac5cff09f9?auto=format&fit=crop&w=1600&q=80" alt="Recepção com poltronas" loading="lazy" onerror="this.remove()"></figure><figcaption>Recepção · Jardins</figcaption></div>
+    <div class="rv"><figure><img data-speed="-.08" src="https://images.unsplash.com/photo-1787651343620-8d5303006ecb?auto=format&fit=crop&w=1200&q=80" alt="Sala de procedimentos" loading="lazy" onerror="this.remove()"></figure><figcaption>Sala de procedimentos</figcaption></div>
+  </div>
+</section>
+
+<section>
   <div class="wrap">
-    <span class="eyebrow rv">Como funciona</span>
-    <h2 class="rv">Do primeiro contato ao <em>resultado</em></h2>
-    <div class="steps">
-      <div class="step rv"><div class="n">1</div><h3>Avaliação</h3><p>Conversamos sobre o que você quer, analisamos sua pele e seu rosto e tiramos todas as dúvidas.</p></div>
-      <div class="step rv"><div class="n">2</div><h3>Plano sob medida</h3><p>Você recebe um plano com os tratamentos indicados, número de sessões e cuidados, sem pressão para fechar.</p></div>
-      <div class="step rv"><div class="n">3</div><h3>Acompanhamento</h3><p>Depois do procedimento, você tem retorno agendado e suporte pelo WhatsApp sempre que precisar.</p></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ESPAÇO -->
-<section class="gallery">
-  <div class="wrap">
-    <span class="eyebrow rv">O espaço</span>
-    <h2 class="rv">Um ambiente pensado para o seu <em>conforto</em></h2>
-    <div class="gal">
-      <figure class="rv"><img src="https://images.unsplash.com/photo-1787496994323-59ac5cff09f9?auto=format&fit=crop&w=1200&q=70" alt="Recepção com poltronas" loading="lazy" style="object-position:center" onerror="this.remove()"><figcaption>Recepção</figcaption></figure>
-      <figure class="rv"><img src="https://images.unsplash.com/photo-1787651343620-8d5303006ecb?auto=format&fit=crop&w=800&q=70" alt="Maca de procedimentos" loading="lazy" style="object-position:center" onerror="this.remove()"><figcaption>Sala de procedimentos</figcaption></figure>
-      <figure class="rv"><img src="https://images.unsplash.com/photo-1786937680099-779e1da6f7f7?auto=format&fit=crop&w=800&q=70" alt="Prateleira com produtos de skincare" loading="lazy" style="object-position:center" onerror="this.remove()"><figcaption>Prateleira com produtos de skincare</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- SOBRE -->
-<section id="sobre">
-  <div class="wrap about">
-    <div class="portrait rv"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=70" alt="Retrato da profissional responsável" loading="lazy" style="object-position:center 20%" onerror="this.remove()"></div>
-    <div>
-      <span class="eyebrow rv">Quem cuida de você</span>
-      <h2 class="rv">Dra. Marina <em>Alves</em></h2>
-      <p class="lead rv">Biomédica esteta, especialista em harmonização facial. Acredita em resultados que respeitam a sua identidade: você continua parecendo você, só que mais descansada e confiante.</p>
-      <p class="quote rv">“O melhor procedimento é aquele que ninguém percebe, só elogia.”</p>
-      <ul class="cred-list rv">
-        <li>Biomédica com habilitação em estética</li>
-        <li>Pós-graduação em harmonização orofacial</li>
-        <li>Formação em bioestimuladores e skinbooster</li>
-      </ul>
-      <div class="creds rv">
-        <div><b>8 anos</b><span>de experiência em estética</span></div>
-        <div><b>5,0 ★</b><span>média das avaliações no Google</span></div>
+    <div class="sec-head">
+      <div>
+        <span class="label rv">Por que a Aurora</span>
+        <h2 class="rv">Estética com <em>critério</em>, não com pressa</h2>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- DEPOIMENTOS -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <span class="eyebrow rv">Depoimentos</span>
-    <h2 class="rv">Quem já passou <em>por aqui</em></h2>
-    <div class="reviews">
-      <figure class="review rv"><div class="stars">★★★★★</div><p>“Atendimento super acolhedor. Ela explicou tudo com calma e o resultado ficou muito natural.”</p><figcaption class="who"><i>CA</i><div>Camila A.<small>Paciente</small></div></figcaption></figure>
-      <figure class="review rv"><div class="stars">★★★★★</div><p>“Eu tinha medo de ficar artificial. Saí com a pele linda e ninguém percebeu que fiz algo.”</p><figcaption class="who"><i>JR</i><div>Juliana R.<small>Paciente</small></div></figcaption></figure>
-      <figure class="review rv"><div class="stars">★★★★★</div><p>“Espaço lindo, pontualidade e muito cuidado no pós. Já marquei meu retorno.”</p><figcaption class="who"><i>PM</i><div>Patrícia M.<small>Paciente</small></div></figcaption></figure>
+    <div class="why">
+      <div class="rv"><small>01</small><h3>Avaliação de verdade</h3><p>Antes de qualquer agulha, entendemos sua queixa, sua rotina e o que faz sentido para o seu rosto.</p></div>
+      <div class="rv"><small>02</small><h3>Responsável técnica</h3><p>Todos os procedimentos são feitos pela própria Dra. Marina, com registro ativo no conselho.</p></div>
+      <div class="rv"><small>03</small><h3>Produtos rastreáveis</h3><p>Apenas produtos registrados na Anvisa, com lote e validade informados a você.</p></div>
+      <div class="rv"><small>04</small><h3>Sem pacotes empurrados</h3><p>Você recebe só o que foi indicado na avaliação. Sem promoções relâmpago, sem exageros.</p></div>
     </div>
   </div>
 </section>
 
-<!-- DÚVIDAS -->
-<section class="process" id="duvidas">
+<section class="process" id="como-funciona">
+  <div class="wrap pr-grid">
+    <div class="pr-left">
+      <span class="label rv">Como funciona</span>
+      <h2 class="rv">Do primeiro contato ao <em>resultado</em></h2>
+      <div class="pr-big" aria-hidden="true"><span id="prn">01<br>02<br>03</span></div>
+    </div>
+    <div class="pr-steps" id="prs">
+      <div class="pr-rail"><i id="prr"></i></div>
+      <div class="pr-step"><small>Passo 01</small><h3>Avaliação</h3><p>Conversamos sobre o que você quer, analisamos sua pele e seu rosto e tiramos todas as dúvidas.</p></div>
+      <div class="pr-step"><small>Passo 02</small><h3>Plano sob medida</h3><p>Você recebe os tratamentos indicados, o número de sessões e os cuidados, sem pressão para fechar.</p></div>
+      <div class="pr-step"><small>Passo 03</small><h3>Acompanhamento</h3><p>Depois do procedimento, você tem retorno agendado e suporte pelo WhatsApp sempre que precisar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap about">
+    <div class="photo rvx"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80" alt="Retrato da profissional responsável" loading="lazy" style="object-position:center 20%" onerror="this.remove()"></div>
+    <div>
+      <span class="label rv">Quem cuida de você</span>
+      <h2 class="rv">Dra. Marina <em>Alves</em></h2>
+      <p class="lead rv" style="margin-top:22px">Biomédica esteta, especialista em harmonização facial. Acredita em resultados que respeitam a sua identidade.</p>
+      <p class="quote rv">“O melhor procedimento é aquele que ninguém percebe, só elogia.”</p>
+      <ul class="facts rv">
+        <li><span>Formação</span>Biomédica com habilitação em estética</li>
+        <li><span>Especialização</span>Harmonização orofacial</li>
+        <li><span>Experiência</span>8 anos em estética</li>
+        <li><span>Google</span>5,0 ★ de média</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="label rv">Depoimentos</span>
+        <h2 class="rv">Quem já passou <em>por aqui</em></h2>
+      </div>
+    </div>
+    <div class="reviews">
+      <figure class="review rv"><div class="st">★★★★★</div><p>“Atendimento super acolhedor. Ela explicou tudo com calma e o resultado ficou muito natural.”</p><figcaption><b>Camila A.</b> · Paciente</figcaption></figure>
+      <figure class="review rv"><div class="st">★★★★★</div><p>“Eu tinha medo de ficar artificial. Saí com a pele linda e ninguém percebeu que fiz algo.”</p><figcaption><b>Juliana R.</b> · Paciente</figcaption></figure>
+      <figure class="review rv"><div class="st">★★★★★</div><p>“Espaço lindo, pontualidade e muito cuidado no pós. Já marquei meu retorno.”</p><figcaption><b>Patrícia M.</b> · Paciente</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacao" style="padding-top:0">
+  <div class="wrap bk-grid">
+    <div>
+      <span class="label rv">Pré-avaliação online</span>
+      <h2 class="rv">Conte o que te <em>incomoda</em></h2>
+      <p class="lead rv" style="margin-top:22px">Responda 3 perguntas rápidas e envie para a Dra. Marina pelo WhatsApp. Assim a conversa já começa com o seu caso em mãos.</p>
+      <ul class="bk-list rv">
+        <li>Leva menos de 1 minuto</li>
+        <li>Resposta da própria profissional</li>
+        <li>Sem compromisso de agendar</li>
+      </ul>
+    </div>
+    <form class="qform rv" id="qform" novalidate>
+      <div class="qtop"><span>Pré-avaliação</span><span id="qcount">Passo 1 de 3</span></div>
+      <div class="qprog"><i id="qbar"></i></div>
+      <fieldset class="qstep active" data-step="1">
+        <legend>Vamos começar</legend>
+        <label class="f">Como podemos te chamar?<input type="text" id="qnome" placeholder="Seu primeiro nome" autocomplete="given-name"></label>
+        <span class="qlabel">Já fez algum procedimento estético?</span>
+        <div class="chips" data-name="antes" role="group" aria-label="Já fez procedimento"><button type="button" class="chip">Sim</button><button type="button" class="chip">Não, seria o primeiro</button></div>
+      </fieldset>
+      <fieldset class="qstep" data-step="2">
+        <legend>O que mais te incomoda hoje?</legend>
+        <div class="chips" data-name="queixa" data-multi="1" role="group" aria-label="Queixa">
+          <button type="button" class="chip">Linhas de expressão</button><button type="button" class="chip">Perda de volume</button>
+          <button type="button" class="chip">Flacidez</button><button type="button" class="chip">Lábios</button>
+          <button type="button" class="chip">Manchas e textura</button><button type="button" class="chip">Ainda não sei</button>
+        </div>
+      </fieldset>
+      <fieldset class="qstep" data-step="3">
+        <legend>Seu contato</legend>
+        <label class="f">WhatsApp com DDD<input type="tel" id="qtel" inputmode="numeric" placeholder="(11) 99999-9999" autocomplete="tel"></label>
+        <label class="qcheck"><input type="checkbox" id="qok">Autorizo o contato da Aurora pelo WhatsApp para agendar minha avaliação.</label>
+      </fieldset>
+      <p class="qerr" id="qerr" role="alert"></p>
+      <div class="qnav">
+        <button type="button" class="qback" id="qback">Voltar</button>
+        <button type="submit" class="btn btn-dark" id="qnext">Continuar</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="duvidas" style="padding-top:0">
   <div class="wrap faq-grid">
-    <div><span class="eyebrow rv">Dúvidas</span><h2 class="rv">Perguntas <em>frequentes</em></h2><p class="lead rv">Não encontrou sua dúvida? Chame no WhatsApp, respondemos rapidinho.</p></div>
-    <div class="rv">
+    <div>
+      <span class="label rv">Dúvidas</span>
+      <h2 class="rv">Perguntas <em>frequentes</em></h2>
+    </div>
+    <div class="faq rv">
       <details><summary>A avaliação tem custo?</summary><p>A primeira avaliação serve para entender o que você procura e indicar o melhor caminho. Consulte as condições pelo WhatsApp.</p></details>
       <details><summary>Os procedimentos doem?</summary><p>Usamos anestésico tópico e técnicas que deixam o procedimento bem confortável. A sensação varia de pessoa para pessoa.</p></details>
       <details><summary>Em quanto tempo vejo o resultado?</summary><p>Depende do tratamento e de cada organismo. Na avaliação explicamos o tempo esperado e o número de sessões para o seu caso.</p></details>
@@ -402,60 +464,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
   </div>
 </section>
 
-
-<!-- AVALIAÇÃO ONLINE -->
-<section class="assess" id="avaliacao">
-  <div class="wrap assess-grid">
-    <div>
-      <span class="eyebrow rv">Pré-avaliação online</span>
-      <h2 class="rv">Conte o que te <em>incomoda</em></h2>
-      <p class="lead rv">Responda 3 perguntas rápidas e envie para a Dra. Marina pelo WhatsApp. Assim a conversa já começa com o seu caso em mãos.</p>
-    </div>
-    <form class="qform rv" id="qform" novalidate>
-      <div class="qprog"><span id="qbar"></span></div>
-      <div class="qstep active" data-step="1">
-        <label class="qlabel" for="qnome">Como podemos te chamar?</label>
-        <input id="qnome" class="qinput" type="text" placeholder="Seu primeiro nome" autocomplete="given-name">
-        <span class="qlabel" style="margin-top:22px">Já fez algum procedimento estético?</span>
-        <div class="chips" data-name="antes"><button type="button" class="chip">Sim</button><button type="button" class="chip">Não, seria o primeiro</button></div>
-      </div>
-      <div class="qstep" data-step="2">
-        <span class="qlabel">O que mais te incomoda hoje?</span>
-        <div class="chips" data-name="queixa" data-multi="1">
-          <button type="button" class="chip">Linhas de expressão</button><button type="button" class="chip">Perda de volume</button>
-          <button type="button" class="chip">Flacidez</button><button type="button" class="chip">Lábios</button>
-          <button type="button" class="chip">Manchas e textura</button><button type="button" class="chip">Ainda não sei</button>
-        </div>
-      </div>
-      <div class="qstep" data-step="3">
-        <label class="qlabel" for="qtel">Seu WhatsApp</label>
-        <input id="qtel" class="qinput" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" autocomplete="tel">
-        <label class="qcheck"><input type="checkbox" id="qok"> Autorizo o contato da Aurora pelo WhatsApp para agendar minha avaliação.</label>
-      </div>
-      <p class="qerr" id="qerr" role="alert"></p>
-      <div class="qnav">
-        <button type="button" class="qback" id="qback">Voltar</button>
-        <button type="submit" class="btn btn-dark" id="qnext">Continuar</button>
-      </div>
-    </form>
-  </div>
-</section>
-
-<!-- CTA + LOCAL -->
-<section>
+<section class="cta">
   <div class="wrap">
-    <div class="cta rv">
-      <div style="position:relative;z-index:1">
-        <span class="eyebrow" style="color:#E4B5A4">Agende agora</span>
-        <h2>Vamos cuidar de <em>você</em>?</h2>
-        <p>Agende sua avaliação pelo WhatsApp e receba um plano pensado para o seu rosto e a sua rotina.</p>
-        <a href="#" class="btn btn-light js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética." style="margin-top:28px"><svg><use href="#wa"/></svg>Agendar pelo WhatsApp</a>
-      </div>
-      <div class="info">
-        <div><span>Endereço</span>Rua Exemplo, 123 · Jardins<br>São Paulo · SP</div>
-        <div><span>Horário</span>Seg a Sex · 9h às 20h<br>Sáb · 9h às 15h</div>
-        <div><span>Instagram</span>@aurora.estetica</div>
-      </div>
+    <span class="label rv">Agende agora</span>
+    <h2><span class="rv-line"><span>Vamos cuidar</span></span><span class="rv-line"><span>de <em>você?</em></span></span></h2>
+    <a href="#" class="btn btn-dark js-wa rv" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética."><svg><use href="#wa"/></svg>Agendar pelo WhatsApp</a>
+    <div class="info rv">
+      <div><span>Endereço</span>Rua Exemplo, 123 · Jardins<br>São Paulo · SP</div>
+      <div><span>Horário</span>Seg a sex · 9h às 20h<br>Sábado · 9h às 15h</div>
+      <div><span>Instagram</span>@aurora.estetica</div>
     </div>
   </div>
 </section>
@@ -463,31 +480,87 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
 
 <footer>
   <div class="wrap">
-    <a href="#" class="logo"><b>Aurora</b><small>Estética Avançada</small></a>
-    <p class="legal">Os resultados podem variar de pessoa para pessoa. Procedimentos realizados somente após avaliação individual. Responsável técnica: Dra. Marina Alves · CRBM 00000.<br>Projeto conceitual por <a href="https://yagoportfolio.com.br" style="text-decoration:underline">Yago Moreira</a>.</p>
+    <span>Responsável técnica: Dra. Marina Alves · CRBM 00000</span>
+    <p>Os resultados podem variar de pessoa para pessoa. Procedimentos realizados somente após avaliação individual. Projeto conceitual por <a href="https://yagoportfolio.com.br">Yago Moreira</a>.</p>
   </div>
 </footer>
 
-<a href="#" class="wa js-wa" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética." aria-label="Agendar pelo WhatsApp"><svg><use href="#wa"/></svg></a>
+<a href="#" class="wa js-wa" id="wafab" data-msg="Olá! Gostaria de agendar uma avaliação na Aurora Estética." aria-label="Agendar pelo WhatsApp"><svg><use href="#wa"/></svg></a>
 
 <script>
 const WHATSAPP = '5511999999999';
 document.querySelectorAll('.js-wa').forEach(a=>{a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(a.dataset.msg);a.target='_blank';a.rel='noopener';});
-const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+requestAnimationFrame(()=>document.body.classList.add('ready'));
+
+/* reveals com stagger por grupo */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv,.rvx,.cta h2 .rv-line').forEach(el=>{
+  const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));
+  const i=Math.max(0,sib.indexOf(el)); el.style.transitionDelay=Math.min(i,5)*80+'ms'; io.observe(el);
+});
+
+/* palavras do manifesto */
+const mf=document.getElementById('mf');
+const accent=['naturalidade.','você,'];
+mf.innerHTML=mf.textContent.trim().split(/\s+/).map(w=>`<span class="w${accent.includes(w)?' ac':''}">${w}</span>`).join(' ');
+const words=[...mf.querySelectorAll('.w')];
+
+/* preview de imagem nos tratamentos (desktop) */
+const pv=document.getElementById('preview');
+if(matchMedia('(hover:hover) and (min-width:901px)').matches){
+  let tx=0,ty=0,x=0,y=0;
+  document.querySelectorAll('.row').forEach(r=>{
+    r.addEventListener('mouseenter',()=>{pv.innerHTML=`<img src="https://images.unsplash.com/${r.dataset.img}?auto=format&fit=crop&w=600&q=75" alt="" onerror="this.remove()">`;pv.classList.add('on')});
+    r.addEventListener('mouseleave',()=>pv.classList.remove('on'));
+  });
+  addEventListener('mousemove',e=>{tx=e.clientX+150;ty=e.clientY});
+  (function loop(){x+=(tx-x)*.14;y+=(ty-y)*.14;pv.style.left=x+'px';pv.style.top=y+'px';requestAnimationFrame(loop)})();
+}
+
+/* scroll: progresso, nav, parallax, marquee, manifesto, processo */
+const nav=document.getElementById('nav'),bar=document.getElementById('progress'),mq=document.getElementById('mq'),fab=document.getElementById('wafab');
+const par=[...document.querySelectorAll('[data-speed]')];
+const prs=document.getElementById('prs'),prr=document.getElementById('prr'),prn=document.getElementById('prn'),steps=[...prs.querySelectorAll('.pr-step')];
+let lastY=scrollY,mqX=0,vel=0,ticking=false;
+function frame(){
+  const y=scrollY,h=innerHeight,max=document.documentElement.scrollHeight-h;
+  bar.style.transform=`scaleX(${max>0?y/max:0})`;
+  nav.classList.toggle('scrolled',y>30);
+  nav.classList.toggle('hide',y>lastY&&y>400);
+  fab.classList.toggle('show',y>h*.6);
+  vel=Math.min(Math.abs(y-lastY),60);lastY=y;
+  if(!reduce){
+    par.forEach(img=>{if(!img.isConnected)return;const r=img.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>h)return;
+      const p=(r.top+r.height/2-h/2)/h;img.style.transform=`translate3d(0,${p*-100*(+img.dataset.speed)}%,0)`;});
+  }
+  // manifesto
+  const mr=mf.getBoundingClientRect();const mp=Math.min(1,Math.max(0,(h*.85-mr.top)/(mr.height+h*.35)));
+  const lit=Math.round(mp*words.length);words.forEach((w,i)=>w.classList.toggle('on',i<lit||reduce));
+  // processo
+  const pr=prs.getBoundingClientRect();const pp=Math.min(1,Math.max(0,(h*.55-pr.top)/pr.height));
+  prr.style.transform=`scaleY(${pp})`;
+  let cur=0;steps.forEach((s,i)=>{const r=s.getBoundingClientRect();const on=r.top<h*.62&&r.bottom>h*.3;s.classList.toggle('on',on);if(r.top<h*.62)cur=i;});
+  prn.style.transform=`translateY(${-cur*1.02}em)`;
+  ticking=false;
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+addEventListener('resize',frame);frame();
+
+/* marquee contínuo, acelera com o scroll */
+if(!reduce){(function m(){const w=mq.scrollWidth/2;mqX-=0.5+vel*.25;vel*=.92;if(-mqX>=w)mqX+=w;mq.style.transform=`translate3d(${mqX}px,0,0)`;requestAnimationFrame(m)})();}
 
 // pré-avaliação em 3 passos -> WhatsApp
 (function(){
   const f=document.getElementById('qform'); if(!f) return;
-  let step=1; const steps=[...f.querySelectorAll('.qstep')], bar=document.getElementById('qbar'),
+  let step=1; const steps=[...f.querySelectorAll('.qstep')], bar=document.getElementById('qbar'), count=document.getElementById('qcount'),
     back=document.getElementById('qback'), next=document.getElementById('qnext'), err=document.getElementById('qerr');
   f.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;
     if(!g.dataset.multi) g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on')); c.classList.toggle('on');}));
   const val=n=>[...f.querySelectorAll(`.chips[data-name="${n}"] .chip.on`)].map(c=>c.textContent);
   const tel=document.getElementById('qtel');
   tel.addEventListener('input',()=>{let d=tel.value.replace(/\D/g,'').slice(0,11);tel.value=d.length>6?`(${d.slice(0,2)}) ${d.slice(2,d.length-4)}-${d.slice(-4)}`:d.length>2?`(${d.slice(0,2)}) ${d.slice(2)}`:d;});
-  function show(){steps.forEach(s=>s.classList.toggle('active',+s.dataset.step===step));bar.style.width=(step/3*100)+'%';
+  function show(){steps.forEach(s=>s.classList.toggle('active',+s.dataset.step===step));bar.style.width=(step/3*100)+'%';count.textContent=`Passo ${step} de 3`;
     back.style.visibility=step>1?'visible':'hidden';next.textContent=step<3?'Continuar':'Enviar pelo WhatsApp';err.textContent='';}
   function check(){
     if(step===1){if(!document.getElementById('qnome').value.trim())return'Digite seu nome.';if(!val('antes').length)return'Escolha uma opção.';}
