@@ -44,7 +44,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* ===== hero com sequência ===== */
 .seq{position:relative}
-#hero{height:440vh}
+#hero{height:300vh}
 .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .hero-grid{height:100%;display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;gap:20px;padding-top:40px}
 .copy{position:relative;z-index:2}
@@ -60,6 +60,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .steps b{color:var(--cream);font-weight:500}
 .ctas{display:flex;gap:10px;flex-wrap:wrap}
 .visual{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.visual canvas{will-change:transform}
 .visual canvas,.visual .poster{width:132%;flex:none;aspect-ratio:864/496;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 55%,transparent 100%)}
 .visual .poster{position:absolute;object-fit:contain;transition:opacity .4s}
 .visual .poster.hide{opacity:0}
@@ -114,7 +115,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:700px){.hz-head{flex-direction:column;align-items:flex-start;margin-bottom:26px}.hz-head p{display:none}}
 
 /* combos (sequência 2) */
-#combos{height:320vh}
+#combos{height:240vh}
 #combos .pin{display:flex;flex-direction:column}
 .c-visual{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding-top:60px}
 .c-visual canvas,.c-visual .poster{height:118%;max-width:none;flex:none;aspect-ratio:16/9;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 52%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 52%,transparent 100%)}
@@ -310,14 +311,15 @@ function Seq(sec){
   return function tick(){
     const r=sec.getBoundingClientRect();if(r.bottom<-50||r.top>innerHeight+50)return;
     const target=progressOf(sec)*(n-1);
-    cur=reduce?target:cur+(target-cur)*.14;if(Math.abs(target-cur)<.01)cur=target;
+    cur=reduce?target:cur+(target-cur)*.22;if(Math.abs(target-cur)<.01)cur=target;
     const i=Math.round(cur);if(i!==drawn)paint(i);
     const p=cur/(n-1);let a=0;chaps.forEach((c,k)=>{if(p>=+c.dataset.at)a=k});
     chaps.forEach((c,k)=>{c.classList.toggle('on',k===a);c.classList.toggle('past',k<a)});
     if(step)step.textContent=String(a+1).padStart(2,'0');
     if(bar)bar.style.transform=`scaleX(${p})`;
     if(cue)cue.style.opacity=p>.02?0:1;
-    if(ghost&&!reduce)ghost.style.transform=`translate(calc(-50% + ${(.5-p)*14}vw),-50%)`;
+    if(ghost&&!reduce)ghost.style.transform=`translate(calc(-50% + ${(.5-p)*40}vw),-50%)`;
+    if(!reduce){const m=sec.dataset.seq==='hero'?1:.6,e=Math.sin(p*Math.PI);cv.style.transform=`translate3d(0,${(.5-p)*8*m}vh,0) scale(${.86+p*.22*m+e*.04}) rotate(${(p-.5)*-6*m}deg)`;}
   };
 }
 const ticks=[...document.querySelectorAll('.seq')].map(Seq);
