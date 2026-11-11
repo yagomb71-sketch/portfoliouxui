@@ -48,6 +48,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%}
 .stage .fallback{position:absolute;inset:0;will-change:transform,filter}
 .stage .fallback img{object-fit:cover}
+.stage .fallback.gone{display:none}
 .stage::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(13,10,8,.75) 100%),linear-gradient(180deg,rgba(13,10,8,.5),transparent 25%,transparent 70%,rgba(13,10,8,.85));pointer-events:none}
 .chap{position:absolute;z-index:2;left:0;right:0;pointer-events:none}
 .chap .wrap{display:flex;flex-direction:column}
@@ -155,15 +156,15 @@ footer a{text-decoration:underline}
 <!-- SEQUÊNCIA 1: o burger se montando -->
 <section class="seq" id="seq1" data-seq="seq1">
   <div class="stage">
-    <div class="fallback"><img src="https://images.unsplash.com/photo-1633424234673-c8cd0f4df77b?auto=format&fit=crop&w=2000&q=80" alt="Hambúrguer com os ingredientes voando" onerror="this.remove()"></div>
+    <div class="fallback"><img src="../assets/seq/brasa-1/0001.webp" alt="Hambúrguer com os ingredientes flutuando" fetchpriority="high"></div>
     <canvas aria-hidden="true"></canvas>
-    <div class="chap c-left" data-from="0" data-to=".3">
+    <div class="chap c-left" data-from="0" data-to=".3" data-x=".2">
       <div class="wrap"><span class="kicker fd">Smash burger · São Paulo</span><h1 class="disp"><span class="w">Feito</span> <span class="w">na</span> <span class="w fire">brasa.</span></h1><p class="fd">Blend da casa prensado na chapa bem quente, até formar aquela crosta que estala.</p></div>
     </div>
-    <div class="chap c-right" data-from=".36" data-to=".64">
+    <div class="chap c-right" data-from=".36" data-to=".64" data-x="-.2">
       <div class="wrap"><span class="kicker fd">Camada por camada</span><h2 class="disp"><span class="w">Cheddar</span> <span class="w">que</span> <span class="w fire">escorre.</span></h2><p class="fd">Pão brioche selado na manteiga, cheddar inglês, cebola caramelizada e o molho secreto da casa.</p></div>
     </div>
-    <div class="chap c-bottom" data-from=".7" data-to="1.01">
+    <div class="chap c-bottom" data-from=".7" data-to="1.01" data-x=".22">
       <div class="wrap"><span class="kicker fd">Montado na hora</span><h2 class="disp"><span class="w">Quente</span> <span class="w">até</span> <span class="w fire">você.</span></h2>
         <div class="row fd"><a href="#" class="btn btn-fire js-wa" data-msg="Olá! Quero fazer um pedido na Brasa."><svg><use href="#wa"/></svg>Pedir no WhatsApp</a><a href="#cardapio" class="btn btn-line">Ver cardápio</a></div></div>
     </div>
@@ -199,12 +200,12 @@ footer a{text-decoration:underline}
 <!-- SEQUÊNCIA 2: combos -->
 <section class="seq short" id="combos" data-seq="seq2">
   <div class="stage">
-    <div class="fallback"><img src="https://images.unsplash.com/photo-1632203171982-cc0df6e9ceb4?auto=format&fit=crop&w=2000&q=80" alt="Hambúrguer grande com ingredientes voando" loading="lazy" onerror="this.remove()"></div>
+    <div class="fallback"><img src="../assets/seq/brasa-2/0001.webp" alt="Burger, batata frita e milkshake" loading="lazy"></div>
     <canvas aria-hidden="true"></canvas>
-    <div class="chap c-left" data-from="0" data-to=".48">
+    <div class="chap c-left" data-from="0" data-to=".48" data-x=".2">
       <div class="wrap"><span class="kicker fd">Combos</span><h2 class="disp"><span class="w">Burger,</span> <span class="w">batata</span> <span class="w fire">e shake.</span></h2><p class="fd">Qualquer burger + batata rústica + refri ou milkshake por mais R$ 16.</p></div>
     </div>
-    <div class="chap c-right" data-from=".52" data-to="1.01">
+    <div class="chap c-right" data-from=".52" data-to="1.01" data-x="-.2">
       <div class="wrap"><span class="kicker fd">Toda terça</span><h2 class="disp"><span class="w">Dobro</span> <span class="w">de</span> <span class="w fire">smash.</span></h2><div class="row fd"><a href="#" class="btn btn-fire js-wa" data-msg="Olá! Quero pedir um combo."><svg><use href="#wa"/></svg>Pedir combo</a></div></div>
     </div>
     <div class="prog" aria-hidden="true"><i><b></b></i><i><b></b></i></div>
@@ -246,8 +247,8 @@ footer a{text-decoration:underline}
    Sequências de quadros (vídeo convertido em imagens). Com count:0 a página usa a foto de reserva animada. */
 const WHATSAPP='5511999999999';
 const SEQS={
-  seq1:{path:'../assets/seq/brasa-1/',count:0,ext:'webp'},
-  seq2:{path:'../assets/seq/brasa-2/',count:0,ext:'webp'}
+  seq1:{path:'../assets/seq/brasa-1/',count:97,ext:'webp',zoom:.94},
+  seq2:{path:'../assets/seq/brasa-2/',count:144,ext:'webp',zoom:1.05}
 };
 /* ======================== */
 document.querySelectorAll('.js-wa').forEach(a=>{a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(a.dataset.msg);a.target='_blank';a.rel='noopener'});
@@ -255,25 +256,35 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
 
 /* motor de sequência: desenha o quadro certo no canvas conforme a rolagem */
+const BG='#0D0A08';
 function makeSeq(sec){
   const cfg=SEQS[sec.dataset.seq]||{count:0},cv=sec.querySelector('canvas'),ctx=cv.getContext('2d'),fb=sec.querySelector('.fallback');
   const chaps=[...sec.querySelectorAll('.chap')],bars=[...sec.querySelectorAll('.prog b')],hint=sec.querySelector('.hint');
-  const frames=[];let loaded=0,last=-1,ready=false;
-  if(cfg.count>0){
-    for(let i=1;i<=cfg.count;i++){const im=new Image();im.decoding='async';im.src=cfg.path+String(i).padStart(4,'0')+'.'+cfg.ext;im.onload=()=>{loaded++;if(i===1){ready=true;fb.style.display='none';draw(0,true)}};frames.push(im);}
-  }else cv.style.display='none';
-  function size(){const d=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*d;cv.height=innerHeight*d;last=-1;}
-  function draw(i,force){if(!ready||(i===last&&!force))return;let im=frames[i];
-    if(!im||!im.complete||!im.naturalWidth){for(let k=i;k>=0;k--){if(frames[k].complete&&frames[k].naturalWidth){im=frames[k];break}}}if(!im)return;
-    const s=Math.max(cv.width/im.naturalWidth,cv.height/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;
-    ctx.fillStyle='#0D0A08';ctx.fillRect(0,0,cv.width,cv.height);ctx.drawImage(im,(cv.width-w)/2,(cv.height-h)/2,w,h);last=i;}
+  const frames=[];let ready=false,started=false,cur=0,curX=0,tgtX=0,raf=0;
+  function load(){if(started||!cfg.count)return;started=true;
+    for(let i=1;i<=cfg.count;i++){const im=new Image();im.decoding='async';im.src=cfg.path+String(i).padStart(4,'0')+'.'+cfg.ext;
+      if(i===1)im.onload=()=>{ready=true;fb.classList.add('gone');draw()};frames.push(im);}}
+  if(!cfg.count)cv.style.display='none';
+  new IntersectionObserver(es=>{if(es[0].isIntersecting)load()},{rootMargin:'150% 0px'}).observe(sec);
+  function size(){const d=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*d;cv.height=innerHeight*d;draw();}
+  function pick(i){for(let k=i;k>=0;k--){const f=frames[k];if(f&&f.complete&&f.naturalWidth)return f}return null}
+  function draw(){if(!ready)return;const im=pick(cur);if(!im)return;const W=cv.width,H=cv.height,iw=im.naturalWidth,ih=im.naturalHeight;
+    const portrait=W/H<.9;let s,x,y;
+    if(portrait){s=W*1.3/iw;x=(W-iw*s)/2;y=H*.42-ih*s/2;}
+    else{s=Math.max(W/iw,H/ih)*(cfg.zoom||1);x=(W-iw*s)/2+curX*W;y=(H-ih*s)/2;}
+    const w=iw*s,h=ih*s;ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);ctx.drawImage(im,x,y,w,h);
+    const f=Math.min(w,h)*.12,g=(x0,y0,x1,y1,rx,ry,rw,rh)=>{const gr=ctx.createLinearGradient(x0,y0,x1,y1);gr.addColorStop(0,BG);gr.addColorStop(1,'rgba(13,10,8,0)');ctx.fillStyle=gr;ctx.fillRect(rx,ry,rw,rh)};
+    if(x>-1)g(x,0,x+f,0,x,0,f,H); if(x+w<W+1)g(x+w,0,x+w-f,0,x+w-f,0,f,H);
+    if(y>-1)g(0,y,0,y+f,0,y,W,f); if(y+h<H+1)g(0,y+h,0,y+h-f,0,y+h-f,W,f);}
+  function anim(){curX+=(tgtX-curX)*.08;draw();if(Math.abs(tgtX-curX)>.0005)raf=requestAnimationFrame(anim);else{curX=tgtX;raf=0;draw()}}
   size();addEventListener('resize',size);
   return function(){
     const r=sec.getBoundingClientRect(),p=clamp(-r.top/(r.height-innerHeight));
     if(r.bottom<0||r.top>innerHeight)return;
-    if(cfg.count>0&&ready)draw(Math.round(p*(cfg.count-1)));
-    else if(!reduce&&fb){fb.style.transform=`scale(${1.35-p*.3}) rotate(${(p-.5)*-6}deg) translateY(${(p-.5)*-6}%)`;fb.style.filter=`brightness(${.55+Math.sin(p*Math.PI)*.35}) saturate(${1+p*.3})`;}
-    chaps.forEach(c=>{const a=+c.dataset.from,b=+c.dataset.to;c.classList.toggle('on',p>=a&&p<b);c.classList.toggle('off',p>=b);});
+    let x=0;
+    chaps.forEach(c=>{const a=+c.dataset.from,b=+c.dataset.to,on=p>=a&&p<b;c.classList.toggle('on',on);c.classList.toggle('off',p>=b);if(on)x=+(c.dataset.x||0)});
+    if(cfg.count>0){cur=Math.round(p*(cfg.count-1));if(reduce)curX=tgtX=x;else tgtX=x;if(!raf)draw();if(!raf&&Math.abs(tgtX-curX)>.0005)raf=requestAnimationFrame(anim);}
+    else if(!reduce&&fb){fb.style.transform=`scale(${1.35-p*.3}) rotate(${(p-.5)*-6}deg)`;}
     const n=bars.length;bars.forEach((b,i)=>b.style.transform=`scaleY(${clamp(p*n-i)})`);
     if(hint)hint.style.opacity=p>.03?0:1;
   };
