@@ -5,40 +5,82 @@
   var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
   function hex(h){h=h.replace('#','');return [parseInt(h.slice(0,2),16)/255,parseInt(h.slice(2,4),16)/255,parseInt(h.slice(4,6),16)/255]}
 
-  /* ---------- 1. Pérola 3D (raymarching em shader) ---------- */
-  var FS=[
+  /* ---------- 1. Objeto 3D por nicho (raymarching em shader): dente ou frasco de sérum ---------- */
+  var COMMON=[
   'precision highp float;',
   'uniform vec2 R;uniform float T;uniform vec2 M;uniform float S;uniform vec3 C1,C2,C3;',
   'mat2 rot(float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c);}',
-  'float map(vec3 p){',
-  ' p.xz*=rot(T*.25+M.x*.8+S*2.2); p.yz*=rot(M.y*.6+S*1.2);',
-  ' float d=length(p)-1.;',
-  ' d+=.11*sin(2.6*p.x+T*1.1)*sin(2.4*p.y+T*.9)*sin(2.8*p.z+T*.7);',
-  ' d+=.04*sin(6.*p.y+T*1.6)*sin(5.*p.x-T);',
-  ' return d*.62;}',
+  'float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}',
+  'float smax(float a,float b,float k){return -smin(-a,-b,k);}',
+  'float rbox(vec3 p,vec3 b,float r){vec3 q=abs(p)-b+r;return length(max(q,0.))+min(max(q.x,max(q.y,q.z)),0.)-r;}',
+  'float rcone(vec3 p,vec3 a,vec3 b,float r1,float r2){vec3 ba=b-a,pa=p-a;float h=clamp(dot(pa,ba)/dot(ba,ba),0.,1.);return length(pa-ba*h)-mix(r1,r2,h);}',
+  'float cyl(vec3 p,float r,float h,float k){vec2 d=abs(vec2(length(p.xz),p.y))-vec2(r-k,h-k);return min(max(d.x,d.y),0.)+length(max(d,0.))-k;}',
+  'float mat;'
+  ].join('\n');
+  var SHAPES={
+   tooth:[
+   'float map(vec3 p){',
+   ' p.y+=sin(T*.8)*.05;',
+   ' p.xz*=rot(T*.35+M.x*1.2+S*3.); p.yz*=rot(.22+M.y*.5);',
+   ' vec3 q=p-vec3(0,.38,0);',
+   ' float c=rbox(q,vec3(.66,.36,.56),.3);',
+   ' float cu=1e9;',
+   ' for(int i=0;i<4;i++){float fi=float(i);vec2 o=vec2(mod(fi,2.)<1.?-.3:.3,fi<2.?-.24:.24);cu=min(cu,length(p-vec3(o.x,.7,o.y))-.3);}',
+   ' c=smin(c,cu,.18);',
+   ' c=smax(c,-(length(p-vec3(0,1.08,0))-.34),.12);',
+   ' float r1=rcone(p,vec3(-.3,0.,0.),vec3(-.36,-1.05,.04),.34,.1);',
+   ' float r2=rcone(p,vec3(.3,0.,0.),vec3(.34,-1.,-.04),.34,.1);',
+   ' float d=smin(c,smin(r1,r2,.12),.28);',
+   ' mat=1.;return d*.8;}',
+   'vec3 shade(vec3 p,vec3 n,vec3 rd,float ao){',
+   ' vec3 L=normalize(vec3(-.5,.8,.6));float dif=max(dot(n,L),0.),fre=pow(1.-max(dot(n,-rd),0.),2.5),spe=pow(max(dot(reflect(rd,n),L),0.),60.);',
+   ' vec3 enamel=mix(C2,C1,.55+.45*dif);',
+   ' vec3 col=enamel*(.62+.38*ao)+C3*fre*.28+spe*.95;',
+   ' col+=vec3(1.,.97,.9)*pow(max(dot(n,normalize(vec3(.6,-.2,.7))),0.),3.)*.08;',
+   ' return col;}'].join('\n'),
+   serum:[
+   'float map(vec3 p){',
+   ' p.y+=sin(T*.8)*.05;',
+   ' vec3 b=p; b.xz*=rot(T*.25+M.x*1.+S*2.); b.xy*=rot(-.12+M.y*.25);',
+   ' float body=cyl(b-vec3(0,-.42,0),.56,.62,.16);',
+   ' float neck=cyl(b-vec3(0,.26,0),.24,.14,.05);',
+   ' float glass=smin(body,neck,.16);',
+   ' float collar=cyl(b-vec3(0,.48,0),.29,.14,.05);',
+   ' float bulb=rcone(b,vec3(0,.66,0),vec3(0,1.12,0),.2,.17);',
+   ' vec3 dp=p-vec3(.98,-.15+sin(T*1.1)*.12,.1);',
+   ' float drop=smin(length(dp)-.15,rcone(dp,vec3(0),vec3(0,.28,0),.15,.0),.08);',
+   ' float d=glass;mat=1.;',
+   ' if(collar<d){d=collar;mat=2.;}',
+   ' if(bulb<d){d=bulb;mat=3.;}',
+   ' if(drop<d){d=drop;mat=4.;}',
+   ' return d*.85;}',
+   'vec3 shade(vec3 p,vec3 n,vec3 rd,float ao){',
+   ' vec3 L=normalize(vec3(-.5,.8,.6));float dif=max(dot(n,L),0.),fre=pow(1.-max(dot(n,-rd),0.),2.2),spe=pow(max(dot(reflect(rd,n),L),0.),80.);',
+   ' if(mat<1.5||mat>3.5){',
+   '  vec3 g=mix(C2*.82,C2,.5+.5*n.y)*(.55+.45*dif);',
+   '  float band=smoothstep(.02,0.,abs(p.y+.42)-.2)*step(mat,1.5);',
+   '  g=mix(g,C1*(.75+.25*dif),band*.9);',
+   '  return g*(.7+.3*ao)+vec3(1.)*fre*.45+spe*1.2;}',
+   ' if(mat<2.5){vec3 gold=vec3(.86,.68,.38);return gold*(.35+.75*dif)+gold*pow(max(n.y,0.),2.)*.3+spe*1.4+fre*vec3(1.,.9,.7)*.3;}',
+   ' return C3*(.55+.45*dif)*(.7+.3*ao)+spe*.25+fre*.12;}'].join('\n')
+  };
+  var MAIN=[
   'vec3 nor(vec3 p){vec2 e=vec2(.002,0);return normalize(vec3(map(p+e.xyy)-map(p-e.xyy),map(p+e.yxy)-map(p-e.yxy),map(p+e.yyx)-map(p-e.yyx)));}',
   'void main(){',
   ' vec2 uv=(gl_FragCoord.xy-.5*R)/R.y;',
-  ' vec3 ro=vec3(0,0,4.4),rd=normalize(vec3(uv,-1.6));',
+  ' vec3 ro=vec3(0,0,5.4),rd=normalize(vec3(uv,-1.75));',
   ' float t=0.,d;bool hit=false;',
-  ' for(int i=0;i<72;i++){d=map(ro+rd*t);if(d<.001){hit=true;break;}t+=d;if(t>8.)break;}',
+  ' for(int i=0;i<90;i++){d=map(ro+rd*t);if(d<.0008){hit=true;break;}t+=d;if(t>9.)break;}',
   ' if(!hit){gl_FragColor=vec4(0);return;}',
-  ' vec3 p=ro+rd*t,n=nor(p);',
-  ' vec3 L=normalize(vec3(-.5,.8,.6)),L2=normalize(vec3(.7,-.3,.4));',
-  ' float dif=max(dot(n,L),0.),dif2=max(dot(n,L2),0.);',
-  ' float fre=pow(1.-max(dot(n,-rd),0.),2.6);',
-  ' float spe=pow(max(dot(reflect(rd,n),L),0.),48.);',
-  ' vec3 base=mix(C2,C1,.5+.5*n.y);',
-  ' vec3 irid=.5+.5*cos(6.2831*(fre*.9+n.x*.15+vec3(0.,.33,.67)));',
-  ' vec3 col=base*(.55+.45*dif)+C2*dif2*.15;',
-  ' col=mix(col,C3,fre*.55);',
-  ' col+=irid*fre*.18+spe*.9;',
-  ' gl_FragColor=vec4(col,1.);}'].join('\n');
+  ' vec3 p=ro+rd*t;float m=mat;vec3 n=nor(p);mat=m;',
+  ' float ao=clamp(map(p+n*.18)/.18,0.,1.);mat=m;',
+  ' gl_FragColor=vec4(shade(p,n,rd,ao),1.);}'].join('\n');
   var VS='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
 
   function pearl(cv){
     var gl=cv.getContext('webgl',{premultipliedAlpha:true,alpha:true,antialias:true});if(!gl)return;
-    function sh(t,src){var s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);return s}
+    var FS=COMMON+'\n'+(SHAPES[cv.dataset.shape]||SHAPES.tooth)+'\n'+MAIN;
+    function sh(t,src){var s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))console.warn(gl.getShaderInfoLog(s));return s}
     var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);
     if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;gl.useProgram(pr);
     var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
