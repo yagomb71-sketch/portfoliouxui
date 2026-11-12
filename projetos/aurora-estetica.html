@@ -250,6 +250,22 @@ footer a{text-decoration:underline}
 .qlabel{font-size:14px;color:var(--ink-2)}
 .qcheck{display:flex;gap:10px;font-size:13px;color:var(--muted);align-items:flex-start}
 .qcheck input{width:18px;height:18px;margin-top:2px;accent-color:var(--teal)}
+
+/* ===== efeitos 3D ===== */
+.manifesto .wrap{position:relative}
+.manifesto p{max-width:min(1100px,57%)}
+.pearl{position:absolute;right:-2%;top:50%;margin-top:calc(min(38vw,500px) / -2);width:min(38vw,500px);height:min(38vw,500px);pointer-events:none;filter:drop-shadow(0 40px 60px rgba(0,0,0,.12))}
+@media(max-width:900px){.manifesto p{max-width:none}.pearl{position:relative;right:auto;top:auto;margin:0 auto 10px;display:block;width:72vw;height:72vw}}
+.list{perspective:1200px}
+.list .row.rv{transform:rotateX(-70deg) translateY(30px);transform-origin:50% 0;opacity:0;transition:opacity .9s var(--ease),transform 1.1s var(--ease)}
+.list .row.rv.in{transform:none;opacity:1}
+.why{perspective:1000px}
+.why .rv{transform:rotateY(-35deg) translateX(40px);transform-origin:0 50%}
+.why .rv.in{transform:none}
+.gal figure,.photo,.qform{transition:box-shadow .5s var(--ease)}
+.gal figure:hover,.photo:hover{box-shadow:0 30px 60px -30px rgba(0,0,0,.35)}
+.pr-big{perspective:600px}
+.pr-big span{transform-style:preserve-3d}
 </style>
 <style id="pl-css">
 html.pl-lock{overflow:hidden}
@@ -332,6 +348,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
 <section class="manifesto">
   <div class="wrap">
     <span class="label rv">Nossa ideia</span>
+    <canvas class="pearl" data-c1="#FFF8F4" data-c2="#EBCFC4" data-c3="#9C5B4A" aria-hidden="true"></canvas>
     <p id="mf" style="margin-top:32px">O melhor procedimento é aquele que ninguém percebe, só elogia. Por isso cada plano começa com uma avaliação de verdade e termina em naturalidade. Você continua parecendo você, só que mais descansada e confiante.</p>
   </div>
 </section>
@@ -359,8 +376,8 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
 
 <section class="gallery" style="padding-top:clamp(88px,12vw,160px)">
   <div class="wrap gal">
-    <div class="rv"><figure><img data-speed=".1" src="https://images.unsplash.com/photo-1787496994323-59ac5cff09f9?auto=format&fit=crop&w=1600&q=80" alt="Recepção com poltronas" loading="lazy" onerror="this.remove()"></figure><figcaption>Recepção · Jardins</figcaption></div>
-    <div class="rv"><figure><img data-speed="-.08" src="https://images.unsplash.com/photo-1787651343620-8d5303006ecb?auto=format&fit=crop&w=1200&q=80" alt="Sala de procedimentos" loading="lazy" onerror="this.remove()"></figure><figcaption>Sala de procedimentos</figcaption></div>
+    <div class="rv"><figure data-tilt="6"><img data-speed=".1" src="https://images.unsplash.com/photo-1787496994323-59ac5cff09f9?auto=format&fit=crop&w=1600&q=80" alt="Recepção com poltronas" loading="lazy" onerror="this.remove()"></figure><figcaption>Recepção · Jardins</figcaption></div>
+    <div class="rv"><figure data-tilt="6"><img data-speed="-.08" src="https://images.unsplash.com/photo-1787651343620-8d5303006ecb?auto=format&fit=crop&w=1200&q=80" alt="Sala de procedimentos" loading="lazy" onerror="this.remove()"></figure><figcaption>Sala de procedimentos</figcaption></div>
   </div>
 </section>
 
@@ -399,7 +416,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
 
 <section id="sobre">
   <div class="wrap about">
-    <div class="photo rvx"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80" alt="Retrato da profissional responsável" loading="lazy" style="object-position:center 20%" onerror="this.remove()"></div>
+    <div class="photo rvx" data-tilt="5"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80" alt="Retrato da profissional responsável" loading="lazy" style="object-position:center 20%" onerror="this.remove()"></div>
     <div>
       <span class="label rv">Quem cuida de você</span>
       <h2 class="rv">Dra. Marina <em>Alves</em></h2>
@@ -604,5 +621,6 @@ if(!reduce){(function m(){const w=mq.scrollWidth/2;mqX-=0.5+vel*.25;vel*=.92;if(
   show();
 })();
 </script>
+<script src="../assets/js/fx3d.js" defer></script>
 </body>
 </html>
