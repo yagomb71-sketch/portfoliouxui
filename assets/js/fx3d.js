@@ -62,7 +62,52 @@
    '  g=mix(g,C1*(.75+.25*dif),band*.9);',
    '  return g*(.7+.3*ao)+vec3(1.)*fre*.45+spe*1.2;}',
    ' if(mat<2.5){vec3 gold=vec3(.86,.68,.38);return gold*(.35+.75*dif)+gold*pow(max(n.y,0.),2.)*.3+spe*1.4+fre*vec3(1.,.9,.7)*.3;}',
-   ' return C3*(.55+.45*dif)*(.7+.3*ao)+spe*.25+fre*.12;}'].join('\n')
+   ' return C3*(.55+.45*dif)*(.7+.3*ao)+spe*.25+fre*.12;}'].join('\n'),
+   syringe:[
+   'vec3 X(vec3 p){p.y+=sin(T*.8)*.05; p.xy*=rot(-.95+M.y*.25); p.xz*=rot(T*.3+M.x*1.1+S*2.2); return p;}',
+   'float gelTop(){return .22+.06*sin(T*.6);}',
+   'float map(vec3 p){',
+   ' p=X(p)*1.;',
+   ' float needle=cyl(p-vec3(0,-1.28,0),.016,.36,.008);',
+   ' float hub=rcone(p,vec3(0,-.96,0),vec3(0,-.78,0),.055,.1);',
+   ' float gt=gelTop();float gel=cyl(p-vec3(0,(-.74+gt)*.5,0),.168,(gt+.74)*.5,.03);',
+   ' float stop=cyl(p-vec3(0,gt+.07,0),.172,.07,.02);',
+   ' vec3 q=p-vec3(0,gt+.14+.7,0);',
+   ' float rod=min(rbox(q,vec3(.075,.7,.012),.008),rbox(q,vec3(.012,.7,.075),.008));',
+   ' float thumb=cyl(p-vec3(0,gt+.86,0),.21,.028,.012);',
+   ' float flange=rbox(p-vec3(0,.76,0),vec3(.42,.026,.17),.02);',
+   ' float d=gel;mat=1.;',
+   ' if(needle<d){d=needle;mat=2.;}',
+   ' if(hub<d){d=hub;mat=3.;}',
+   ' if(stop<d){d=stop;mat=4.;}',
+   ' float wp=min(min(rod,thumb),flange);if(wp<d){d=wp;mat=3.;}',
+   ' return d;}',
+   'float mapG(vec3 p){p=X(p)*1.;float b=cyl(p-vec3(0,0,0),.2,.74,.035);float tip=rcone(p,vec3(0,-.74,0),vec3(0,-.84,0),.19,.07);',
+   ' float g=smin(b,tip,.06);g=max(g,-(cyl(p-vec3(0,0,0),.18,.72,.03)));return g;}',
+   'vec3 env(vec3 r){vec3 c=mix(vec3(.80,.80,.82),vec3(1.),smoothstep(-.3,.7,r.y));c+=vec3(1.)*pow(max(dot(r,normalize(vec3(-.4,.6,.7))),0.),30.)*.8;c+=vec3(1.)*smoothstep(.97,.99,dot(r,normalize(vec3(.8,.1,.6))))*.8;return c;}',
+   'vec3 shadeO(vec3 p,vec3 n,vec3 rd,float ao){',
+   ' vec3 L=normalize(vec3(-.5,.8,.6));float dif=max(dot(n,L),0.),fre=pow(1.-max(dot(n,-rd),0.),3.),spe=pow(max(dot(reflect(rd,n),L),0.),90.);vec3 r=reflect(rd,n);',
+   ' if(mat<1.5){vec3 g=mix(C2,vec3(1.),.35)*(.55+.45*dif);return g*(.75+.25*ao)+env(r)*fre*.6+spe*1.3;}',
+   ' if(mat<2.5){return mix(vec3(.55),env(r),.8)*(.6+.4*dif)+spe*1.5;}',
+   ' if(mat<3.5){return C1*(.62+.38*dif)*(.7+.3*ao)+spe*.5+fre*.15;}',
+   ' return C3*(.6+.5*dif)*(.75+.25*ao)+spe*.35;}',
+   'vec3 norO(vec3 p){vec2 e=vec2(.0015,0);return normalize(vec3(map(p+e.xyy)-map(p-e.xyy),map(p+e.yxy)-map(p-e.yxy),map(p+e.yyx)-map(p-e.yyx)));}',
+   'vec3 norG(vec3 p){vec2 e=vec2(.0015,0);return normalize(vec3(mapG(p+e.xyy)-mapG(p-e.xyy),mapG(p+e.yxy)-mapG(p-e.yxy),mapG(p+e.yyx)-mapG(p-e.yyx)));}',
+   'void main(){',
+   ' vec2 uv=(gl_FragCoord.xy-.5*R)/R.y;',
+   ' vec3 ro=vec3(0,0,5.4),rd=normalize(vec3(uv,-1.75));',
+   ' float t=0.,d;bool hit=false;',
+   ' for(int i=0;i<100;i++){d=map(ro+rd*t);if(d<.0006){hit=true;break;}t+=d;if(t>9.)break;}',
+   ' float tg=0.;bool hg=false;',
+   ' for(int i=0;i<80;i++){d=mapG(ro+rd*tg);if(d<.0008){hg=true;break;}tg+=d;if(tg>9.)break;}',
+   ' vec3 col=vec3(0);float a=0.;',
+   ' if(hit){vec3 p=ro+rd*t;float m=mat;vec3 n=norO(p);mat=m;float ao=clamp(map(p+n*.12)/.12,0.,1.);mat=m;col=shadeO(p,n,rd,ao);a=1.;}',
+   ' if(hg&&(!hit||tg<t)){vec3 p=ro+rd*tg;vec3 n=norG(p);float fre=pow(1.-abs(dot(n,-rd)),2.4);vec3 L=normalize(vec3(-.5,.8,.6));',
+   '  float spe=pow(max(dot(reflect(rd,n),L),0.),120.);vec3 gc=env(reflect(rd,n))*.95;',
+   '  float ga=clamp(.10+fre*.85,0.,1.);',
+   '  col=mix(col*vec3(.97,.99,1.),gc,ga*(hit?1.:1.))+spe*1.6;a=max(a,ga+spe);',
+   ' }',
+   ' gl_FragColor=vec4(col*a,a);}'].join('\n'),
   };
   var MAIN=[
   'vec3 nor(vec3 p){vec2 e=vec2(.002,0);return normalize(vec3(map(p+e.xyy)-map(p-e.xyy),map(p+e.yxy)-map(p-e.yxy),map(p+e.yyx)-map(p-e.yyx)));}',
@@ -79,7 +124,7 @@
 
   function pearl(cv){
     var gl=cv.getContext('webgl',{premultipliedAlpha:true,alpha:true,antialias:true});if(!gl)return;
-    var FS=COMMON+'\n'+(SHAPES[cv.dataset.shape]||SHAPES.tooth)+'\n'+MAIN;
+    var SRC=SHAPES[cv.dataset.shape]||SHAPES.tooth;var FS=COMMON+'\n'+SRC+'\n'+(SRC.indexOf('void main')>-1?'':MAIN);
     function sh(t,src){var s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))console.warn(gl.getShaderInfoLog(s));return s}
     var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);
     if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;gl.useProgram(pr);
