@@ -12,7 +12,7 @@
 <meta property="og:image" content="https://yagoportfolio.com.br/assets/img/og.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta name="theme-color" content="#0A0A0A">
-<link rel="preload" as="image" href="assets/img/ye-loading.webp">
+<link rel="preload" as="image" href="assets/img/logo-white.png?v=2">
 <link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png?v=2">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=2">
@@ -248,7 +248,9 @@ html.pl-lock{overflow:hidden}
 .pl.gone{display:none}
 .pl-in{display:flex;flex-direction:column;align-items:center;gap:26px;transition:opacity .4s,transform .6s cubic-bezier(.76,0,.24,1)}
 .pl.out .pl-in{opacity:0;transform:translateY(-40px)}
-.pl-logo{width:clamp(110px,14vw,150px);height:auto;margin-bottom:-6px}
+.pl-spin{perspective:700px;margin-bottom:4px}
+.pl-logo{display:block;width:clamp(96px,11vw,128px);height:auto;animation:plSpin 2.9s linear infinite;backface-visibility:visible}
+@keyframes plSpin{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
 .pl-name{display:flex;align-items:baseline;gap:.28em;font-family:'Inter Tight',system-ui,sans-serif;font-size:clamp(13px,1.4vw,15px);text-transform:uppercase;letter-spacing:.32em;line-height:1.15;white-space:nowrap}
 .pl-name .w{display:flex;overflow:hidden;padding-bottom:.08em}
 .pl-name .c{display:inline-block;transform:translateY(110%);animation:plUp .8s cubic-bezier(.22,1,.36,1) forwards}
@@ -261,7 +263,7 @@ html.pl-lock{overflow:hidden}
 </style>
 </head>
 <body>
-<div class="pl" id="pl" aria-hidden="true"><div class="pl-in"><img class="pl-logo" src="assets/img/ye-loading.webp" width="220" height="220" alt=""><div class="pl-name" id="plName"><span class="w">YE</span><span class="w acc">Studios</span></div><div class="pl-bar"><i id="plBar"></i></div></div><span class="pl-num" id="plNum">000</span></div>
+<div class="pl" id="pl" aria-hidden="true"><div class="pl-in"><div class="pl-spin"><img class="pl-logo" src="assets/img/logo-white.png?v=2" width="444" height="262" alt=""></div><div class="pl-name" id="plName"><span class="w">YE</span><span class="w acc">Studios</span></div><div class="pl-bar"><i id="plBar"></i></div></div><span class="pl-num" id="plNum">000</span></div>
 <script>
 (function(){var pl=document.getElementById('pl');if(!pl)return;var de=document.documentElement;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){pl.classList.add('gone');addEventListener('DOMContentLoaded',function(){document.body.classList.add('ready')});return}
