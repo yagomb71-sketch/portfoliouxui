@@ -3,18 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Criação de Sites e Landing Pages Profissionais | Yago Moreira</title>
+<title>YE Studios | Criação de Sites e Landing Pages Profissionais</title>
 <meta name="description" content="Designer e estrategista digital. Crio landing pages e sites com design limpo e estratégia por trás, prontos para Google Ads e com o cliente indo direto pro seu WhatsApp.">
 <link rel="canonical" href="https://yagoportfolio.com.br/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Sites e landing pages que trazem clientes | Yago Moreira">
+<meta property="og:title" content="YE Studios | Sites e landing pages que trazem clientes">
 <meta property="og:description" content="Landing pages e sites prontos para Google Ads, com entrega em até 7 dias.">
 <meta property="og:image" content="https://yagoportfolio.com.br/assets/img/og.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta name="theme-color" content="#0A0A0A">
-<link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="preload" as="image" href="assets/img/ye-loading.webp">
+<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png?v=2">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="assets/fonts/inter-tight-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -247,7 +248,8 @@ html.pl-lock{overflow:hidden}
 .pl.gone{display:none}
 .pl-in{display:flex;flex-direction:column;align-items:center;gap:26px;transition:opacity .4s,transform .6s cubic-bezier(.76,0,.24,1)}
 .pl.out .pl-in{opacity:0;transform:translateY(-40px)}
-.pl-name{display:flex;align-items:baseline;gap:.28em;font-family:'Inter Tight',system-ui,sans-serif;font-size:clamp(34px,5vw,56px);letter-spacing:-.03em;line-height:1.15;white-space:nowrap}
+.pl-logo{width:clamp(110px,14vw,150px);height:auto;margin-bottom:-6px}
+.pl-name{display:flex;align-items:baseline;gap:.28em;font-family:'Inter Tight',system-ui,sans-serif;font-size:clamp(13px,1.4vw,15px);text-transform:uppercase;letter-spacing:.32em;line-height:1.15;white-space:nowrap}
 .pl-name .w{display:flex;overflow:hidden;padding-bottom:.08em}
 .pl-name .c{display:inline-block;transform:translateY(110%);animation:plUp .8s cubic-bezier(.22,1,.36,1) forwards}
 .pl-name .acc{font-family:inherit;font-style:normal;color:#8A8A87}
@@ -259,12 +261,12 @@ html.pl-lock{overflow:hidden}
 </style>
 </head>
 <body>
-<div class="pl" id="pl" aria-hidden="true"><div class="pl-in"><div class="pl-name" id="plName"><span class="w">Yago</span><span class="w acc">Moreira</span></div><div class="pl-bar"><i id="plBar"></i></div></div><span class="pl-num" id="plNum">000</span></div>
+<div class="pl" id="pl" aria-hidden="true"><div class="pl-in"><img class="pl-logo" src="assets/img/ye-loading.webp" width="220" height="220" alt=""><div class="pl-name" id="plName"><span class="w">YE</span><span class="w acc">Studios</span></div><div class="pl-bar"><i id="plBar"></i></div></div><span class="pl-num" id="plNum">000</span></div>
 <script>
 (function(){var pl=document.getElementById('pl');if(!pl)return;var de=document.documentElement;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){pl.classList.add('gone');addEventListener('DOMContentLoaded',function(){document.body.classList.add('ready')});return}
 de.classList.add('pl-lock');var k=0;document.querySelectorAll('#plName .w').forEach(function(w){var t=w.textContent;w.textContent='';t.split('').forEach(function(ch){var s=document.createElement('span');s.className='c';s.textContent=ch===' '?'\u00a0':ch;s.style.animationDelay=Math.min(k++*28,420)+'ms';w.appendChild(s)})});
-var bar=document.getElementById('plBar'),num=document.getElementById('plNum'),t0=performance.now(),D=1000;
+var bar=document.getElementById('plBar'),num=document.getElementById('plNum'),t0=performance.now(),D=1500;
 (function tick(t){var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);bar.style.transform='scaleX('+e+')';num.textContent=String(Math.round(e*100)).padStart(3,'0');
 if(p<1)return requestAnimationFrame(tick);
 var go=function(){pl.classList.add('out');de.classList.remove('pl-lock');setTimeout(function(){document.body.classList.add('ready')},150);setTimeout(function(){pl.classList.add('gone')},950)};
@@ -279,7 +281,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
 
 <header class="nav">
   <div class="wrap">
-    <a href="#" class="logo" aria-label="Yago Moreira, início"><img src="assets/img/logo-white.png" width="331" height="240" alt="Yg"></a>
+    <a href="#" class="logo" aria-label="YE Studios, início"><img src="assets/img/logo-white.png?v=2" width="444" height="262" alt="YE Studios"></a>
     <nav class="nav-links" aria-label="Principal">
       <a href="#portfolio" class="hide-m">Trabalhos</a>
       <a href="#metodologia" class="hide-m">Como trabalho</a>
@@ -294,7 +296,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <div class="label rv" style="margin-bottom:28px">Yago Moreira · Designer e estrategista digital</div>
+    <div class="label rv" style="margin-bottom:28px">YE Studios · Design e estratégia digital</div>
     <h1 class="display">
       <span class="ln"><span>Design que</span></span>
       <span class="ln"><span>passa confiança</span></span>
@@ -360,10 +362,10 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
   <div class="wrap about">
     <div class="portrait rv">
       <span class="label">São Paulo, Brasil</span>
-      <img class="big" src="assets/img/logo-white.png" width="331" height="240" alt="Logo Yg" loading="lazy">
+      <img class="big" src="assets/img/logo-white.png?v=2" width="444" height="262" alt="Logo YE Studios" loading="lazy">
     </div>
     <div>
-      <div class="label rv" style="margin-bottom:18px">Sobre mim</div>
+      <div class="label rv" style="margin-bottom:18px">Sobre · Fundador do YE Studios</div>
       <h2 class="display rv">Yago Moreira</h2>
       <p class="rv">Comecei no design gráfico, me especializei em UX e acabei indo parar do lado de quem vende. Hoje cuido da operação digital de um e-commerce: <strong>Google, Meta Ads, Mercado Livre, Shopee e WhatsApp</strong>. É ali que eu vejo, todo dia, o que faz alguém clicar, confiar e comprar, e o que faz desistir.</p>
       <p class="rv">Esse caminho virou o meu jeito de trabalhar: <strong>pesquisa e usabilidade</strong> pra desenhar a página certa, e <strong>visão de anúncio</strong> pra ela trazer resultado. Você fala direto comigo do começo ao fim, sem agência e sem intermediário.</p>
@@ -489,7 +491,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
 
 <footer>
   <div class="wrap">
-    <span style="display:flex;align-items:center;gap:14px"><img src="assets/img/logo-white.png" width="331" height="240" alt="" style="height:28px;width:auto">© 2026 Yago Moreira</span>
+    <span style="display:flex;align-items:center;gap:14px"><img src="assets/img/logo-white.png?v=2" width="444" height="262" alt="" style="height:28px;width:auto">© 2026 YE Studios</span>
     <nav aria-label="Redes">
       <a href="https://www.linkedin.com/in/yago-moreira-barbosa/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="ux/">Estudos de caso</a>
