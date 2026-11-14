@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zuzu Perfumaria | Perfumes árabes na Galeria Pagé, São Paulo</title>
+<meta name="description" content="Perfumes árabes com fixação marcante: oud, âmbar, baunilha e muito mais. Visite a Zuzu Perfumaria na Galeria Pagé ou peça pelo WhatsApp.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B1023">
+<link rel="icon" type="image/png" href="../assets/img/zuzu/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/img/zuzu/logo.webp">
+<!-- Prévia de proposta criada por YE Studios (yagoportfolio.com.br) -->
+<style>
+:root{--bg:#0B1023;--bg-2:#0F1630;--navy:#16204A;--card:#121A38;--line:rgba(214,178,106,.22);--line-2:rgba(214,178,106,.4);
+  --gold:#D6B26A;--gold-2:#F2DFA6;--gold-3:#A8823E;--cream:#F4ECDD;--muted:#A9A7B8;--rose:#B5485A;
+  --grad:linear-gradient(105deg,#F5E6B8 0%,#D6B26A 35%,#A8823E 65%,#F2DFA6 100%);
+  --serif:'Cinzel',Georgia,serif;--sans:'Jost',system-ui,sans-serif;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--cream);font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background:
+  radial-gradient(1200px 700px at 80% -10%,rgba(40,58,130,.45),transparent 60%),
+  radial-gradient(900px 600px at -10% 40%,rgba(30,44,100,.35),transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .27 0 0 0 0 .55 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.wrap{width:min(100% - 44px,1240px);margin-inline:auto}
+section{padding:clamp(80px,11vw,140px) 0;position:relative}
+.serif{font-family:var(--serif);font-weight:600;letter-spacing:.02em;line-height:1.05;text-transform:uppercase}
+.gold{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 7s linear infinite}
+@keyframes sheen{to{background-position:-200% 0}}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.kicker::before,.kicker.both::after{content:'';width:26px;height:1px;background:var(--gold)}
+h2.serif{font-size:clamp(32px,4.4vw,58px);margin-top:18px}
+.lead{color:var(--muted);font-size:17px;max-width:520px;font-weight:300}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:.04em;transition:transform .4s var(--ease),background .3s,color .3s,border-color .3s;white-space:nowrap;border:0;cursor:pointer}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-gold{background:var(--grad);background-size:200% 100%;color:#14102A;animation:sheen 7s linear infinite}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-line{border:1px solid var(--line-2);color:var(--cream)}
+.btn-line:hover{border-color:var(--gold);color:var(--gold-2)}
+
+/* faixa ornamental (inspirada na borda do logo) */
+.orn{height:26px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='26' viewBox='0 0 52 26'%3E%3Cg fill='none' stroke='%23D6B26A' stroke-width='1.2'%3E%3Cpath d='M0 13h6M46 13h6'/%3E%3Cpath d='M26 3c5 0 8 4 8 10s-3 10-8 10-8-4-8-10 3-10 8-10z'/%3E%3Cpath d='M18 13c-4 0-6-3-6-5M18 13c-4 0-6 3-6 5M34 13c4 0 6-3 6-5M34 13c4 0 6 3 6 5'/%3E%3Ccircle cx='26' cy='13' r='2.2' fill='%23D6B26A'/%3E%3C/g%3E%3C/svg%3E") repeat-x center/52px 26px;opacity:.7}
+.orn.anim{animation:ornMove 30s linear infinite}
+@keyframes ornMove{to{background-position:520px center}}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(11,16,35,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:46px;height:46px;border-radius:50%}
+.brand span{font-family:var(--serif);font-weight:700;font-size:20px;letter-spacing:.12em}
+.brand small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.32em;color:var(--gold);font-weight:500;margin-top:-2px}
+.menu{display:flex;gap:30px;font-size:14px;letter-spacing:.06em;color:var(--muted)}
+.menu a:hover{color:var(--gold-2)}
+.nav .btn{height:44px;padding:0 20px;font-size:14px}
+@media(max-width:900px){.menu{display:none}.nav .btn span{display:none}.nav .btn{width:44px;padding:0}}
+
+/* hero */
+.hero{padding:clamp(130px,15vw,170px) 0 clamp(60px,8vw,90px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,70px);align-items:center}
+.hero h1{font-size:clamp(40px,5.6vw,80px);margin:24px 0 24px}
+.hero h1 em{font-style:normal}
+.line{display:block;overflow:hidden;padding:.04em 0 .16em;margin-bottom:-.1em}
+.line>span{display:block;transform:translateY(110%);transition:transform 1.2s var(--ease)}
+.ready .line>span{transform:none}
+.line:nth-child(2)>span{transition-delay:.1s}.line:nth-child(3)>span{transition-delay:.2s}
+.hero p.sub{color:var(--muted);font-size:18px;font-weight:300;max-width:500px;margin-bottom:34px}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.addr{display:flex;align-items:center;gap:12px;margin-top:34px;font-size:14px;color:var(--muted)}
+.addr svg{width:18px;height:18px;color:var(--gold);flex:none}
+.fade{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease) .45s,transform 1s var(--ease) .45s}
+.ready .fade{opacity:1;transform:none}
+/* arco mourisco com o frasco 3D */
+.arch{position:relative;width:min(100%,480px);aspect-ratio:3/4;margin-inline:auto;opacity:0;transform:translateY(30px) scale(.96);transition:opacity 1.2s var(--ease) .2s,transform 1.4s var(--ease) .2s}
+.ready .arch{opacity:1;transform:none}
+.arch svg.frame{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.arch .inner{position:absolute;inset:0;clip-path:url(#archClip);background:radial-gradient(ellipse at 50% 40%,#22306A 0%,#141C40 55%,#0B1023 100%)}
+.arch .inner::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02' numOctaves='5' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .6 0 0 0 0 1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:screen}
+.arch canvas{position:absolute;left:0;right:0;bottom:4%;margin:auto;width:100%;height:92%}
+.stars{position:absolute;inset:0;pointer-events:none}
+.stars i{position:absolute;color:var(--gold-2);font-style:normal;font-size:14px;animation:tw 3s ease-in-out infinite}
+@keyframes tw{50%{opacity:.25;transform:scale(.7)}}
+.moon{position:absolute;top:24%;left:22%;width:34px;height:34px;border-radius:50%;box-shadow:-9px 4px 0 0 var(--gold);transform:rotate(-20deg);opacity:.9}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.arch{width:min(78%,360px);order:-1}.hero{padding-top:110px}}
+@media(max-width:520px){.ctas .btn{flex:1}}
+
+/* notas */
+.notes{padding:0;border-block:1px solid var(--line);overflow:hidden}
+.mq{display:flex;gap:46px;width:max-content;padding:26px 0;will-change:transform}
+.mq span{font-family:var(--serif);font-size:clamp(22px,2.8vw,36px);letter-spacing:.08em;white-space:nowrap;display:flex;align-items:center;gap:46px;color:var(--cream)}
+.mq span:nth-child(even){color:var(--gold)}
+.mq span::after{content:'✦';font-size:.5em;color:var(--gold)}
+
+/* famílias */
+.head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:clamp(44px,5vw,64px)}
+@media(max-width:820px){.head{grid-template-columns:1fr}}
+.fams{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,26px)}
+.fam{position:relative;display:block}
+.fam .pic{position:relative;aspect-ratio:3/4;clip-path:url(#archClipObj);background:var(--navy);overflow:hidden}
+.fam .pic img{transition:transform 1.4s var(--ease),filter .6s;filter:saturate(.9) brightness(.85)}
+.fam:hover .pic img{transform:scale(1.07);filter:saturate(1.05) brightness(1)}
+.fam .pic::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,16,35,.9))}
+.fam .outline{position:absolute;inset:-7px;pointer-events:none}
+.fam .outline path{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-dasharray:1600;stroke-dashoffset:1600;transition:stroke-dashoffset 1.6s var(--ease)}
+.fam.in .outline path{stroke-dashoffset:0}
+.fam .txt{position:absolute;left:0;right:0;bottom:22px;text-align:center;z-index:2;padding:0 18px}
+.fam h3{font-family:var(--serif);font-weight:600;font-size:clamp(19px,1.8vw,24px);letter-spacing:.06em}
+.fam p{font-size:13.5px;color:var(--muted);margin-top:6px}
+.fam .go{display:inline-block;margin-top:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(8px);transition:all .5s var(--ease)}
+.fam:hover .go{opacity:1;transform:none}
+@media(hover:none){.fam .go{opacity:1;transform:none}}
+@media(max-width:900px){.fams{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.fams{grid-template-columns:1fr 1fr;gap:12px}.fam h3{font-size:16px}.fam p{display:none}.fam .txt{bottom:14px}}
+
+/* por que */
+.why{background:linear-gradient(180deg,transparent,rgba(22,32,74,.45),transparent)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:clamp(44px,5vw,60px)}
+.wcard{border:1px solid var(--line);border-radius:200px 200px 18px 18px;padding:54px 24px 30px;text-align:center;background:rgba(18,26,56,.55);transition:border-color .4s,transform .6s var(--ease)}
+.wcard:hover{border-color:var(--gold);transform:translateY(-6px)}
+.wcard .ic{width:54px;height:54px;margin:0 auto 20px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font-family:var(--serif);color:var(--gold);font-size:18px}
+.wcard h3{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:.04em;margin-bottom:10px}
+.wcard p{color:var(--muted);font-size:15px;font-weight:300}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.why-grid{grid-template-columns:1fr}}
+
+/* quiz */
+.quiz-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,90px);align-items:center}
+.qform{position:relative;background:linear-gradient(180deg,rgba(22,32,74,.85),rgba(15,22,48,.9));border:1px solid var(--line-2);border-radius:28px;padding:clamp(26px,4vw,46px)}
+.qform::before{content:'';position:absolute;inset:8px;border:1px solid var(--line);border-radius:22px;pointer-events:none}
+.qtop{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.qprog{height:2px;background:var(--line);margin-bottom:30px;overflow:hidden;border-radius:2px}
+.qprog i{display:block;height:100%;width:33%;background:var(--grad);transition:width .6s var(--ease)}
+.qstep{display:none;flex-direction:column;gap:18px;border:0}
+.qstep.active{display:flex;animation:st .6s var(--ease)}
+@keyframes st{from{opacity:0;transform:translateX(20px)}}
+.qstep legend{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:.03em;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:46px;padding:10px 18px;border:1px solid var(--line-2);background:transparent;border-radius:999px;font:inherit;font-size:14.5px;color:var(--cream);cursor:pointer;transition:all .25s}
+.chip:hover{border-color:var(--gold)}
+.chip.on{background:var(--grad);border-color:transparent;color:#14102A;font-weight:500}
+.f{display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--muted)}
+.f input{height:52px;border:0;border-bottom:1px solid var(--line-2);background:transparent;color:var(--cream);font:inherit;font-size:18px;padding:0 2px;border-radius:0}
+.f input:focus{outline:none;border-color:var(--gold)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
+.qback{background:none;border:0;color:var(--muted);font:inherit;cursor:pointer;padding:10px 4px}
+.qerr{color:#F08A8A;font-size:14px;min-height:20px;margin-top:10px}
+.qlist{list-style:none;margin-top:30px;border-top:1px solid var(--line)}
+.qlist li{padding:14px 0;border-bottom:1px solid var(--line);color:var(--muted);display:flex;gap:12px}
+.qlist li::before{content:'✦';color:var(--gold)}
+@media(max-width:900px){.quiz-grid{grid-template-columns:1fr}}
+
+/* loja */
+.store-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:stretch}
+.map{position:relative;min-height:380px;border-radius:200px 200px 22px 22px;overflow:hidden;border:1px solid var(--line-2);background:var(--navy)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.05)}
+.facts{list-style:none;margin:30px 0;border-top:1px solid var(--line)}
+.facts li{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.facts li span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+@media(max-width:900px){.store-grid{grid-template-columns:1fr}.map{min-height:320px;border-radius:160px 160px 20px 20px}}
+@media(max-width:520px){.facts li{grid-template-columns:1fr;gap:4px}}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,6vw,90px)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:24px 0;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--gold);font-size:24px;line-height:1;transition:transform .4s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--muted);font-weight:300;padding:0 40px 24px 0}
+@media(max-width:860px){.faq-grid{grid-template-columns:1fr}}
+
+/* final */
+.cta{text-align:center;padding-bottom:clamp(110px,12vw,150px)}
+.cta .logo-big{width:clamp(150px,18vw,220px);height:auto;margin:0 auto 30px;border-radius:50%;box-shadow:0 30px 80px -20px rgba(214,178,106,.35);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.cta h2.serif{font-size:clamp(36px,6vw,84px);max-width:960px;margin:20px auto 36px}
+.cta .ctas{justify-content:center}
+footer{padding:28px 0 70px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 30px;flex-wrap:wrap}
+.pbar{position:fixed;inset:auto 0 0;z-index:70;background:#070A18;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center;padding:8px 14px}
+.pbar a{color:var(--gold-2);text-decoration:underline}
+.wa{position:fixed;right:20px;bottom:52px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(37,211,102,.5);transform:scale(0);transition:transform .5s var(--ease)}
+.wa.show{transform:scale(1)}
+.wa svg{width:28px;height:28px}
+
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* loading */
+html.pl-lock{overflow:hidden}
+.pl{position:fixed;inset:0;z-index:9999;background:#0B1023;display:flex;align-items:center;justify-content:center;transition:transform .9s cubic-bezier(.76,0,.24,1),border-radius .9s cubic-bezier(.76,0,.24,1)}
+.pl.out{transform:translateY(-100%);border-radius:0 0 50% 50%/0 0 12vh 12vh}
+.pl.gone{display:none}
+.pl-in{display:flex;flex-direction:column;align-items:center;gap:22px;transition:opacity .4s,transform .6s cubic-bezier(.76,0,.24,1)}
+.pl.out .pl-in{opacity:0;transform:translateY(-40px)}
+.pl-logo{width:clamp(120px,15vw,160px);height:auto;border-radius:50%;opacity:0;transform:scale(.8) rotate(-30deg);animation:plLogo 1s var(--ease) .05s forwards}
+@keyframes plLogo{to{opacity:1;transform:none}}
+.pl-name{font-family:var(--serif);font-size:13px;letter-spacing:.42em;color:var(--gold);opacity:0;animation:plFade .8s ease .4s forwards}
+@keyframes plFade{to{opacity:1}}
+.pl-bar{width:140px;height:1px;background:rgba(214,178,106,.2);overflow:hidden}
+.pl-bar i{display:block;height:100%;background:var(--gold);transform:scaleX(0);transform-origin:left}
+@media(prefers-reduced-motion:reduce){.pl{display:none}*{animation:none!important;transition:none!important}.rv,.line>span,.fade,.arch{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+<div class="pl" id="pl" aria-hidden="true"><div class="pl-in"><img class="pl-logo" src="../assets/img/zuzu/logo.webp" alt=""><span class="pl-name">ZUZU PERFUMARIA</span><div class="pl-bar"><i id="plBar"></i></div></div></div>
+<script>
+(function(){var pl=document.getElementById('pl'),de=document.documentElement;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){pl.classList.add('gone');addEventListener('DOMContentLoaded',function(){document.body.classList.add('ready')});return}
+de.classList.add('pl-lock');var bar=document.getElementById('plBar'),t0=performance.now(),D=1400;
+(function tick(t){var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);bar.style.transform='scaleX('+e+')';if(p<1)return requestAnimationFrame(tick);
+var go=function(){pl.classList.add('out');de.classList.remove('pl-lock');setTimeout(function(){document.body.classList.add('ready')},150);setTimeout(function(){pl.classList.add('gone')},1000)};
+document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(t0);})();
+</script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="archClip" clipPathUnits="objectBoundingBox"><path d="M0.06,1 L0.06,0.38 C0.06,0.25 0.2,0.17 0.33,0.12 C0.42,0.09 0.47,0.05 0.5,0 C0.53,0.05 0.58,0.09 0.67,0.12 C0.8,0.17 0.94,0.25 0.94,0.38 L0.94,1 Z"/></clipPath>
+    <clipPath id="archClipObj" clipPathUnits="objectBoundingBox"><path d="M0,1 L0,0.36 C0,0.22 0.16,0.15 0.3,0.1 C0.4,0.07 0.46,0.04 0.5,0 C0.54,0.04 0.6,0.07 0.7,0.1 C0.84,0.15 1,0.22 1,0.36 L1,1 Z"/></clipPath>
+  </defs>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.2-.3z"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#" class="brand" aria-label="Zuzu Perfumaria, início"><img src="../assets/img/zuzu/logo-160.webp" alt=""><div><span>ZUZU</span><small>PERFUMARIA</small></div></a>
+    <nav class="menu" aria-label="Menu principal">
+      <a href="#fragrancias">Fragrâncias</a>
+      <a href="#descubra">Descubra o seu</a>
+      <a href="#loja">Visite a loja</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a href="#" class="btn btn-gold js-wa" data-msg="Olá! Vim pelo site da Zuzu Perfumaria e quero conhecer os perfumes." aria-label="Falar no WhatsApp"><svg><use href="#wa"/></svg><span>WhatsApp</span></a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker fade">Perfumes árabes · Galeria Pagé</span>
+      <h1 class="serif"><span class="line"><span>O perfume</span></span><span class="line"><span>que <em class="gold">fica</em></span></span><span class="line"><span>na memória.</span></span></h1>
+      <p class="sub fade">Fragrâncias árabes com fixação e presença marcantes: oud, âmbar, baunilha, rosa e especiarias. Venha sentir cada uma na loja ou peça pelo WhatsApp.</p>
+      <div class="ctas fade">
+        <a href="#" class="btn btn-gold js-wa" data-msg="Olá! Vim pelo site da Zuzu Perfumaria e quero conhecer os perfumes."><svg><use href="#wa"/></svg>Falar no WhatsApp</a>
+        <a href="#descubra" class="btn btn-line">Descubra o seu perfume</a>
+      </div>
+      <div class="addr fade"><svg><use href="#pin"/></svg><span>R. Barão de Duprat, 315 · Galeria Pagé · Loja 26, térreo (primeira loja da entrada)</span></div>
+    </div>
+    <div class="arch" id="arch">
+      <div class="inner">
+        <div class="stars" aria-hidden="true"><span class="moon"></span><i style="left:31%;top:22%;font-size:10px">★</i><i style="right:24%;top:30%;animation-delay:1.2s">★</i><i style="left:16%;top:52%;font-size:9px;animation-delay:.6s">✦</i><i style="right:15%;top:58%;font-size:9px;animation-delay:2s">✦</i></div>
+        <canvas class="pearl" data-shape="attar" data-c1="#F4ECDD" data-c2="#18318A" data-c3="#D6B26A" aria-hidden="true"></canvas>
+      </div>
+      <svg class="frame" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M18,400 L18,152 C18,100 60,68 99,48 C126,36 141,20 150,0 C159,20 174,36 201,48 C240,68 282,100 282,152 L282,400" fill="none" stroke="#D6B26A" stroke-width="2"/>
+        <path d="M6,400 L6,148 C6,92 52,58 94,38 C122,26 140,10 150,-12 C160,10 178,26 206,38 C248,58 294,92 294,148 L294,400" fill="none" stroke="#D6B26A" stroke-width=".8" opacity=".6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="notes" aria-hidden="true"><div class="mq" id="mq">
+  <span>Oud</span><span>Âmbar</span><span>Almíscar</span><span>Rosa de Taif</span><span>Baunilha</span><span>Açafrão</span><span>Sândalo</span><span>Incenso</span>
+  <span>Oud</span><span>Âmbar</span><span>Almíscar</span><span>Rosa de Taif</span><span>Baunilha</span><span>Açafrão</span><span>Sândalo</span><span>Incenso</span>
+</div></div>
+
+<section id="fragrancias">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker rv">Fragrâncias</span><h2 class="serif rv">Encontre pela <span class="gold">família olfativa</span></h2></div>
+      <p class="lead rv">Toque em uma família e fale com a gente: indicamos as opções que combinam com você.</p>
+    </div>
+    <div class="fams">
+      <a href="#" class="fam rv js-wa" data-msg="Olá! Quero conhecer os perfumes amadeirados e de oud."><div class="pic"><img src="https://images.unsplash.com/photo-1709100648536-8c2c36068eb2?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy" onerror="this.remove()"></div><svg class="outline" viewBox="0 0 100 133" preserveAspectRatio="none"><path vector-effect="non-scaling-stroke" d="M0,133 L0,48 C0,29 21,20 40,13 C47,10 49,5 50,0 C51,5 53,10 60,13 C79,20 100,29 100,48 L100,133 Z"/></svg><div class="txt"><h3>Amadeirados e Oud</h3><p>Profundos, elegantes e de longa duração</p><span class="go">Ver opções →</span></div></a>
+      <a href="#" class="fam rv js-wa" data-msg="Olá! Quero conhecer os perfumes doces e gourmand."><div class="pic"><img src="https://images.unsplash.com/photo-1705936119725-f893c63ce939?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy" onerror="this.remove()"></div><svg class="outline" viewBox="0 0 100 133" preserveAspectRatio="none"><path vector-effect="non-scaling-stroke" d="M0,133 L0,48 C0,29 21,20 40,13 C47,10 49,5 50,0 C51,5 53,10 60,13 C79,20 100,29 100,48 L100,133 Z"/></svg><div class="txt"><h3>Doces e Gourmand</h3><p>Baunilha, caramelo e frutas que envolvem</p><span class="go">Ver opções →</span></div></a>
+      <a href="#" class="fam rv js-wa" data-msg="Olá! Quero conhecer os perfumes florais."><div class="pic"><img src="https://images.unsplash.com/photo-1705936117652-6dc624983df2?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy" onerror="this.remove()"></div><svg class="outline" viewBox="0 0 100 133" preserveAspectRatio="none"><path vector-effect="non-scaling-stroke" d="M0,133 L0,48 C0,29 21,20 40,13 C47,10 49,5 50,0 C51,5 53,10 60,13 C79,20 100,29 100,48 L100,133 Z"/></svg><div class="txt"><h3>Florais</h3><p>Rosa, jasmim e flores brancas</p><span class="go">Ver opções →</span></div></a>
+      <a href="#" class="fam rv js-wa" data-msg="Olá! Quero conhecer os perfumes frescos e cítricos."><div class="pic"><img src="https://images.unsplash.com/photo-1705936118918-870095881e61?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy" onerror="this.remove()"></div><svg class="outline" viewBox="0 0 100 133" preserveAspectRatio="none"><path vector-effect="non-scaling-stroke" d="M0,133 L0,48 C0,29 21,20 40,13 C47,10 49,5 50,0 C51,5 53,10 60,13 C79,20 100,29 100,48 L100,133 Z"/></svg><div class="txt"><h3>Frescos e Cítricos</h3><p>Leves para o dia a dia e o calor</p><span class="go">Ver opções →</span></div></a>
+      <a href="#" class="fam rv js-wa" data-msg="Olá! Quero conhecer os perfumes de âmbar e especiarias."><div class="pic"><img src="https://images.unsplash.com/photo-1705936119413-bdd48ac9699c?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy" onerror="this.remove()"></div><svg class="outline" viewBox="0 0 100 133" preserveAspectRatio="none"><path vector-effect="non-scaling-stroke" d="M0,133 L0,48 C0,29 21,20 40,13 C47,10 49,5 50,0 C51,5 53,10 60,13 C79,20 100,29 100,48 L100,133 Z"/></svg><div class="txt"><h3>Âmbar e Especiarias</h3><p>Quentes, marcantes e sensuais</p><span class="go">Ver opções →</span></div></a>
+      <a href="#" class="fam rv js-wa" data-msg="Olá! Quero conhecer os perfumes para presente."><div class="pic"><img src="https://images.unsplash.com/photo-1738414808975-201966230c59?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy" onerror="this.remove()"></div><svg class="outline" viewBox="0 0 100 133" preserveAspectRatio="none"><path vector-effect="non-scaling-stroke" d="M0,133 L0,48 C0,29 21,20 40,13 C47,10 49,5 50,0 C51,5 53,10 60,13 C79,20 100,29 100,48 L100,133 Z"/></svg><div class="txt"><h3>Para Presentear</h3><p>Ajudamos a escolher o presente certo</p><span class="go">Ver opções →</span></div></a>
+    </div>
+  </div>
+</section>
+
+<div class="orn anim" aria-hidden="true"></div>
+
+<section class="why">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="kicker both rv">Por que perfume árabe</span>
+      <h2 class="serif rv">Feito para <span class="gold">ser lembrado</span></h2>
+    </div>
+    <div class="why-grid">
+      <div class="wcard rv"><div class="ic">I</div><h3>Fixação marcante</h3><p>Composições intensas, pensadas para acompanhar você o dia inteiro.</p></div>
+      <div class="wcard rv"><div class="ic">II</div><h3>Notas únicas</h3><p>Oud, açafrão, rosa e âmbar em combinações difíceis de encontrar.</p></div>
+      <div class="wcard rv"><div class="ic">III</div><h3>Presença</h3><p>O tipo de perfume que faz alguém perguntar: “que cheiro é esse?”.</p></div>
+      <div class="wcard rv"><div class="ic">IV</div><h3>Atendimento que guia</h3><p>A gente te ajuda a sentir, comparar e escolher sem pressa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="descubra">
+  <div class="wrap quiz-grid">
+    <div>
+      <span class="kicker rv">Descubra o seu</span>
+      <h2 class="serif rv">Qual perfume <span class="gold">combina com você?</span></h2>
+      <p class="lead rv" style="margin-top:20px">Responda 3 perguntas rápidas e receba indicações da nossa equipe direto no WhatsApp.</p>
+      <ul class="qlist rv">
+        <li>Leva menos de 1 minuto</li>
+        <li>Indicações pensadas no seu gosto</li>
+        <li>Sem compromisso de compra</li>
+      </ul>
+    </div>
+    <form class="qform rv" id="qform" novalidate>
+      <div class="qtop"><span>Descubra o seu</span><span id="qcount">1 de 3</span></div>
+      <div class="qprog"><i id="qbar"></i></div>
+      <fieldset class="qstep active" data-step="1">
+        <legend>É para quem?</legend>
+        <div class="chips" data-name="quem" role="group" aria-label="Para quem"><button type="button" class="chip">Para mim</button><button type="button" class="chip">Para presentear</button></div>
+        <legend style="font-size:18px;margin-top:10px">Que estilo de perfume?</legend>
+        <div class="chips" data-name="estilo" role="group" aria-label="Estilo"><button type="button" class="chip">Masculino</button><button type="button" class="chip">Feminino</button><button type="button" class="chip">Compartilhável</button></div>
+      </fieldset>
+      <fieldset class="qstep" data-step="2">
+        <legend>Quais notas você gosta?</legend>
+        <div class="chips" data-name="notas" data-multi="1" role="group" aria-label="Notas">
+          <button type="button" class="chip">Amadeirado / Oud</button><button type="button" class="chip">Doce</button><button type="button" class="chip">Floral</button>
+          <button type="button" class="chip">Fresco / Cítrico</button><button type="button" class="chip">Especiado</button><button type="button" class="chip">Ainda não sei</button>
+        </div>
+        <legend style="font-size:18px;margin-top:10px">Intensidade</legend>
+        <div class="chips" data-name="int" role="group" aria-label="Intensidade"><button type="button" class="chip">Suave, para o dia a dia</button><button type="button" class="chip">Marcante</button><button type="button" class="chip">Bem intenso</button></div>
+      </fieldset>
+      <fieldset class="qstep" data-step="3">
+        <legend>Como podemos te chamar?</legend>
+        <label class="f">Seu nome<input type="text" id="qnome" autocomplete="given-name"></label>
+      </fieldset>
+      <p class="qerr" id="qerr" role="alert"></p>
+      <div class="qnav"><button type="button" class="qback" id="qback">Voltar</button><button type="submit" class="btn btn-gold" id="qnext">Continuar</button></div>
+    </form>
+  </div>
+</section>
+
+<section id="loja" style="padding-top:0">
+  <div class="wrap store-grid">
+    <div class="map rv"><iframe title="Mapa da Zuzu Perfumaria" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Rua%20Bar%C3%A3o%20de%20Duprat%2C%20315%2C%20S%C3%A3o%20Paulo%20SP&z=17&output=embed"></iframe></div>
+    <div>
+      <span class="kicker rv">Visite a loja</span>
+      <h2 class="serif rv">Venha <span class="gold">sentir de perto</span></h2>
+      <p class="lead rv" style="margin-top:18px">Perfume se escolhe pelo olfato. Passe na loja para testar as fragrâncias com calma e com a nossa ajuda.</p>
+      <ul class="facts rv">
+        <li><span>Endereço</span>R. Barão de Duprat, 315 · Galeria Pagé · Centro, São Paulo</li>
+        <li><span>Onde fica</span>Loja 26, térreo · a primeira loja da entrada</li>
+        <li><span>WhatsApp</span>(11) 97777-7555</li>
+        <li><span>Horário</span>Consulte pelo WhatsApp</li>
+      </ul>
+      <div class="ctas rv">
+        <a href="#" class="btn btn-gold js-wa" data-msg="Olá! Quero visitar a loja da Zuzu Perfumaria. Qual o horário de hoje?"><svg><use href="#wa"/></svg>Chamar no WhatsApp</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Bar%C3%A3o+de+Duprat+315+S%C3%A3o+Paulo" target="_blank" rel="noopener" class="btn btn-line">Como chegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="duvidas" style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div><span class="kicker rv">Dúvidas</span><h2 class="serif rv">Perguntas <span class="gold">frequentes</span></h2></div>
+    <div class="faq rv">
+      <details><summary>O que tem de diferente no perfume árabe?</summary><p>Ele costuma usar notas intensas e marcantes, como oud, âmbar, açafrão e rosa, em composições pensadas para durar e serem percebidas.</p></details>
+      <details><summary>Como escolher sem sentir o cheiro?</summary><p>Faça o “Descubra o seu” aqui no site ou conte pelo WhatsApp quais perfumes você já gosta. A equipe indica opções parecidas.</p></details>
+      <details><summary>Posso testar antes de comprar?</summary><p>Sim. Na loja você sente as fragrâncias com calma, e a gente te ajuda a comparar.</p></details>
+      <details><summary>Dá para comprar pelo WhatsApp?</summary><p>Sim. Fale com a gente pelo (11) 97777-7555 para ver as opções e combinar a retirada ou o envio.</p></details>
+      <details><summary>Como chego na loja?</summary><p>Ficamos na Galeria Pagé, R. Barão de Duprat, 315. É a loja 26, no térreo: a primeira loja logo na entrada.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <img class="logo-big rv" src="../assets/img/zuzu/logo.webp" alt="Zuzu Perfumaria · Perfumes Árabes">
+    <span class="kicker both rv">Zuzu Perfumaria</span>
+    <h2 class="serif rv">Sua próxima <span class="gold">assinatura olfativa</span> está aqui</h2>
+    <div class="ctas rv">
+      <a href="#" class="btn btn-gold js-wa" data-msg="Olá! Vim pelo site da Zuzu Perfumaria e quero conhecer os perfumes."><svg><use href="#wa"/></svg>Falar no WhatsApp</a>
+      <a href="#loja" class="btn btn-line">Visitar a loja</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Zuzu Perfumaria · Perfumes Árabes · R. Barão de Duprat, 315, Galeria Pagé, loja 26</span><span>Fotos ilustrativas</span></div></footer>
+<div class="pbar">Prévia de proposta criada por <a href="https://yagoportfolio.com.br" target="_blank" rel="noopener">YE Studios</a> para a Zuzu Perfumaria · fotos ilustrativas</div>
+<a href="#" class="wa js-wa" id="wafab" data-msg="Olá! Vim pelo site da Zuzu Perfumaria e quero conhecer os perfumes." aria-label="Falar no WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+const WHATSAPP='5511977777555';
+const wa=m=>'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(m);
+document.querySelectorAll('.js-wa').forEach(a=>{a.href=wa(a.dataset.msg);a.target='_blank';a.rel='noopener'});
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>{const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));el.style.transitionDelay=Math.min(Math.max(0,sib.indexOf(el)),6)*80+'ms';io.observe(el)});
+
+const nav=document.getElementById('nav'),fab=document.getElementById('wafab'),mq=document.getElementById('mq');let mqX=0,lastY=scrollY,vel=0;
+function loop(){const y=scrollY;vel+=(Math.min(Math.abs(y-lastY),60)-vel)*.1;lastY=y;nav.classList.toggle('scrolled',y>30);fab.classList.toggle('show',y>innerHeight*.7);
+  if(!reduce){const w=mq.scrollWidth/2;mqX-=.5+vel*.25;if(-mqX>=w)mqX+=w;mq.style.transform=`translate3d(${mqX.toFixed(1)}px,0,0)`;}requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+
+/* quiz */
+(function(){
+  const f=document.getElementById('qform');let step=1;const steps=[...f.querySelectorAll('.qstep')],bar=document.getElementById('qbar'),count=document.getElementById('qcount'),back=document.getElementById('qback'),next=document.getElementById('qnext'),err=document.getElementById('qerr');
+  f.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;if(!g.dataset.multi)g.querySelectorAll('.chip').forEach(x=>{if(x!==c)x.classList.remove('on')});c.classList.toggle('on');g.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.classList.contains('on')))}));
+  const val=n=>[...f.querySelectorAll(`.chips[data-name="${n}"] .chip.on`)].map(c=>c.textContent);
+  function show(){steps.forEach(s=>s.classList.toggle('active',+s.dataset.step===step));bar.style.width=(step/3*100)+'%';count.textContent=`${step} de 3`;back.style.visibility=step>1?'visible':'hidden';next.textContent=step<3?'Continuar':'Receber indicações';err.textContent='';}
+  function check(){if(step===1&&(!val('quem').length||!val('estilo').length))return'Escolha as duas opções.';if(step===2&&(!val('notas').length||!val('int').length))return'Escolha as notas e a intensidade.';if(step===3&&!document.getElementById('qnome').value.trim())return'Digite seu nome.';return''}
+  back.addEventListener('click',()=>{step=Math.max(1,step-1);show()});
+  f.addEventListener('submit',e=>{e.preventDefault();const m=check();if(m){err.textContent=m;return}if(step<3){step++;show();return}
+    const msg=`Olá! Fiz o "Descubra o seu perfume" no site da Zuzu.\n\n*Nome:* ${document.getElementById('qnome').value.trim()}\n*Para:* ${val('quem')[0]}\n*Estilo:* ${val('estilo')[0]}\n*Notas:* ${val('notas').join(', ')}\n*Intensidade:* ${val('int')[0]}\n\nQuais perfumes vocês indicam?`;
+    window.open(wa(msg),'_blank')});
+  show();
+})();
+</script>
+<script src="../assets/js/fx3d.js?v=5" defer></script>
+</body>
+</html>

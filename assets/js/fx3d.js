@@ -63,6 +63,27 @@
    '  return g*(.7+.3*ao)+vec3(1.)*fre*.45+spe*1.2;}',
    ' if(mat<2.5){vec3 gold=vec3(.86,.68,.38);return gold*(.35+.75*dif)+gold*pow(max(n.y,0.),2.)*.3+spe*1.4+fre*vec3(1.,.9,.7)*.3;}',
    ' return C3*(.55+.45*dif)*(.7+.3*ao)+spe*.25+fre*.12;}'].join('\n'),
+   attar:[
+   'float hexp(vec3 p,vec2 h){const vec3 k=vec3(-.8660254,.5,.57735);p=abs(p);p.xy-=2.*min(dot(k.xy,p.xy),0.)*k.xy;vec2 d=vec2(length(p.xy-vec2(clamp(p.x,-k.z*h.x,k.z*h.x),h.x))*sign(p.y-h.x),p.z-h.y);return min(max(d.x,d.y),0.)+length(max(d,0.));}',
+   'float map(vec3 p){',
+   ' p.y+=sin(T*.8)*.05+.08;',
+   ' p.xz*=rot(T*.3+M.x*1.2+S*2.4); p.yz*=rot(.12+M.y*.35);',
+   ' vec3 b=p-vec3(0,-.42,0);',
+   ' float body=max(hexp(b.xzy,vec2(.6,.5))-.02,length(b*vec3(1.,1.15,1.))-.78);',
+   ' float neck=cyl(p-vec3(0,.2,0),.13,.14,.03);',
+   ' float collar=cyl(p-vec3(0,.12,0),.26,.05,.025);',
+   ' float dome=length((p-vec3(0,.46,0))*vec3(1.,1.25,1.))-.2;',
+   ' float ball=length(p-vec3(0,.72,0))-.075;',
+   ' float spire=rcone(p,vec3(0,.6,0),vec3(0,1.18,0),.075,.008);',
+   ' float gold=min(min(min(neck,collar),dome),min(ball,spire));',
+   ' float d=body;mat=1.;if(gold<d){d=gold;mat=2.;}',
+   ' return d*.85;}',
+   'vec3 env(vec3 r){vec3 c=mix(vec3(.05,.07,.16),vec3(.75,.7,.6),smoothstep(-.2,.9,r.y));c+=vec3(1.,.9,.7)*pow(max(dot(r,normalize(vec3(-.5,.6,.6))),0.),24.);return c;}',
+   'vec3 shade(vec3 p,vec3 n,vec3 rd,float ao){',
+   ' vec3 L=normalize(vec3(-.5,.8,.6));float dif=max(dot(n,L),0.),fre=pow(1.-max(dot(n,-rd),0.),2.4),spe=pow(max(dot(reflect(rd,n),L),0.),90.);vec3 r=reflect(rd,n);',
+   ' if(mat<1.5){vec3 g=C2*(.35+.5*dif)+C2*1.6*pow(max(dot(n,normalize(vec3(.4,-.3,.8))),0.),3.)*.6;',
+   '  g+=C3*fre*.55+env(r)*fre*.35+spe*1.5;return g*(.75+.25*ao);}',
+   ' vec3 gold=C3;return gold*(.25+.85*dif)+env(r)*gold*.6+spe*1.6+fre*gold*.4;}'].join('\n'),
    syringe:[
    'vec3 X(vec3 p){p.y+=sin(T*.8)*.05; p.xy*=rot(-.95+M.y*.25); p.xz*=rot(T*.3+M.x*1.1+S*2.2); return p;}',
    'float gelTop(){return .22+.06*sin(T*.6);}',
@@ -133,19 +154,22 @@
     var U={};['R','T','M','S','C1','C2','C3'].forEach(function(k){U[k]=gl.getUniformLocation(pr,k)});
     gl.uniform3fv(U.C1,hex(cv.dataset.c1||'#ffffff'));gl.uniform3fv(U.C2,hex(cv.dataset.c2||'#dddddd'));gl.uniform3fv(U.C3,hex(cv.dataset.c3||'#888888'));
     var vis=false,mx=0,my=0,tx=0,ty=0,sc=0,t0=performance.now();
-    function size(){var d=Math.min(devicePixelRatio||1,1.6),r=cv.getBoundingClientRect();cv.width=Math.max(1,r.width*d);cv.height=Math.max(1,r.height*d);gl.viewport(0,0,cv.width,cv.height)}
+    var Q=Math.min(devicePixelRatio||1,1.3),slow=0,last=0;
+    function size(){var r=cv.getBoundingClientRect();cv.width=Math.max(1,Math.round(r.width*Q));cv.height=Math.max(1,Math.round(r.height*Q));gl.viewport(0,0,cv.width,cv.height)}
     size();addEventListener('resize',size);
     if(fine)addEventListener('mousemove',function(e){tx=(e.clientX/innerWidth-.5);ty=(e.clientY/innerHeight-.5)});
-    new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)requestAnimationFrame(draw)}).observe(cv);
+    var go=false;(function wait(){if(document.body&&document.body.classList.contains('ready')){setTimeout(function(){go=true;if(vis)requestAnimationFrame(draw)},900)}else setTimeout(wait,120)})();
+    new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis&&go)requestAnimationFrame(draw)}).observe(cv);
     function draw(now){
+      if(vis&&!reduce&&now-last<30){requestAnimationFrame(draw);return}var dt=now-last;last=now;
+      if(dt>0&&dt<1000){slow=dt>55?slow+1:Math.max(0,slow-1);if(slow>8&&Q>.5){Q=Math.max(.5,Q*.75);slow=0;size()}}
       mx+=(tx-mx)*.05;my+=(ty-my)*.05;
       var r=cv.getBoundingClientRect();sc+=(((innerHeight-r.top)/(innerHeight+r.height))-sc)*.08;
       gl.uniform2f(U.R,cv.width,cv.height);gl.uniform1f(U.T,reduce?0:(now-t0)/1000);gl.uniform2f(U.M,mx,my);gl.uniform1f(U.S,reduce?0:sc);
       gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,3);
       cv.style.transform='translate3d(0,'+((.5-sc)*60).toFixed(1)+'px,0)';
-      if(vis&&!reduce)requestAnimationFrame(draw);
+      if(vis&&go&&!reduce)requestAnimationFrame(draw);
     }
-    requestAnimationFrame(draw);
   }
   document.querySelectorAll('canvas.pearl').forEach(pearl);
 
