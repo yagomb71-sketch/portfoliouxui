@@ -82,11 +82,12 @@ h2.serif{font-size:clamp(32px,4.4vw,58px);margin-top:18px}
 .arch svg.frame{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .arch .inner{position:absolute;inset:0;clip-path:url(#archClip);background:radial-gradient(ellipse at 50% 40%,#22306A 0%,#141C40 55%,#0B1023 100%)}
 .arch .inner::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02' numOctaves='5' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .6 0 0 0 0 1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:screen}
-.arch canvas{position:absolute;left:0;right:0;bottom:4%;margin:auto;width:100%;height:92%}
+.arch-logo{position:absolute;left:50%;top:56%;width:68%;height:auto;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 30px 70px -20px rgba(0,0,0,.6),0 0 60px -10px rgba(214,178,106,.25);animation:archFloat 6s ease-in-out infinite;will-change:transform}
+@keyframes archFloat{50%{transform:translate(-50%,calc(-50% - 12px)) rotate(-2deg)}}
 .stars{position:absolute;inset:0;pointer-events:none}
 .stars i{position:absolute;color:var(--gold-2);font-style:normal;font-size:14px;animation:tw 3s ease-in-out infinite}
 @keyframes tw{50%{opacity:.25;transform:scale(.7)}}
-.moon{position:absolute;top:24%;left:22%;width:34px;height:34px;border-radius:50%;box-shadow:-9px 4px 0 0 var(--gold);transform:rotate(-20deg);opacity:.9}
+.moon{position:absolute;top:17%;left:24%;width:34px;height:34px;border-radius:50%;box-shadow:-9px 4px 0 0 var(--gold);transform:rotate(-20deg);opacity:.9}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.arch{width:min(78%,360px);order:-1}.hero{padding-top:110px}}
 @media(max-width:520px){.ctas .btn{flex:1}}
 
@@ -258,7 +259,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
     <div class="arch" id="arch">
       <div class="inner">
         <div class="stars" aria-hidden="true"><span class="moon"></span><i style="left:31%;top:22%;font-size:10px">★</i><i style="right:24%;top:30%;animation-delay:1.2s">★</i><i style="left:16%;top:52%;font-size:9px;animation-delay:.6s">✦</i><i style="right:15%;top:58%;font-size:9px;animation-delay:2s">✦</i></div>
-        <canvas class="pearl" data-shape="attar" data-c1="#F4ECDD" data-c2="#18318A" data-c3="#D6B26A" aria-hidden="true"></canvas>
+        <img class="arch-logo" src="../assets/img/zuzu/logo.webp" alt="Zuzu Perfumaria · Perfumes Árabes">
       </div>
       <svg class="frame" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
         <path d="M18,400 L18,152 C18,100 60,68 99,48 C126,36 141,20 150,0 C159,20 174,36 201,48 C240,68 282,100 282,152 L282,400" fill="none" stroke="#D6B26A" stroke-width="2"/>
@@ -426,6 +427,5 @@ requestAnimationFrame(loop);
   show();
 })();
 </script>
-<script src="../assets/js/fx3d.js?v=5" defer></script>
 </body>
 </html>
