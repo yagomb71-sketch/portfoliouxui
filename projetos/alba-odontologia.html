@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#F6F5F1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Space+Mono&display=swap" rel="stylesheet">
 <!-- Projeto conceitual de Yago Moreira (yagoportfolio.com.br) -->
 <style>
 :root{
@@ -139,6 +139,58 @@ h2{font-size:clamp(38px,5.4vw,72px);margin-top:22px}
 .why p{color:var(--ink-2);font-size:15px}
 @media(max-width:900px){.why{grid-template-columns:1fr 1fr;row-gap:48px}}
 @media(max-width:520px){.why{grid-template-columns:1fr;row-gap:40px}}
+
+
+/* implante 3D desmontável */
+.imp{height:520vh;padding:0;position:relative;background:#EEF0EC;transition:background .6s}
+.imp-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.imp-stage{position:absolute;inset:0}
+.imp-stage canvas{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+.imp-stage canvas:active{cursor:grabbing}
+.imp::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s;
+  background-image:linear-gradient(rgba(159,224,212,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(159,224,212,.14) 1px,transparent 1px);background-size:40px 40px}
+.imp.plan{background:#0E2422}.imp.plan::before{opacity:1}
+.imp-head{position:absolute;left:0;right:0;top:clamp(96px,13vh,140px);pointer-events:none;z-index:2}
+.imp-head h2{max-width:520px;font-size:clamp(34px,4.6vw,64px)}
+.imp-info{position:absolute;left:0;right:0;bottom:clamp(34px,7vh,72px);z-index:2;pointer-events:none}
+.imp-info .wrap{display:flex;gap:28px;align-items:flex-end}
+.imp-card{max-width:400px}
+.imp-card .num{font-family:'Space Mono',ui-monospace,monospace;font-size:13px;color:var(--teal);letter-spacing:.08em}
+.imp-card h3{font-size:clamp(28px,3vw,40px);margin:8px 0 10px}
+.imp-card p{color:var(--ink-2);font-size:16px}
+.imp-info.sw .imp-card>*{animation:impIn .7s var(--ease) both}
+.imp-info.sw .imp-card h3{animation-delay:.05s}.imp-info.sw .imp-card p{animation-delay:.1s}
+@keyframes impIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.imp-rail{width:1px;height:120px;background:var(--line);position:relative;flex:none}
+.imp-rail i{position:absolute;inset:0;background:var(--teal);transform-origin:top;transform:scaleY(0)}
+.imp-tools{position:absolute;right:max(20px,calc((100vw - 1240px)/2));bottom:clamp(34px,7vh,72px);z-index:3;display:flex;gap:10px;align-items:center}
+.imp-tools button{font:500 13px var(--sans);height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.7);backdrop-filter:blur(8px);color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .3s,color .3s,border-color .3s}
+.imp-tools button[aria-pressed="true"]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.imp-tools .hint{font-size:12px;color:var(--muted)}
+.imp-labels{position:absolute;inset:0;pointer-events:none;z-index:1}
+.imp-lab{position:absolute;left:0;top:0;opacity:0;transition:opacity .5s}
+.imp-lab.on{opacity:.55}.imp-lab.on.act{opacity:1}
+.imp-lab i{position:absolute;top:0;height:1px;width:70px;background:var(--ink);opacity:.5}
+.imp-lab i::before{content:'';position:absolute;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.imp-lab span{position:absolute;top:-10px;white-space:nowrap;font-size:13px;font-weight:500;color:var(--ink)}
+.imp-lab span small{font-family:'Space Mono',ui-monospace,monospace;color:var(--teal);margin-right:8px;font-size:11px}
+.imp-lab.r i{left:0}.imp-lab.r i::before{left:-3px}.imp-lab.r span{left:80px}
+.imp-lab.l i{right:0}.imp-lab.l i::before{right:-3px}.imp-lab.l span{right:80px}
+.imp-lab.act span{color:var(--teal)}
+.imp.plan .imp-head h2,.imp.plan .imp-card h3{color:#E9F5F2}.imp.plan .imp-card p,.imp.plan .label,.imp.plan .imp-tools .hint{color:#9CB8B3}
+.imp.plan em{color:#9fe0d4}.imp.plan .imp-lab span{color:#E9F5F2;font-family:'Space Mono',ui-monospace,monospace;font-size:12px}.imp.plan .imp-lab i{background:#9fe0d4}
+.imp.plan .imp-tools button:not([aria-pressed="true"]){background:transparent;color:#E9F5F2;border-color:#2f4b48}
+.imp-fallback{display:none}
+@media(max-width:700px){
+  .imp{height:460vh}
+  .imp-head h2{font-size:30px;max-width:300px}
+  .imp-rail{display:none}.imp-card{max-width:none;padding-right:0}.imp-card h3{font-size:26px}.imp-card p{font-size:15px}
+  .imp-info{bottom:0;padding:70px 0 96px;background:linear-gradient(rgba(238,240,236,0),#EEF0EC 42%)}
+  .imp.plan .imp-info{background:linear-gradient(rgba(14,36,34,0),#0E2422 42%)}
+  .imp-head{background:linear-gradient(#EEF0EC 60%,rgba(238,240,236,0));top:0;padding:92px 0 30px}.imp.plan .imp-head{background:linear-gradient(#0E2422 60%,rgba(14,36,34,0))}
+  .imp-tools{left:20px;right:auto;bottom:28px}.imp-tools .hint{display:none}
+  .imp-lab i{width:34px}.imp-lab.r span{left:42px}.imp-lab.l span{right:42px}.imp-lab span{font-size:12px}
+}
 
 /* processo sticky */
 .process{background:var(--paper)}
@@ -297,6 +349,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
     <a href="#" class="logo" aria-label="Alba Odontologia, início">Alba <span>odontologia</span></a>
     <nav class="menu" aria-label="Menu principal">
       <a href="#tratamentos">Tratamentos</a>
+      <a href="#implante">Implantes</a>
       <a href="#como-funciona">Primeira consulta</a>
       <a href="#clinica">A clínica</a>
       <a href="#duvidas">Dúvidas</a>
@@ -370,6 +423,16 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
       </div>
       <a href="#" class="btn btn-dark js-wa" data-msg="Olá! Estou com dor de dente e gostaria de um atendimento de urgência.">Pedir atendimento<svg class="arr"><use href="#arrow"/></svg></a>
     </div>
+  </div>
+</section>
+
+<section class="imp" id="implante" aria-label="Como é um implante dentário, peça por peça">
+  <div class="imp-stick">
+    <div class="imp-stage"><canvas aria-hidden="true"></canvas></div>
+    <div class="imp-labels" aria-hidden="true"></div>
+    <div class="imp-head"><div class="wrap"><span class="label">Por dentro do implante</span><h2>Peça por peça, <em>como um dente de verdade</em></h2></div></div>
+    <div class="imp-info" aria-live="polite"><div class="wrap"><div class="imp-rail"><i id="impRail"></i></div><div class="imp-card"><div class="num" id="impNum">00</div><h3 id="impTitle">Role para desmontar</h3><p id="impText">Cada peça do implante tem uma função. Role a página e veja uma por uma.</p></div></div></div>
+    <div class="imp-tools"><span class="hint">Arraste para girar</span><button type="button" id="impPlan" aria-pressed="false">Vista técnica</button></div>
   </div>
 </section>
 
@@ -610,5 +673,11 @@ if(!reduce){(function m(){const w=mq.scrollWidth/2;mqX-=0.5+vel*.25;vel*=.92;if(
 })();
 </script>
 <script src="../assets/js/fx3d.js?v=5" defer></script>
+<script>
+/* carrega o 3D do implante só quando a seção chega perto */
+(function(){const s=document.getElementById('implante');let done=false;
+  const go=()=>{if(done)return;done=true;const t=document.createElement('script');t.type='module';t.src='../assets/js/implante3d.js?v=3';document.body.appendChild(t);};
+  new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){go();o.disconnect();}},{rootMargin:'150% 0px'}).observe(s);})();
+</script>
 </body>
 </html>
