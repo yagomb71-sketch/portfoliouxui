@@ -165,7 +165,7 @@ const parts = {
 };
 // posições montadas e desmontadas (y)
 const BASE = { bone: 0, gum: 0, impl: 0, abut: 0.02, screw: 0.35, crown: 1.15 };
-const OPEN = { bone: -1.6, gum: -0.95, impl: 0.3, abut: 2.05, screw: 3.4, crown: 4.85 };
+const OPEN = { bone: -1.9, gum: -1.1, impl: 0.4, abut: 2.3, screw: 3.75, crown: 5.4 };
 const SPIN = { bone: 0, gum: 0, impl: 1.6, abut: -0.8, screw: 3.2, crown: 0.6 };
 Object.entries(parts).forEach(([k, o]) => { o.position.y = BASE[k]; root.add(o); });
 
@@ -201,7 +201,7 @@ canvas.addEventListener('pointermove', e => { if (!down) return; const dx = e.cl
 ['pointerup', 'pointercancel'].forEach(t => canvas.addEventListener(t, () => { down = false; }));
 
 /* ---------- loop ---------- */
-let W = 0, H = 0, needs = true, visible = false, cur = 0, curE = 0, camY = -0.55, camD = 17, last = -1;
+let W = 0, H = 0, needs = true, visible = false, cur = 0, curE = 0, camY = -0.6, camD = 14.5, last = -1;
 function resize() {
   const r = stage.getBoundingClientRect(); W = r.width; H = r.height;
   renderer.setPixelRatio(Math.min(devicePixelRatio, W < 700 ? 1.5 : 1.75));
@@ -236,7 +236,7 @@ function tick(now) {
     last = key;
     sec.querySelector('.imp-info').classList.remove('sw'); void sec.querySelector('.imp-info').offsetWidth;
     sec.querySelector('.imp-info').classList.add('sw');
-    numEl.textContent = info.n; titleEl.textContent = info.t; textEl.textContent = info.d;
+    numEl.textContent = info.n; numEl.classList.toggle('of', typeof key === 'number'); titleEl.textContent = info.t; textEl.textContent = info.d;
   }
 
   // posiciona peças
@@ -249,13 +249,13 @@ function tick(now) {
   root.rotation.x = 0.06;
 
   // câmera foca na peça ativa
-  const focusY = -0.55 + curE * 0.95;   // centro da pilha inteira, montada ou aberta
-  const zoomIn = 1;
+  const focusY = idx >= 0 ? parts[PARTS[idx].k].position.y + (PARTS[idx].k === 'bone' ? -1.4 : PARTS[idx].k === 'impl' ? -1.2 : 0.4) : -0.6 + curE * 1.9;
+  const zoomIn = idx >= 0 ? (W < 700 ? 0.78 : 0.62) : 1;
   const mobile = W < 700;
-  const baseD = (mobile ? 32 : 17) + curE * (mobile ? 12 : 10);
+  const baseD = (mobile ? 27 : 14.5) + curE * (mobile ? 15 : 8);
   camY += (focusY - camY) * Math.min(1, dt * 3);
   camD += (baseD * zoomIn - camD) * Math.min(1, dt * 3);
-  root.position.x = mobile ? 0 : 2.2;
+  root.position.x = mobile ? 0 : 1.9;
   camera.position.set(0, camY + 1.4, camD);
   camera.lookAt(0, camY, 0);
 
@@ -273,7 +273,7 @@ function tick(now) {
     const k = PARTS[i].k, o = parts[k];
     tmp.set(...ANCH[k]); o.localToWorld(tmp); tmp.project(camera);
     let x = (tmp.x * 0.5 + 0.5) * W, y = (-tmp.y * 0.5 + 0.5) * H;
-    if (W < 700) { y += H * 0.05; x = i % 2 ? Math.max(190, x) : Math.min(W - 160, x); }
+    if (W < 700) { y += H * 0.05; x = i % 2 ? Math.max(170, x) : Math.min(W - 160, x); }
     const vis = curE > 0.55 && tmp.z < 1;
     el.style.transform = `translate3d(${x}px,${y}px,0)`;
     el.classList.toggle('on', vis);
