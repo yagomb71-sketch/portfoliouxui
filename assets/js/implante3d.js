@@ -1,6 +1,5 @@
 /* Implante dentário 3D que se desmonta com o scroll — YE Studios */
 import * as THREE from '../vendor/three.module.min.js';
-import { RoomEnvironment } from '../vendor/RoomEnvironment.js';
 
 const sec = document.getElementById('implante');
 const stage = sec.querySelector('.imp-stage');
@@ -22,18 +21,17 @@ const DONE = { n: '✓', t: 'Montado', d: 'Por fora, ninguém percebe: parece e 
 const START = { n: '00', t: 'Role para desmontar', d: 'Cada peça do implante tem uma função. Role a página e veja uma por uma.' };
 
 /* ---------- renderer ---------- */
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.05;
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+// vista técnica não precisa de luz nem de mapa de ambiente: fica leve e compatível com qualquer celular
+let renderer = null;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+} catch (err) { renderer = null; }
+if (!renderer) sec.classList.add('nogl');
+canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); sec.classList.add('nogl'); renderer = null; });
 const scene = new THREE.Scene();
-const pmrem = new THREE.PMREMGenerator(renderer);
-scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
 
-const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(4, 6, 5); scene.add(key);
-const rim = new THREE.DirectionalLight(0xcfe6e1, 1.1); rim.position.set(-5, 2, -4); scene.add(rim);
-scene.add(new THREE.AmbientLight(0xffffff, 0.25));
 
 const root = new THREE.Group(); scene.add(root);
 
@@ -203,9 +201,10 @@ canvas.addEventListener('pointermove', e => { if (!down) return; const dx = e.cl
 /* ---------- loop ---------- */
 let W = 0, H = 0, needs = true, visible = false, cur = 0, curE = 0, camY = -0.6, camD = 14.5, last = -1;
 function resize() {
-  const r = stage.getBoundingClientRect(); W = r.width; H = r.height;
-  renderer.setPixelRatio(Math.min(devicePixelRatio, W < 700 ? 1.5 : 1.75));
-  renderer.setSize(W, H, false); camera.aspect = W / H;
+  const r = stage.getBoundingClientRect();
+  if (!r.width || !r.height || (r.width === W && Math.abs(r.height - H) < 2)) return;
+  W = r.width; H = r.height;
+  if (renderer) { renderer.setPixelRatio(Math.min(devicePixelRatio, W < 700 ? 1.5 : 1.75)); renderer.setSize(W, H, false); } camera.aspect = W / H;
   if (W < 700) camera.setViewOffset(W, H, 0, -H * 0.05, W, H); else camera.clearViewOffset();
   camera.updateProjectionMatrix(); needs = true;
 }
@@ -266,7 +265,7 @@ function tick(now) {
     m.opacity += ((on ? 0.95 : 0.22) - m.opacity) * Math.min(1, dt * 6);
   });
 
-  renderer.render(scene, camera);
+  if (renderer) renderer.render(scene, camera);
 
   // legendas
   labelNodes.forEach((el, i) => {
