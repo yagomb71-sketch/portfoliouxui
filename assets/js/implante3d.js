@@ -10,7 +10,6 @@ const numEl = sec.querySelector('#impNum');
 const titleEl = sec.querySelector('#impTitle');
 const textEl = sec.querySelector('#impText');
 const railEl = sec.querySelector('#impRail');
-const btnPlan = sec.querySelector('#impPlan');
 
 const PARTS = [
   { k: 'crown', n: '01', t: 'Coroa', d: 'Cerâmica feita sob medida, na cor e no formato dos seus dentes.' },
@@ -166,7 +165,7 @@ const parts = {
 };
 // posições montadas e desmontadas (y)
 const BASE = { bone: 0, gum: 0, impl: 0, abut: 0.02, screw: 0.35, crown: 1.15 };
-const OPEN = { bone: -1.9, gum: -1.1, impl: 0.4, abut: 2.3, screw: 3.75, crown: 5.4 };
+const OPEN = { bone: -1.6, gum: -0.95, impl: 0.3, abut: 2.05, screw: 3.4, crown: 4.85 };
 const SPIN = { bone: 0, gum: 0, impl: 1.6, abut: -0.8, screw: 3.2, crown: 0.6 };
 Object.entries(parts).forEach(([k, o]) => { o.position.y = BASE[k]; root.add(o); });
 
@@ -174,24 +173,18 @@ Object.entries(parts).forEach(([k, o]) => { o.position.y = BASE[k]; root.add(o);
 const ANCH = { crown: [0.95, 0.1, 0], screw: [0.2, 0.7, 0], abut: [0.5, 0.9, 0], impl: [0.45, -1.3, 0], bone: [1.7, -0.8, 0] };
 
 /* ---------- vista técnica (arestas) ---------- */
-const lineMat = new THREE.LineBasicMaterial({ color: 0x9fe0d4, transparent: true, opacity: 0.85 });
+const lineMats = {};
 const edges = [];
-root.traverse(o => {
-  if (o.isMesh && !o.isInstancedMesh) {
-    const e = new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry, 12), lineMat);
-    e.visible = false; o.add(e); edges.push({ mesh: o, e });
-  }
+Object.entries(parts).forEach(([k, part]) => {
+  const lm = lineMats[k] = new THREE.LineBasicMaterial({ color: 0x9fe0d4, transparent: true, opacity: 0.85 });
+  part.traverse(o => {
+    if (o.isMesh && !o.isInstancedMesh) { const e = new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry, 12), lm); o.add(e); edges.push(e); }
+  });
 });
-let plan = false;
-const wire = new THREE.MeshBasicMaterial({ color: 0x9fe0d4, wireframe: true, transparent: true, opacity: 0.08, depthWrite: false });
-root.traverse(o => { if (o.isMesh) o.userData.mat = o.material; });
-function setPlan(v) {
-  plan = v; sec.classList.toggle('plan', v); btnPlan.setAttribute('aria-pressed', v);
-  root.traverse(o => { if (o.isMesh && !o.isInstancedMesh) o.material = v ? wire : o.userData.mat; if (o.isInstancedMesh) o.visible = !v; });
-  edges.forEach(({ e }) => { e.visible = v; });
-}
-btnPlan.addEventListener('click', () => setPlan(!plan));
-// materiais compartilhados: material.visible afeta todos; arestas são filhas, então continuam visíveis
+// só a vista técnica: malha em arame bem leve + arestas
+const wire = new THREE.MeshBasicMaterial({ color: 0x9fe0d4, wireframe: true, transparent: true, opacity: 0.07, depthWrite: false });
+root.traverse(o => { if (o.isInstancedMesh) o.visible = false; else if (o.isMesh) o.material = wire; });
+sec.classList.add('plan');
 
 /* ---------- legendas HTML ---------- */
 const labelNodes = PARTS.map((p, i) => {
@@ -208,7 +201,7 @@ canvas.addEventListener('pointermove', e => { if (!down) return; const dx = e.cl
 ['pointerup', 'pointercancel'].forEach(t => canvas.addEventListener(t, () => { down = false; }));
 
 /* ---------- loop ---------- */
-let W = 0, H = 0, needs = true, visible = false, cur = 0, curE = 0, camY = -0.6, camD = 14.5, last = -1;
+let W = 0, H = 0, needs = true, visible = false, cur = 0, curE = 0, camY = -0.55, camD = 17, last = -1;
 function resize() {
   const r = stage.getBoundingClientRect(); W = r.width; H = r.height;
   renderer.setPixelRatio(Math.min(devicePixelRatio, W < 700 ? 1.5 : 1.75));
@@ -256,15 +249,22 @@ function tick(now) {
   root.rotation.x = 0.06;
 
   // câmera foca na peça ativa
-  const focusY = idx >= 0 ? parts[PARTS[idx].k].position.y + (PARTS[idx].k === 'bone' ? -1.4 : PARTS[idx].k === 'impl' ? -1.2 : 0.4) : -0.6 + curE * 1.9;
-  const zoomIn = idx >= 0 ? (W < 700 ? 0.78 : 0.62) : 1;
+  const focusY = -0.55 + curE * 0.95;   // centro da pilha inteira, montada ou aberta
+  const zoomIn = 1;
   const mobile = W < 700;
-  const baseD = (mobile ? 27 : 14.5) + curE * (mobile ? 15 : 8);
+  const baseD = (mobile ? 32 : 17) + curE * (mobile ? 12 : 10);
   camY += (focusY - camY) * Math.min(1, dt * 3);
   camD += (baseD * zoomIn - camD) * Math.min(1, dt * 3);
-  root.position.x = mobile ? 0 : 1.7;
+  root.position.x = mobile ? 0 : 2.2;
   camera.position.set(0, camY + 1.4, camD);
   camera.lookAt(0, camY, 0);
+
+  // destaque da peça ativa
+  const act = idx >= 0 ? PARTS[idx].k : null;
+  Object.entries(lineMats).forEach(([k, m]) => {
+    const on = !act || k === act || (act === 'bone' && k === 'gum');
+    m.opacity += ((on ? 0.95 : 0.22) - m.opacity) * Math.min(1, dt * 6);
+  });
 
   renderer.render(scene, camera);
 
@@ -273,7 +273,7 @@ function tick(now) {
     const k = PARTS[i].k, o = parts[k];
     tmp.set(...ANCH[k]); o.localToWorld(tmp); tmp.project(camera);
     let x = (tmp.x * 0.5 + 0.5) * W, y = (-tmp.y * 0.5 + 0.5) * H;
-    if (W < 700) { y += H * 0.05; x = i % 2 ? Math.max(170, x) : Math.min(W - 160, x); }
+    if (W < 700) { y += H * 0.05; x = i % 2 ? Math.max(190, x) : Math.min(W - 160, x); }
     const vis = curE > 0.55 && tmp.z < 1;
     el.style.transform = `translate3d(${x}px,${y}px,0)`;
     el.classList.toggle('on', vis);

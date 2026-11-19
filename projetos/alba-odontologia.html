@@ -163,7 +163,7 @@ h2{font-size:clamp(38px,5.4vw,72px);margin-top:22px}
 @keyframes impIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .imp-rail{width:1px;height:120px;background:var(--line);position:relative;flex:none}
 .imp-rail i{position:absolute;inset:0;background:var(--teal);transform-origin:top;transform:scaleY(0)}
-.imp-tools{position:absolute;right:max(20px,calc((100vw - 1240px)/2));bottom:clamp(34px,7vh,72px);z-index:3;display:flex;gap:10px;align-items:center}
+.imp-tools{position:absolute;right:max(110px,calc((100vw - 1240px)/2 + 90px));bottom:clamp(34px,7vh,72px);z-index:3;display:flex;gap:10px;align-items:center}
 .imp-tools button{font:500 13px var(--sans);height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.7);backdrop-filter:blur(8px);color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .3s,color .3s,border-color .3s}
 .imp-tools button[aria-pressed="true"]{background:var(--teal);color:#fff;border-color:var(--teal)}
 .imp-tools .hint{font-size:12px;color:var(--muted)}
@@ -188,7 +188,7 @@ h2{font-size:clamp(38px,5.4vw,72px);margin-top:22px}
   .imp-info{bottom:0;padding:70px 0 96px;background:linear-gradient(rgba(238,240,236,0),#EEF0EC 42%)}
   .imp.plan .imp-info{background:linear-gradient(rgba(14,36,34,0),#0E2422 42%)}
   .imp-head{background:linear-gradient(#EEF0EC 60%,rgba(238,240,236,0));top:0;padding:92px 0 30px}.imp.plan .imp-head{background:linear-gradient(#0E2422 60%,rgba(14,36,34,0))}
-  .imp-tools{left:20px;right:auto;bottom:28px}.imp-tools .hint{display:none}
+  .imp-tools{left:20px;right:auto;bottom:34px}
   .imp-lab i{width:34px}.imp-lab.r span{left:42px}.imp-lab.l span{right:42px}.imp-lab span{font-size:12px}
 }
 
@@ -426,13 +426,13 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
   </div>
 </section>
 
-<section class="imp" id="implante" aria-label="Como é um implante dentário, peça por peça">
+<section class="imp plan" id="implante" aria-label="Como é um implante dentário, peça por peça">
   <div class="imp-stick">
     <div class="imp-stage"><canvas aria-hidden="true"></canvas></div>
     <div class="imp-labels" aria-hidden="true"></div>
     <div class="imp-head"><div class="wrap"><span class="label">Por dentro do implante</span><h2>Peça por peça, <em>como um dente de verdade</em></h2></div></div>
     <div class="imp-info" aria-live="polite"><div class="wrap"><div class="imp-rail"><i id="impRail"></i></div><div class="imp-card"><div class="num" id="impNum">00</div><h3 id="impTitle">Role para desmontar</h3><p id="impText">Cada peça do implante tem uma função. Role a página e veja uma por uma.</p></div></div></div>
-    <div class="imp-tools"><span class="hint">Arraste para girar</span><button type="button" id="impPlan" aria-pressed="false">Vista técnica</button></div>
+    <div class="imp-tools"><span class="hint">Arraste para girar</span></div>
   </div>
 </section>
 
@@ -676,7 +676,7 @@ if(!reduce){(function m(){const w=mq.scrollWidth/2;mqX-=0.5+vel*.25;vel*=.92;if(
 <script>
 /* carrega o 3D do implante só quando a seção chega perto */
 (function(){const s=document.getElementById('implante');let done=false;
-  const go=()=>{if(done)return;done=true;const t=document.createElement('script');t.type='module';t.src='../assets/js/implante3d.js?v=3';document.body.appendChild(t);};
+  const go=()=>{if(done)return;done=true;const t=document.createElement('script');t.type='module';t.src='../assets/js/implante3d.js?v=5';document.body.appendChild(t);};
   new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){go();o.disconnect();}},{rootMargin:'150% 0px'}).observe(s);})();
 </script>
 </body>
