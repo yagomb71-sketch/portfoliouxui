@@ -167,6 +167,18 @@ section{padding:clamp(80px,11vw,150px) 0}
 .maint ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;font-size:15px}
 .maint li::before{content:"— ";color:var(--muted)}
 @media(max-width:960px){.maint{grid-template-columns:1fr}.maint ul{grid-template-columns:1fr}.maint .btn{width:100%}}
+.extras-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-top:clamp(48px,6vw,80px);margin-bottom:clamp(20px,3vw,32px)}
+.extras-head h3{font-size:clamp(28px,3vw,44px);font-weight:800;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;margin-top:10px}
+.extras{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+.extra{display:flex;flex-direction:column;gap:12px;padding:clamp(20px,2.4vw,28px) clamp(16px,1.6vw,22px) clamp(20px,2.4vw,28px) 0;border-bottom:1px solid var(--line)}
+.extra+.extra{padding-left:clamp(16px,1.6vw,22px);border-left:1px solid var(--line)}
+.extra h4{font-size:17px;font-weight:700;line-height:1.2}
+.extra p{font-size:14px;color:var(--muted);line-height:1.45;flex:1}
+.extra .price b{font-size:clamp(24px,2vw,30px)}
+.extra .price small{display:block;font-size:11px;font-weight:500;letter-spacing:.04em;margin-top:4px}
+.extra a{font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1100px){.extras{grid-template-columns:repeat(2,1fr)}.extra:nth-child(odd){padding-left:0;border-left:0}.extra:nth-child(even){padding-left:clamp(16px,1.6vw,22px);border-left:1px solid var(--line)}}
+@media(max-width:600px){.extras{grid-template-columns:1fr}.extra,.extra:nth-child(even){padding-left:0;border-left:0}}
 @media(max-width:960px){.plans{grid-template-columns:1fr}.plan,.plan+.plan{padding:36px 0;border-right:0;border-bottom:1px solid var(--line)}}
 .price s{color:var(--muted);font-weight:500}
 .tag.promo{background:#fff;color:#0A0A0A}
@@ -455,6 +467,45 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
         </ul>
       </div>
       <a href="#" class="btn btn-line js-wa" data-msg="Olá Yago! Quero saber mais sobre a manutenção mensal do site.">Quero saber mais</a>
+    </div>
+    <div class="extras-head rv">
+      <div>
+        <span class="label">Para começar com pouco</span>
+        <h3>Serviços avulsos</h3>
+      </div>
+      <p class="muted" style="max-width:380px">Ainda não é hora de um site? Dá pra começar por aqui e evoluir depois.</p>
+    </div>
+    <div class="extras rv">
+      <div class="extra">
+        <h4>Cartão de visita e impressos</h4>
+        <p>Design de cartão, panfleto ou folder, já com a impressão inclusa.</p>
+        <div class="price">A partir de<b>R$ 130</b><small>Valor final varia com a quantidade</small></div>
+        <a href="#" class="js-wa" data-msg="Olá Yago! Quero um orçamento de cartão de visita / impressos.">Pedir orçamento</a>
+      </div>
+      <div class="extra">
+        <h4>Página de link da bio</h4>
+        <p>Uma página com a cara da sua marca no lugar do Linktree, com WhatsApp, serviços e localização.</p>
+        <div class="price">A partir de<b>R$ 200</b></div>
+        <a href="#" class="js-wa" data-msg="Olá Yago! Tenho interesse na página de link da bio.">Quero esse</a>
+      </div>
+      <div class="extra">
+        <h4>Google Meu Negócio</h4>
+        <p>Perfil do Google revisado: fotos, descrição, serviços e horários, pra aparecer melhor no Maps.</p>
+        <div class="price">A partir de<b>R$ 250</b></div>
+        <a href="#" class="js-wa" data-msg="Olá Yago! Quero melhorar meu perfil no Google Meu Negócio.">Quero esse</a>
+      </div>
+      <div class="extra">
+        <h4>Kit Instagram</h4>
+        <p>Templates de post, stories e capas de destaque editáveis, no padrão visual da sua marca.</p>
+        <div class="price">A partir de<b>R$ 400</b></div>
+        <a href="#" class="js-wa" data-msg="Olá Yago! Tenho interesse no Kit Instagram.">Quero esse</a>
+      </div>
+      <div class="extra">
+        <h4>Gestão de anúncios</h4>
+        <p>Campanhas no Google e no Meta levando clientes pro seu WhatsApp ou site. Verba de anúncio à parte.</p>
+        <div class="price">A partir de<b>R$ 500/mês</b></div>
+        <a href="#" class="js-wa" data-msg="Olá Yago! Quero saber mais sobre a gestão de anúncios.">Quero saber mais</a>
+      </div>
     </div>
     <p class="label note rv">Domínio à parte · eu te ajudo a contratar e configurar · sem manutenção, a hospedagem também fica à parte</p>
     <p class="rv" style="margin-top:28px;color:var(--muted)">Não sabe qual faz sentido pro seu momento? <a href="#" class="link js-wa" data-msg="Olá Yago! Não sei qual serviço faz sentido pra mim, pode me ajudar?" style="color:var(--fg)">Me chama que eu te ajudo a escolher <svg width="14" height="14"><use href="#i-arrow"/></svg></a></p>
