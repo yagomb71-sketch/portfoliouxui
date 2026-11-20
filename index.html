@@ -145,7 +145,6 @@ section{padding:clamp(80px,11vw,150px) 0}
 .team .person{text-align:left;font:inherit;color:inherit;background:none;cursor:pointer;display:flex;flex-direction:column;transition:border-color .2s,background .2s}
 .team .person:hover{border-color:var(--fg);background:#ffffff08}
 .team .person .more{margin-top:14px;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.modal-box.narrow{max-width:720px}
 @media(max-width:600px){.team{grid-template-columns:1fr}}
 
 
@@ -401,7 +400,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
       </div>
       <div class="team rv">
         <div><span class="label">Cofundador · Design</span><b>Yago Moreira</b><p>Cria cada página, arte e campanha, da estratégia à entrega.</p></div>
-        <button type="button" class="person" data-person="eduarda" aria-haspopup="dialog"><span class="label">Cofundadora · Comercial</span><b>Eduarda Moreira</b><p>Cuida do seu projeto do primeiro contato ao fechamento, e é quem te acompanha no dia a dia.</p><span class="more">Ver perfil ↗</span></button>
+        <a href="eduarda/" class="person"><span class="label">Cofundadora · Comercial</span><b>Eduarda Moreira</b><p>Cuida do seu projeto do primeiro contato ao fechamento, e é quem te acompanha no dia a dia.</p><span class="more">Ver perfil ↗</span></a>
       </div>
       <div class="rv" style="margin-top:36px;display:flex;gap:28px;flex-wrap:wrap">
         <a href="ux/" class="link">Estudos de caso de UX <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
@@ -723,39 +722,7 @@ function openProject(id){
   modal.scrollTop = 0; document.getElementById('m-close').focus();
   history.replaceState(null,'','#projeto-'+id);
 }
-const PEOPLE = {
-  eduarda: {
-    name:'Eduarda Moreira', role:'Cofundadora · Comercial',
-    sum:'É quem conduz a parte comercial do YE Studios. Entende o que o seu negócio precisa, apresenta o caminho que faz mais sentido pro seu momento e acompanha o projeto até a entrega, pra você nunca ficar sem resposta.',
-    does:['Primeira conversa e entendimento do seu negócio','Proposta e escolha do serviço certo pra você','Acompanhamento do projeto junto com o Yago','Suporte depois da entrega e na manutenção'],
-    why:'Você tem um ponto de contato só, que fala a sua língua e traduz o que você precisa pro time de design. Sem jargão, sem enrolação e com retorno rápido.',
-    msg:'Olá Eduarda! Vi seu perfil no site do YE Studios e quero conversar sobre um projeto.'
-  }
-};
-function openPerson(id){
-  const p = PEOPLE[id]; if(!p) return;
-  lastFocus = document.activeElement;
-  box.classList.add('narrow');
-  box.innerHTML = `
-    <div class="modal-body">
-      <div class="m-tags"><span class="f">${p.role}</span><span>YE Studios</span><span>São Paulo</span></div>
-      <h3 id="m-title">${p.name}</h3>
-      <p class="m-sum">${p.sum}</p>
-      <div class="m-cols">
-        <div><h4>O que ela faz</h4><ul>${p.does.map(s=>`<li>${s}</li>`).join('')}</ul></div>
-        <div><h4>Pra você</h4><p>${p.why}</p></div>
-      </div>
-      <div class="m-links">
-        <a href="#" class="btn btn-solid js-wa" data-msg="${p.msg}"><svg><use href="#i-wa"/></svg>Falar com a Eduarda</a>
-      </div>
-    </div>`;
-  bindWa(box);
-  modal.classList.add('open'); document.body.style.overflow='hidden';
-  modal.scrollTop = 0; document.getElementById('m-close').focus();
-}
-document.querySelectorAll('.person').forEach(b => b.addEventListener('click', () => openPerson(b.dataset.person)));
 function closeModal(){
-  box.classList.remove('narrow');
   modal.classList.remove('open'); document.body.style.overflow='';
   history.replaceState(null,'',location.pathname);
   if(lastFocus) lastFocus.focus();
