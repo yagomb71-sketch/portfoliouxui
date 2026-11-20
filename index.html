@@ -142,10 +142,16 @@ section{padding:clamp(80px,11vw,150px) 0}
 .team b{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em;margin:8px 0 6px}
 .team p{font-size:15px!important;margin:0!important}
 @media(max-width:860px){.about{grid-template-columns:1fr}.portrait{aspect-ratio:16/10}.facts{grid-template-columns:1fr}}
-.team .person{text-align:left;font:inherit;color:inherit;background:none;cursor:pointer;display:flex;flex-direction:column;transition:border-color .2s,background .2s}
-.team .person:hover{border-color:var(--fg);background:#ffffff08}
-.team .person .more{margin-top:14px;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:600px){.team{grid-template-columns:1fr}}
+.team .person{text-align:left;font:inherit;color:inherit;background:none;cursor:pointer;display:flex;flex-direction:column;transition:border-color .25s,background .25s,opacity .25s;opacity:.55}
+.team .person:hover{opacity:.85}
+.team .person.is-on{opacity:1;border-color:var(--fg);background:#ffffff08}
+.slides{display:grid;touch-action:pan-y}
+.slide{grid-area:1/1;transition:opacity .45s ease,transform .45s cubic-bezier(.2,.7,.2,1),visibility .45s}
+.slide:not(.is-on){opacity:0;visibility:hidden;pointer-events:none;transform:translateX(var(--dx,24px))}
+.slide-links{margin-top:36px;display:flex;gap:28px;flex-wrap:wrap}
+.swipe-hint{font-size:13px!important;color:var(--muted);margin-top:14px!important}
+@media(hover:hover) and (pointer:fine){.swipe-hint{display:none}}
+@media(max-width:600px){.team{gap:10px}.team>*{padding:14px 14px}.team b{font-size:17px}.team p{display:none}.team .label{font-size:10px}}
 
 
 /* skills */
@@ -389,23 +395,42 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
     </div>
     <div>
       <div class="label rv" style="margin-bottom:18px">Sobre · Fundadores do YE Studios</div>
-      <h2 class="display rv">Yago Moreira</h2>
-      <p class="rv">Comecei no design gráfico, me especializei em UX e acabei indo parar do lado de quem vende. Hoje cuido da operação digital de um e-commerce: <strong>Google, Meta Ads, Mercado Livre, Shopee e WhatsApp</strong>. É ali que eu vejo, todo dia, o que faz alguém clicar, confiar e comprar, e o que faz desistir.</p>
-      <p class="rv">Esse caminho virou o meu jeito de trabalhar: <strong>pesquisa e usabilidade</strong> pra desenhar a página certa, e <strong>visão de anúncio</strong> pra ela trazer resultado. E você fala direto com quem faz, do começo ao fim, sem agência e sem intermediário.</p>
-      <blockquote class="quote rv">"Site bonito que não gera contato é só um cartão de visita caro."</blockquote>
-      <div class="facts rv">
-        <div><span class="label">Formação</span><b>Design Gráfico, FMU</b></div>
-        <div><span class="label">Especialização</span><b>UX Design, Belas Artes</b></div>
-        <div><span class="label">Ferramentas</span><b>Figma, HTML/CSS, React</b></div>
+      <div class="slides rv" id="founders">
+        <div class="slide is-on" id="p-yago" role="tabpanel" aria-labelledby="t-yago">
+          <h2 class="display">Yago Moreira</h2>
+          <p>Comecei no design gráfico, me especializei em UX e acabei indo parar do lado de quem vende. Hoje cuido da operação digital de um e-commerce: <strong>Google, Meta Ads, Mercado Livre, Shopee e WhatsApp</strong>. É ali que eu vejo, todo dia, o que faz alguém clicar, confiar e comprar, e o que faz desistir.</p>
+          <p>Esse caminho virou o meu jeito de trabalhar: <strong>pesquisa e usabilidade</strong> pra desenhar a página certa, e <strong>visão de anúncio</strong> pra ela trazer resultado. E você fala direto com quem faz, do começo ao fim, sem agência e sem intermediário.</p>
+          <blockquote class="quote">"Site bonito que não gera contato é só um cartão de visita caro."</blockquote>
+          <div class="facts">
+            <div><span class="label">Formação</span><b>Design Gráfico, FMU</b></div>
+            <div><span class="label">Especialização</span><b>UX Design, Belas Artes</b></div>
+            <div><span class="label">Ferramentas</span><b>Figma, HTML/CSS, React</b></div>
+          </div>
+          <div class="slide-links">
+            <a href="ux/" class="link">Estudos de caso de UX <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+            <a href="https://www.linkedin.com/in/yago-moreira-barbosa/" target="_blank" rel="noopener" class="link">LinkedIn <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="slide" id="p-eduarda" role="tabpanel" aria-labelledby="t-eduarda" aria-hidden="true">
+          <h2 class="display">Eduarda Moreira</h2>
+          <p>É quem conduz a parte <strong>comercial</strong> do YE Studios. Entende o que o seu negócio precisa, apresenta o caminho que faz mais sentido pro seu momento e acompanha o projeto do primeiro contato até a entrega.</p>
+          <p>Com ela, você tem <strong>um ponto de contato só</strong>: alguém que fala a sua língua, traduz o que você precisa pro design e garante <strong>retorno rápido</strong>, sem jargão e sem enrolação.</p>
+          <blockquote class="quote">"Cliente bem atendido não precisa correr atrás de resposta."</blockquote>
+          <div class="facts">
+            <div><span class="label">Área</span><b>Comercial</b></div>
+            <div><span class="label">Cuida de</span><b>Propostas e fechamento</b></div>
+            <div><span class="label">Acompanha</span><b>Projeto e pós-entrega</b></div>
+          </div>
+          <div class="slide-links">
+            <a href="#" class="link js-wa" data-msg="Olá Eduarda! Vim pelo site do YE Studios e quero conversar sobre um projeto.">Falar com a Eduarda <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
       </div>
-      <div class="team rv">
-        <div><span class="label">Cofundador · Design</span><b>Yago Moreira</b><p>Cria cada página, arte e campanha, da estratégia à entrega.</p></div>
-        <a href="eduarda/" class="person"><span class="label">Cofundadora · Comercial</span><b>Eduarda Moreira</b><p>Cuida do seu projeto do primeiro contato ao fechamento, e é quem te acompanha no dia a dia.</p><span class="more">Ver perfil ↗</span></a>
+      <div class="team rv" role="tablist" aria-label="Fundadores">
+        <button type="button" class="person is-on" id="t-yago" role="tab" aria-selected="true" aria-controls="p-yago" data-p="yago"><span class="label">Cofundador · Design</span><b>Yago Moreira</b><p>Cria cada página, arte e campanha, da estratégia à entrega.</p></button>
+        <button type="button" class="person" id="t-eduarda" role="tab" aria-selected="false" aria-controls="p-eduarda" data-p="eduarda" tabindex="-1"><span class="label">Cofundadora · Comercial</span><b>Eduarda Moreira</b><p>Cuida do seu projeto do primeiro contato ao fechamento, e é quem te acompanha no dia a dia.</p></button>
       </div>
-      <div class="rv" style="margin-top:36px;display:flex;gap:28px;flex-wrap:wrap">
-        <a href="ux/" class="link">Estudos de caso de UX <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
-        <a href="https://www.linkedin.com/in/yago-moreira-barbosa/" target="_blank" rel="noopener" class="link">LinkedIn <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
-      </div>
+      <p class="swipe-hint">Toque no card ou arraste pro lado pra conhecer cada um</p>
     </div>
   </div>
   <div class="wrap skills rv">
@@ -734,6 +759,22 @@ document.addEventListener('keydown', e => { if(e.key==='Escape' && modal.classLi
 if(location.hash.startsWith('#projeto-')) openProject(location.hash.slice(9));
 
 /* ===== Reveal ===== */
+/* ===== Fundadores (Sobre) ===== */
+(function(){
+  const tabs=[...document.querySelectorAll('.team .person')], wrap=document.getElementById('founders');
+  if(!wrap) return; let cur=0;
+  function show(i){
+    i=(i+tabs.length)%tabs.length; if(i===cur) return;
+    const dir=i>cur?1:-1;
+    tabs.forEach((t,k)=>{ const on=k===i; t.classList.toggle('is-on',on); t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1;
+      const p=document.getElementById(t.getAttribute('aria-controls')); p.style.setProperty('--dx',(on?dir*24:-dir*24)+'px'); p.classList.toggle('is-on',on); p.setAttribute('aria-hidden',!on); });
+    cur=i;
+  }
+  tabs.forEach((t,k)=>{ t.addEventListener('click',()=>{ show(k); const r=wrap.getBoundingClientRect(); if(r.top<0) wrap.scrollIntoView({behavior:'smooth',block:'start'}); }); t.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); show(cur+(e.key==='ArrowRight'?1:-1)); tabs[cur].focus(); } }); });
+  let x0=null,y0=null;
+  wrap.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+  wrap.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)) show(cur+(dx<0?1:-1)); x0=null; });
+})();
 const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }), {threshold:.1, rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 </script>
