@@ -136,6 +136,8 @@ section{padding:clamp(80px,11vw,150px) 0}
 .pt-top{display:flex;justify-content:space-between;align-items:flex-start}
 .pt-top .label,.pt-cap .label{color:#fff;opacity:.85}
 .pt-logo{width:64px;height:auto;opacity:.9}
+.m-ph{display:none}
+@media(max-width:860px){.about .portrait{display:none}.m-ph{display:block;width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:50% 28%;filter:grayscale(1) contrast(1.06) brightness(.85);border:1px solid var(--line);margin:4px 0 26px}}
 .about h2{font-size:clamp(40px,6vw,84px);margin-bottom:28px}
 .about p{color:var(--muted);font-size:clamp(17px,1.4vw,20px);margin-bottom:18px;max-width:640px}
 .about p strong{color:var(--fg);font-weight:500}
@@ -407,6 +409,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
       <div class="slides rv" id="founders">
         <div class="slide is-on" id="p-yago" role="tabpanel" aria-labelledby="t-yago">
           <h2 class="display">Yago Moreira</h2>
+          <img class="m-ph" src="assets/img/yago-portrait.webp" width="960" height="1200" alt="" loading="lazy">
           <p>Comecei no design gráfico, me especializei em UX e acabei indo parar do lado de quem vende. Hoje cuido da operação digital de um e-commerce: <strong>Google, Meta Ads, Mercado Livre, Shopee e WhatsApp</strong>. É ali que eu vejo, todo dia, o que faz alguém clicar, confiar e comprar, e o que faz desistir.</p>
           <p>Esse caminho virou o meu jeito de trabalhar: <strong>pesquisa e usabilidade</strong> pra desenhar a página certa, e <strong>visão de anúncio</strong> pra ela trazer resultado. E você fala direto com quem faz, do começo ao fim, sem agência e sem intermediário.</p>
           <blockquote class="quote">"Site bonito que não gera contato é só um cartão de visita caro."</blockquote>
@@ -422,6 +425,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
         </div>
         <div class="slide" id="p-eduarda" role="tabpanel" aria-labelledby="t-eduarda" aria-hidden="true">
           <h2 class="display">Eduarda Moreira</h2>
+          <img class="m-ph" src="assets/img/eduarda-portrait.webp?v=2" width="828" height="1035" alt="" loading="lazy">
           <p>É quem conduz a parte <strong>comercial</strong> do YE Studios. Entende o que o seu negócio precisa, apresenta o caminho que faz mais sentido pro seu momento e acompanha o projeto do primeiro contato até a entrega.</p>
           <p>Com ela, você tem <strong>um ponto de contato só</strong>: alguém que fala a sua língua, traduz o que você precisa pro design e garante <strong>retorno rápido</strong>, sem jargão e sem enrolação.</p>
           <blockquote class="quote">"Cliente bem atendido não precisa correr atrás de resposta."</blockquote>
