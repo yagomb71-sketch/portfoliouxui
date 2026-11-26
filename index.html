@@ -387,7 +387,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
       </div>
     </div>
     <div class="grid" id="grid"></div>
-    <div class="more-wrap"><button class="btn-more" id="more" type="button">Ver mais <span></span></button></div>
+    <div class="more-wrap"><button class="btn-more" id="more" type="button" aria-expanded="false">Ver mais <span></span></button></div>
   </div>
 </section>
 
@@ -753,8 +753,10 @@ function applyGrid(){
     if(match) n++;
     c.classList.toggle('hide', !match || (!expanded && n > SHOW));
   });
-  moreBtn.hidden = expanded || n <= SHOW;
-  moreBtn.querySelector('span').textContent = `+${Math.max(0, n-SHOW)}`;
+  moreBtn.hidden = n <= SHOW;
+  moreBtn.firstChild.textContent = expanded ? 'Ver menos ' : 'Ver mais ';
+  moreBtn.querySelector('span').textContent = expanded ? '−' : `+${n-SHOW}`;
+  moreBtn.setAttribute('aria-expanded', expanded);
 }
 document.querySelectorAll('.filter').forEach(b => {
   b.insertAdjacentHTML('beforeend', `<sup>${counts[b.dataset.f]||0}</sup>`);
@@ -764,6 +766,11 @@ document.querySelectorAll('.filter').forEach(b => {
   });
 });
 moreBtn.addEventListener('click', () => {
+  if(expanded){
+    expanded = false; applyGrid();
+    window.scrollTo({top: grid.getBoundingClientRect().top + scrollY - 140, behavior: 'smooth'});
+    return;
+  }
   const first = [...grid.querySelectorAll('.card.hide')].find(c => curF==='all' || c.dataset.cat.split(' ').includes(curF));
   expanded = true; applyGrid();
   if(first) first.focus({preventScroll:true});
