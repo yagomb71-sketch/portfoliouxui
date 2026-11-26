@@ -1,5 +1,5 @@
 /* Efeitos 3D: pérola líquida em WebGL, inclinação 3D com o mouse e foto do topo em perspectiva no scroll.
-   Projeto conceitual de Yago Moreira (yagoportfolio.com.br) */
+   YE Studios (ye-studios.com.br) */
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
