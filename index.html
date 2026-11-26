@@ -114,6 +114,11 @@ section{padding:clamp(80px,11vw,150px) 0}
 .card.big{grid-column:span 2}
 .card.big .thumb{aspect-ratio:16/9}
 .card.hide{display:none}
+.more-wrap{display:flex;justify-content:center;margin-top:clamp(40px,5vw,64px)}
+.btn-more{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:16px 30px;border:1px solid var(--fg);color:var(--fg);display:inline-flex;gap:10px;align-items:center;transition:background .25s,color .25s}
+.btn-more span{color:var(--muted);transition:color .25s}
+.btn-more:hover{background:var(--fg);color:var(--bg)}.btn-more:hover span{color:var(--bg)}
+.btn-more[hidden]{display:none}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.card.big{grid-column:auto}.card.big .thumb{aspect-ratio:16/10}}
 
 /* metodologia */
@@ -382,6 +387,7 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
       </div>
     </div>
     <div class="grid" id="grid"></div>
+    <div class="more-wrap"><button class="btn-more" id="more" type="button">Ver mais <span></span></button></div>
   </div>
 </section>
 
@@ -730,24 +736,39 @@ bindWa(document);
 /* ===== Grid ===== */
 const grid = document.getElementById('grid');
 grid.innerHTML = PROJECTS.map(p => `
-  <button class="card rv${BIG.includes(p.id)?' big':''}" data-id="${p.id}" data-cat="${p.cat.join(' ')}" aria-label="Ver detalhes de ${p.title}">
+  <button class="card rv" data-id="${p.id}" data-cat="${p.cat.join(' ')}" aria-label="Ver detalhes de ${p.title}">
     <div class="thumb"><img src="assets/img/${p.img}.webp" width="1200" height="750" loading="lazy" alt="${p.title}: ${p.short}">${p.flag?`<span class="flag">${p.flag}</span>`:''}</div>
     <div class="meta"><h3>${p.title}</h3><span class="cat">${p.cat.map(c=>CAT_LABEL[c]).join(' · ')}</span></div>
   </button>`).join('');
 
 const counts = {all:PROJECTS.length};
 PROJECTS.forEach(p => p.cat.forEach(c => counts[c]=(counts[c]||0)+1));
+const SHOW = 4;
+let curF = 'all', expanded = false;
+const moreBtn = document.getElementById('more');
+function applyGrid(){
+  let n = 0;
+  grid.querySelectorAll('.card').forEach(c => {
+    const match = curF==='all' || c.dataset.cat.split(' ').includes(curF);
+    if(match) n++;
+    c.classList.toggle('hide', !match || (!expanded && n > SHOW));
+  });
+  moreBtn.hidden = expanded || n <= SHOW;
+  moreBtn.querySelector('span').textContent = `+${Math.max(0, n-SHOW)}`;
+}
 document.querySelectorAll('.filter').forEach(b => {
   b.insertAdjacentHTML('beforeend', `<sup>${counts[b.dataset.f]||0}</sup>`);
   b.addEventListener('click', () => {
     document.querySelectorAll('.filter').forEach(x => x.setAttribute('aria-pressed', x===b));
-    const f = b.dataset.f;
-    grid.querySelectorAll('.card').forEach(c => {
-      c.classList.toggle('hide', f!=='all' && !c.dataset.cat.split(' ').includes(f));
-      c.classList.toggle('big', f==='all' && BIG.includes(c.dataset.id));
-    });
+    curF = b.dataset.f; expanded = false; applyGrid();
   });
 });
+moreBtn.addEventListener('click', () => {
+  const first = [...grid.querySelectorAll('.card.hide')].find(c => curF==='all' || c.dataset.cat.split(' ').includes(curF));
+  expanded = true; applyGrid();
+  if(first) first.focus({preventScroll:true});
+});
+applyGrid();
 
 /* ===== Modal ===== */
 const modal = document.getElementById('modal'), box = document.getElementById('m-box');
