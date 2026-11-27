@@ -185,6 +185,39 @@ footer a{text-decoration:underline}
 .units div{background:var(--paper);padding:18px 20px;font-size:14px;color:var(--muted)}
 .units b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink)}
 @media(max-width:700px){.units{grid-template-columns:1fr}}
+
+/* simulador */
+.hero-grid{grid-template-columns:1.15fr 450px;align-items:center}
+.sim{position:relative;background:var(--paper);color:var(--ink);padding:30px 28px 24px;border-radius:4px;box-shadow:0 30px 60px -24px rgba(0,0,0,.5)}
+.sim::before{content:'';position:absolute;inset:8px;border:1px solid rgba(176,141,87,.45);pointer-events:none;border-radius:2px}
+.sim h2{font-size:28px;margin-top:0}
+.sim .ajuda{font-size:14px;color:var(--muted);margin-top:6px}
+.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--paper-2);border-radius:4px;padding:4px;margin:20px 0 4px}
+.seg button{border:0;background:transparent;padding:10px;border-radius:3px;font:600 15px var(--sans);cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--paper)}
+.campo{position:relative;margin-top:16px}
+.campo label{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;font-size:15px}
+.campo output{font-family:var(--serif);font-size:28px;color:var(--navy)}
+.campo output small{font-family:var(--sans);font-size:13px;color:var(--muted);margin-left:4px}
+.sim input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:34px;background:transparent;cursor:pointer}
+.sim input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(var(--gold),var(--gold)) 0/var(--p,50%) 100% no-repeat,var(--line)}
+.sim input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:var(--line)}
+.sim input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:var(--gold)}
+.sim input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--navy);border:3px solid var(--paper);box-shadow:0 0 0 1.5px var(--gold);margin-top:-10px}
+.sim input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--navy);border:3px solid var(--paper);box-shadow:0 0 0 1.5px var(--gold)}
+.sim .linha{position:relative;margin-top:18px;border-top:1px solid var(--line);padding-top:18px}
+.barras{display:grid;gap:12px}
+.barra span{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+.barra .t{position:relative;height:10px;border-radius:10px;background:var(--paper-2)}
+.barra .t i{position:absolute;left:0;top:0;bottom:0;border-radius:10px;background:var(--navy);width:0;transition:width .5s cubic-bezier(.22,1,.36,1)}
+.barra .t i.ok{background:var(--gold)}
+.barra .t b{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--ink)}
+.resultado{margin-top:16px;font-size:16px;line-height:1.5}
+.resultado mark{background:linear-gradient(transparent 58%,rgba(176,141,87,.45) 58%);color:inherit;padding:0 2px;font-weight:600}
+.sim .btn{position:relative;width:100%;margin-top:18px}
+.nota{position:relative;font-size:12px;color:var(--muted);margin-top:12px;text-align:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.sim{padding:26px 20px 20px}.sim h2{font-size:25px}}
 </style>
 <style id="pl-css">
 html.pl-lock{overflow:hidden}
@@ -233,8 +266,8 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
     </a>
     <nav class="menu" aria-label="Menu principal">
       <a href="#areas">Áreas de atuação</a>
-      <a href="#como-funciona">Como funciona</a>
       <a href="#escritorio">O escritório</a>
+      <a href="#simulador">Simular aposentadoria</a>
       <a href="#analise">Pré-análise</a>
       <a href="#duvidas">Dúvidas</a>
     </nav>
@@ -254,14 +287,31 @@ document.readyState==='loading'?addEventListener('DOMContentLoaded',go):go();})(
         <a href="#analise" class="btn btn-ghost">Fazer pré-análise do caso</a>
       </div>
     </div>
-    <aside class="hero-card" aria-label="Compromissos do escritório">
-      <p class="q">“Cada caso começa ouvindo a história de quem está do outro lado da mesa.”</p>
-      <ul>
-        <li><svg><use href="#check"/></svg>Análise individual da sua documentação</li>
-        <li><svg><use href="#check"/></svg>Retorno com os próximos passos e os prazos</li>
-        <li><svg><use href="#check"/></svg>Contato direto com o advogado responsável</li>
-      </ul>
-    </aside>
+    <form class="sim" id="simulador" aria-labelledby="simT" onsubmit="return false">
+      <h2 id="simT">Quanto falta pra você se aposentar?</h2>
+      <p class="ajuda">Mexa nos controles e veja uma estimativa na hora.</p>
+      <div class="seg" role="group" aria-label="Você é">
+        <button type="button" data-s="F" aria-pressed="true">Mulher</button>
+        <button type="button" data-s="M" aria-pressed="false">Homem</button>
+      </div>
+      <div class="campo">
+        <label for="idade">Sua idade <output id="oIdade">55<small>anos</small></output></label>
+        <input type="range" id="idade" min="30" max="80" value="55">
+      </div>
+      <div class="campo">
+        <label for="contrib">Tempo de contribuição <output id="oContrib">20<small>anos</small></output></label>
+        <input type="range" id="contrib" min="0" max="45" value="20">
+      </div>
+      <div class="linha">
+        <div class="barras" aria-hidden="true">
+          <div class="barra"><span><em>Idade</em><em id="lIdade">mínimo 62</em></span><div class="t"><i id="bIdade"></i><b id="mIdade"></b></div></div>
+          <div class="barra"><span><em>Contribuição</em><em>mínimo 15</em></span><div class="t"><i id="bContrib"></i><b id="mContrib"></b></div></div>
+        </div>
+        <p class="resultado" id="res" aria-live="polite"></p>
+      </div>
+      <a href="#" class="btn btn-gold" id="simWa"><svg><use href="#wa"/></svg>Enviar para análise</a>
+      <p class="nota">Estimativa pela regra geral da aposentadoria por idade. Não substitui a análise do seu extrato do INSS.</p>
+    </form>
   </div>
   <div class="hero-bar">
     <ul class="wrap">
@@ -490,6 +540,22 @@ document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)
     const msg=`Olá! Fiz a pré-análise no site da Sandra Lacerda Advogados.\n\n*Nome:* ${document.getElementById('qnome').value.trim()}\n*Área:* ${val('area')[0]}\n*Situação:* ${val('situacao').join(', ')}\n*WhatsApp:* ${tel.value}\n\nGostaria de conversar sobre o meu caso.`;
     window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');});
   show();
+})();
+
+(function(){
+  const $=id=>document.getElementById(id);const idade=$('idade'),contrib=$('contrib');if(!idade)return;let sexo='F';
+  document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{sexo=b.dataset.s;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));upd();}));
+  const fill=r=>r.style.setProperty('--p',((r.value-r.min)/(r.max-r.min)*100)+'%');const anos=n=>n===1?'1 ano':n+' anos';
+  function upd(){const i=+idade.value,c=+contrib.value,alvo=sexo==='F'?62:65,minC=15;fill(idade);fill(contrib);
+    $('oIdade').innerHTML=i+'<small>anos</small>';$('oContrib').innerHTML=c+'<small>anos</small>';$('lIdade').textContent='mínimo '+alvo;
+    const iMin=40,iMax=75;$('bIdade').style.width=Math.min(100,Math.max(0,(i-iMin)/(iMax-iMin)*100))+'%';$('mIdade').style.left=((alvo-iMin)/(iMax-iMin)*100)+'%';$('bIdade').classList.toggle('ok',i>=alvo);
+    $('bContrib').style.width=Math.min(100,c/40*100)+'%';$('mContrib').style.left=(minC/40*100)+'%';$('bContrib').classList.toggle('ok',c>=minC);
+    const fI=Math.max(0,alvo-i),fC=Math.max(0,minC-c);let t;
+    if(!fI&&!fC)t='Pela regra geral, <mark>você pode já ter direito</mark> à aposentadoria por idade. Vale pedir uma análise antes de dar entrada.';
+    else{const p=[];if(fI)p.push(anos(fI)+' de idade');if(fC)p.push(anos(fC)+' de contribuição');t='Pela regra geral, faltam cerca de <mark>'+p.join(' e ')+'</mark>.';
+      t+=c>=(sexo==='F'?28:33)?' Com esse tempo de contribuição, as regras de transição podem antecipar sua aposentadoria.':' Algumas regras de transição podem mudar esse cálculo.';}
+    $('res').innerHTML=t;const w=$('simWa');w.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(`Olá! Fiz a simulação no site: sou ${sexo==='F'?'mulher':'homem'}, tenho ${i} anos e cerca de ${anos(c)} de contribuição. Gostaria de uma análise do meu caso.`);w.target='_blank';w.rel='noopener';}
+  idade.addEventListener('input',upd);contrib.addEventListener('input',upd);upd();
 })();
 </script>
 </body>
